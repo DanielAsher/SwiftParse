@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Timeline
+   version = "3.0">
+   <TimelineItems>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "#CharacterRangeLen=2&amp;CharacterRangeLoc=1837&amp;EndingColumnNumber=7&amp;EndingLineNumber=54&amp;StartingColumnNumber=5&amp;StartingLineNumber=54&amp;Timestamp=463253972.997363"
+         lockedSize = "{619, 50}"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "#CharacterRangeLen=2&amp;CharacterRangeLoc=2288&amp;EndingColumnNumber=7&amp;EndingLineNumber=68&amp;StartingColumnNumber=5&amp;StartingLineNumber=68&amp;Timestamp=463428632.898941"
+         lockedSize = "{684, 50}"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "#CharacterRangeLen=3&amp;CharacterRangeLoc=2323&amp;EndingColumnNumber=8&amp;EndingLineNumber=71&amp;StartingColumnNumber=5&amp;StartingLineNumber=71&amp;Timestamp=463428632.899062"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "file:///Users/Daniel/Documents/Dev/Github/SwiftReferenceApp/SwiftReferenceApp/Playgrounds/Swiftx.playground/Pages/DotParser.xcplaygroundpage#CharacterRangeLen=43&amp;CharacterRangeLoc=2318&amp;EndingLineNumber=71&amp;StartingLineNumber=71&amp;Timestamp=463428632.899175"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "file:///Users/Daniel/Documents/Dev/Github/SwiftReferenceApp/SwiftReferenceApp/Playgrounds/Swiftx.playground/Pages/DotParser.xcplaygroundpage#CharacterRangeLen=43&amp;CharacterRangeLoc=1926&amp;EndingLineNumber=57&amp;StartingLineNumber=57&amp;Timestamp=463428632.904892"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+   </TimelineItems>
+</Timeline>
