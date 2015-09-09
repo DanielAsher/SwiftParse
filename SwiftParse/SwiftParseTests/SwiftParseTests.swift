@@ -11,17 +11,19 @@ import XCTest
 
 import SwiftCheck
 
-struct ArbitraryID : Arbitrary {
-    let getID : String
+struct ArbitraryID : Arbitrary 
+{
     static let lowerCase : Gen<Character> = Gen<Character>.fromElementsIn("a"..."z")
     static let upperCase : Gen<Character> = Gen<Character>.fromElementsIn("A"..."Z")
-    static let numeric : Gen<Character> = Gen<Character>.fromElementsIn("0"..."9")
-    static let idGen : Gen<String> = Gen<Character>
+    static let numeric   : Gen<Character> = Gen<Character>.fromElementsIn("0"..."9")
+    static let idGen     : Gen<String>    = Gen<Character>
         .oneOf([upperCase, lowerCase, numeric, Gen.pure("_")])
         .proliferateNonEmpty().fmap(String.init)    
 
     static var arbitrary : Gen<ArbitraryID> { return idGen.fmap(ArbitraryID.init) }
     
+    let getID : String
+
     init(id : String) { self.getID = id }
 }
 

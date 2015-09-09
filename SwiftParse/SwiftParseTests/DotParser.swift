@@ -20,8 +20,14 @@ prefix operator £ {}
 public prefix func £ (literal: String) -> 𝐏<String, String>.𝒇 {
     return %literal |> token
 }
+prefix operator ≠ {}
+public prefix func ≠ <I: CollectionType, T>
+    (parser: 𝐏<I, T>.𝒇) 
+    -> 𝐏<I, Ignore>.𝒇 
+{
+        return ignore(parser)
+}
 //: Literal Characters and Strings
-
 let equal        = £"="     
 let leftBracket  = £"["      
 let rightBracket = £"]"     
@@ -43,6 +49,8 @@ let digit       = %("0"..."9")
 let id = (lower | upper | digit | %"_")+
     |> map { $0.joinWithSeparator("") }
     |> token
-
+    
+let id_equality = id ++ ≠equal ++ ≠quote|? ++ id|? ++ ≠quote|?
+    |> map { Attribute(name: $0, value: $1 ?? "") }
 
 

@@ -81,8 +81,8 @@ public func >>- <I: CollectionType, T, U>
 //: notice how `transform` is _injected_ into parser's monadic context.
 public func <^> <I: CollectionType, T, U> 
     (transform: T -> U, 
-    parser:    𝐏<I, T>.𝒇) 
-    -> 𝐏<I, U>.𝒇 
+     parser:    𝐏<I, T>.𝒇) 
+             -> 𝐏<I, U>.𝒇 
 {
     return { input, index in 
         
@@ -100,7 +100,7 @@ public func <^> <I: CollectionType, T, U>
 public func map<I: CollectionType, T, U>
     (transform: T -> U)
     (_ parser:  𝐏<I, T>.𝒇) 
-    -> 𝐏<I, U>.𝒇 
+             -> 𝐏<I, U>.𝒇 
 {
     return transform <^> parser |> trace() 
 }
@@ -119,14 +119,14 @@ postfix operator |? {}
 //: `|?` parses T zero or one time to return T?
 public postfix func |? <I: CollectionType, T> 
     (parser: 𝐏<I, T>.𝒇) 
-    -> 𝐏<I, T?>.𝒇 
+          -> 𝐏<I, T?>.𝒇 
 {
     return first <^> parser * (0...1)
 }
 //: `|?` parses T zero or one time to return an `Ignore`, dropping the parse tree.
 public postfix func |? <I: CollectionType> 
     (parser: 𝐏<I, Ignore>.𝒇) 
-    -> 𝐏<I, Ignore>.𝒇 
+          -> 𝐏<I, Ignore>.𝒇 
 {
     return ignore(parser * (0...1))
 }
@@ -158,7 +158,7 @@ public func alternate<Input: CollectionType, T, U>
 public func | <I: CollectionType, T, U> (
     lhs: 𝐏<I, T>.𝒇, 
     rhs: 𝐏<I, U>.𝒇) 
-    -> 𝐏<I, Either<T, U>>.𝒇 
+      -> 𝐏<I, Either<T, U>>.𝒇 
 {
     return alternate(lhs, rhs) 
 }
@@ -166,12 +166,12 @@ public func | <I: CollectionType, T, U> (
 public func | <I: CollectionType, T> (
     lhs: 𝐏<I, T>.𝒇, 
     rhs: 𝐏<I, T>.𝒇) 
-    -> 𝐏<I, T>.𝒇 
+      -> 𝐏<I, T>.𝒇 
 {
     return alternate(lhs, rhs)
         |> map { $0.either(onLeft: identity, onRight: identity) }
+        |> trace("| <T,T> \t:") 
 }
-//        |> trace("| <T,T> \t:") 
 //: `first` helper function.
 func first<I: CollectionType>(input: I) -> I.Generator.Element? {
     return input.first
@@ -182,18 +182,18 @@ func first<I: CollectionType>(input: I) -> I.Generator.Element? {
 infix operator ++ { associativity right precedence 160 }
 //: `++` parses the concatenation of `lhs` and `rhs`, pairing their parse trees in tuples of `(T, U)`
 public func ++ <I: CollectionType, T, U> (
-    lhs: 𝐏<I, T    >.𝒇, 
-    rhs: 𝐏<I, U    >.𝒇) 
-    -> 𝐏<I,(T, U)>.𝒇 
+    lhs: 𝐏<I, T>.𝒇, 
+    rhs: 𝐏<I, U>.𝒇) 
+      -> 𝐏<I,(T, U)>.𝒇 
 {
     return lhs >>- { x in { y in (x, y) } <^> rhs } 
         |> trace("++ (T,U)")
 }
 //: `++` parses the concatenation of `lhs` and `rhs`, dropping `rhs`’s parse tree to generate `T`
 public func ++ <I: CollectionType, T> (
-    lhs: 𝐏<I, T     >.𝒇, 
+    lhs: 𝐏<I, T>.𝒇, 
     rhs: 𝐏<I, Ignore>.𝒇) 
-    -> 𝐏<I, T     >.𝒇 
+      -> 𝐏<I, T>.𝒇 
 {
     return lhs >>- { x in const(x) <^> rhs } 
         |> trace("++ (T, Ignore)\t:")
@@ -201,8 +201,8 @@ public func ++ <I: CollectionType, T> (
 //: Parses the concatenation of `lhs` and `rhs`, dropping `lhs`’s parse tree generating `T`
 public func ++ <I: CollectionType, T> (
     lhs: 𝐏<I, Ignore>.𝒇, 
-    rhs: 𝐏<I, T     >.𝒇) 
-    -> 𝐏<I, T     >.𝒇 
+    rhs: 𝐏<I, T>.𝒇) 
+      -> 𝐏<I, T>.𝒇 
 {
     return lhs >>- const(rhs) 
         |> trace("++ (Ignore, T)\t:")
@@ -210,9 +210,9 @@ public func ++ <I: CollectionType, T> (
 
 infix operator +- { associativity right precedence 160 }
 public func +- <I: CollectionType, T, U> (
-    lhs: 𝐏<I, T     >.𝒇,
-    rhs: 𝐏<I, U     >.𝒇)
-    -> 𝐏<I, T     >.𝒇
+    lhs: 𝐏<I, T>.𝒇,
+    rhs: 𝐏<I, U>.𝒇)
+      -> 𝐏<I, T>.𝒇
 {
     return lhs >>- { x in { y in x } <^> rhs }
 }
