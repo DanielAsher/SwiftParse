@@ -10,6 +10,9 @@
 ## let `𝒇` be the parser computation:
 ## `𝒇 : (Input, Input.Index) throws -> (Tree, Input.Index)`
 */
+
+import Swiftx
+
 public enum 𝐏 < Input: CollectionType, Tree> {
     public typealias 𝒇 = (Input, Input.Index) throws -> Result
     public typealias Result = (Tree, Input.Index)
@@ -286,7 +289,7 @@ public func * <I: CollectionType, T>
     interval:   HalfOpenInterval<Int>) 
     -> 𝐏<I,[T]>.𝒇 
 {
-    guard not <| interval.isEmpty else 
+    guard interval.isEmpty == false else 
     { 
         return 
             { throw ParserError<I>.Error(

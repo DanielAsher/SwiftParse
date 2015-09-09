@@ -10,6 +10,9 @@
 		6507226A1B9F6A9900214138 /* SwiftParse.h in Headers */ = {isa = PBXBuildFile; fileRef = 650722691B9F6A9900214138 /* SwiftParse.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		650722711B9F6A9900214138 /* SwiftParse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650722661B9F6A9800214138 /* SwiftParse.framework */; settings = {ASSET_TAGS = (); }; };
 		650722761B9F6A9900214138 /* SwiftParseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650722751B9F6A9900214138 /* SwiftParseTests.swift */; };
+		6529F20D1BA06C24009D79BC /* Swiftx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6529F2061BA06B97009D79BC /* Swiftx.framework */; };
+		6529F20F1BA06C3D009D79BC /* SwiftCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6529F20E1BA06C3D009D79BC /* SwiftCheck.framework */; };
+		6529F2111BA06CB6009D79BC /* Global+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6529F2101BA06CB6009D79BC /* Global+Ext.swift */; settings = {ASSET_TAGS = (); }; };
 		656BBF961B9F7B74008C2CDF /* SwiftParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656BBF951B9F7B74008C2CDF /* SwiftParse.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
@@ -21,6 +24,34 @@
 			remoteGlobalIDString = 650722651B9F6A9800214138;
 			remoteInfo = SwiftParse;
 		};
+		6529F2051BA06B97009D79BC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6529F1FD1BA06B97009D79BC /* Swiftx.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 84A88C891A70BD71003D53CF;
+			remoteInfo = Swiftx;
+		};
+		6529F2071BA06B97009D79BC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6529F1FD1BA06B97009D79BC /* Swiftx.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 84A88C941A70BD71003D53CF;
+			remoteInfo = SwiftxTests;
+		};
+		6529F2091BA06B97009D79BC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6529F1FD1BA06B97009D79BC /* Swiftx.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 84DF76681B0BDE0A00C912B0;
+			remoteInfo = "Swiftx-iOS";
+		};
+		6529F20B1BA06B97009D79BC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6529F1FD1BA06B97009D79BC /* Swiftx.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 84DF76721B0BDE0A00C912B0;
+			remoteInfo = "Swiftx-iOSTests";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +62,9 @@
 		650722751B9F6A9900214138 /* SwiftParseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftParseTests.swift; sourceTree = "<group>"; };
 		650722771B9F6A9900214138 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		650722811B9F726D00214138 /* Parsing.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = Parsing.playground; path = Playgrounds/Parsing.playground; sourceTree = "<group>"; };
+		6529F1FD1BA06B97009D79BC /* Swiftx.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Swiftx.xcodeproj; path = ../Modules/Swiftx/Swiftx.xcodeproj; sourceTree = "<group>"; };
+		6529F20E1BA06C3D009D79BC /* SwiftCheck.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftCheck.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/SwiftParse-dzaanzbagqhpmrgzhhywvcujoden/Build/Products/Debug/SwiftCheck.framework"; sourceTree = "<group>"; };
+		6529F2101BA06CB6009D79BC /* Global+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Global+Ext.swift"; sourceTree = "<group>"; };
 		656BBF951B9F7B74008C2CDF /* SwiftParse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftParse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -39,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6529F20D1BA06C24009D79BC /* Swiftx.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6529F20F1BA06C3D009D79BC /* SwiftCheck.framework in Frameworks */,
 				650722711B9F6A9900214138 /* SwiftParse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -56,6 +92,8 @@
 		6507225C1B9F6A9800214138 = {
 			isa = PBXGroup;
 			children = (
+				6529F20E1BA06C3D009D79BC /* SwiftCheck.framework */,
+				6529F1FC1BA06B80009D79BC /* Dependencies */,
 				650722801B9F725A00214138 /* Playgrounds */,
 				650722681B9F6A9900214138 /* SwiftParse */,
 				650722741B9F6A9900214138 /* SwiftParseTests */,
@@ -75,6 +113,7 @@
 		650722681B9F6A9900214138 /* SwiftParse */ = {
 			isa = PBXGroup;
 			children = (
+				6529F2101BA06CB6009D79BC /* Global+Ext.swift */,
 				656BBF951B9F7B74008C2CDF /* SwiftParse.swift */,
 				650722691B9F6A9900214138 /* SwiftParse.h */,
 				6507226B1B9F6A9900214138 /* Info.plist */,
@@ -97,6 +136,25 @@
 				650722811B9F726D00214138 /* Parsing.playground */,
 			);
 			name = Playgrounds;
+			sourceTree = "<group>";
+		};
+		6529F1FC1BA06B80009D79BC /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				6529F1FD1BA06B97009D79BC /* Swiftx.xcodeproj */,
+			);
+			name = Dependencies;
+			sourceTree = "<group>";
+		};
+		6529F1FE1BA06B97009D79BC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6529F2061BA06B97009D79BC /* Swiftx.framework */,
+				6529F2081BA06B97009D79BC /* SwiftxTests.xctest */,
+				6529F20A1BA06B97009D79BC /* Swiftx.framework */,
+				6529F20C1BA06B97009D79BC /* Swiftx-iOSTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,6 +234,12 @@
 			mainGroup = 6507225C1B9F6A9800214138;
 			productRefGroup = 650722671B9F6A9800214138 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 6529F1FE1BA06B97009D79BC /* Products */;
+					ProjectRef = 6529F1FD1BA06B97009D79BC /* Swiftx.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				650722651B9F6A9800214138 /* SwiftParse */,
@@ -183,6 +247,37 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		6529F2061BA06B97009D79BC /* Swiftx.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Swiftx.framework;
+			remoteRef = 6529F2051BA06B97009D79BC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6529F2081BA06B97009D79BC /* SwiftxTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SwiftxTests.xctest;
+			remoteRef = 6529F2071BA06B97009D79BC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6529F20A1BA06B97009D79BC /* Swiftx.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Swiftx.framework;
+			remoteRef = 6529F2091BA06B97009D79BC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6529F20C1BA06B97009D79BC /* Swiftx-iOSTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Swiftx-iOSTests.xctest";
+			remoteRef = 6529F20B1BA06B97009D79BC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		650722641B9F6A9800214138 /* Resources */ = {
@@ -206,6 +301,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6529F2111BA06CB6009D79BC /* Global+Ext.swift in Sources */,
 				656BBF961B9F7B74008C2CDF /* SwiftParse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

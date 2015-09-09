@@ -9,6 +9,8 @@
 import XCTest
 @testable import SwiftParse
 
+import SwiftCheck
+
 class SwiftParseTests: XCTestCase {
     
     override func setUp() {
