@@ -353,11 +353,17 @@ public prefix func % <I: IntervalType where I.Bound == Character>
         if (index < input.endIndex && interval.contains(input[index])) {
             return (String(input[index]), index.successor())
         } else {
+            let message : String = {
+                if index < input.endIndex {
+                    return "Failed: \"\(input[index])\" not found in interval (\(interval))" } 
+                else {
+                    return "Failed: index: \(index) beyond end index of \"\(input)\"" } }()
+            
             throw ParserError<String>.Error(
-                message: "Failed: \"\(input[index])\" not found in interval (\(interval))", 
+                message: message, 
                 index: index) 
         }
-    } |> trace("% \(interval):")
+        } |> trace("% \(interval):")
 }
 //: Map operator. Lower precedence than |.
 infix operator --> { associativity left precedence 100 }

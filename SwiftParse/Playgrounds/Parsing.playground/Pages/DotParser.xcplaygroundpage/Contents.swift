@@ -60,13 +60,13 @@ let rId = parse(id, input: "InitialState")
 /*:
 ## _id_stmt_ : ID '=' ID
 */
-let id_equality = id ++ ignore(equal) ++ ignore(quote|?) ++ id|? ++ ignore(quote|?)
-    |> map { Attribute(name: $0, value: $1 ?? "") }
+//let id_equality = id ++ ignore(equal) ++ ignore(quote|?) ++ id|? ++ ignore(quote|?)
+//    |> map { Attribute(name: $0, value: $1 ?? "") }
 
-let id_equality2 = id ++ ignore(equal) ++ ignore(quote|?) ++ id|? ++ ignore(quote|?)
+//let id_equality2 = id ++ ignore(equal) ++ ignore(quote|?) ++ id|? ++ ignore(quote|?)
 //    |> map { Attribute(name: $0, value: $1 ?? "") }
     
-let p1 = (id_equality ++ sep)*
+//let p1 = (id_equality ++ sep)*
 
 
 //let rId = parse(id, input: "InitialState")

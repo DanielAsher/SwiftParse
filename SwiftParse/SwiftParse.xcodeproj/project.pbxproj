@@ -10,6 +10,7 @@
 		6507226A1B9F6A9900214138 /* SwiftParse.h in Headers */ = {isa = PBXBuildFile; fileRef = 650722691B9F6A9900214138 /* SwiftParse.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		650722711B9F6A9900214138 /* SwiftParse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650722661B9F6A9800214138 /* SwiftParse.framework */; settings = {ASSET_TAGS = (); }; };
 		650722761B9F6A9900214138 /* SwiftParseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650722751B9F6A9900214138 /* SwiftParseTests.swift */; };
+		650D7EAC1BA0928500F62B40 /* DotParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650D7EAB1BA0928500F62B40 /* DotParser.swift */; settings = {ASSET_TAGS = (); }; };
 		6529F20D1BA06C24009D79BC /* Swiftx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6529F2061BA06B97009D79BC /* Swiftx.framework */; };
 		6529F20F1BA06C3D009D79BC /* SwiftCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6529F20E1BA06C3D009D79BC /* SwiftCheck.framework */; };
 		6529F2111BA06CB6009D79BC /* Global+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6529F2101BA06CB6009D79BC /* Global+Ext.swift */; settings = {ASSET_TAGS = (); }; };
@@ -62,6 +63,7 @@
 		650722751B9F6A9900214138 /* SwiftParseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftParseTests.swift; sourceTree = "<group>"; };
 		650722771B9F6A9900214138 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		650722811B9F726D00214138 /* Parsing.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = Parsing.playground; path = Playgrounds/Parsing.playground; sourceTree = "<group>"; };
+		650D7EAB1BA0928500F62B40 /* DotParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DotParser.swift; sourceTree = "<group>"; };
 		6529F1FD1BA06B97009D79BC /* Swiftx.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Swiftx.xcodeproj; path = ../Modules/Swiftx/Swiftx.xcodeproj; sourceTree = "<group>"; };
 		6529F20E1BA06C3D009D79BC /* SwiftCheck.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftCheck.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/SwiftParse-dzaanzbagqhpmrgzhhywvcujoden/Build/Products/Debug/SwiftCheck.framework"; sourceTree = "<group>"; };
 		6529F2101BA06CB6009D79BC /* Global+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Global+Ext.swift"; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				650722751B9F6A9900214138 /* SwiftParseTests.swift */,
+				650D7EAB1BA0928500F62B40 /* DotParser.swift */,
 				650722771B9F6A9900214138 /* Info.plist */,
 			);
 			path = SwiftParseTests;
@@ -310,6 +313,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				650D7EAC1BA0928500F62B40 /* DotParser.swift in Sources */,
 				650722761B9F6A9900214138 /* SwiftParseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

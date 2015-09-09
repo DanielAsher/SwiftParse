@@ -11,6 +11,20 @@ import XCTest
 
 import SwiftCheck
 
+struct ArbitraryID : Arbitrary {
+    let getID : String
+    static let lowerCase : Gen<Character> = Gen<Character>.fromElementsIn("a"..."z")
+    static let upperCase : Gen<Character> = Gen<Character>.fromElementsIn("A"..."Z")
+    static let numeric : Gen<Character> = Gen<Character>.fromElementsIn("0"..."9")
+    static let idGen : Gen<String> = Gen<Character>
+        .oneOf([upperCase, lowerCase, numeric, Gen.pure("_")])
+        .proliferateNonEmpty().fmap(String.init)    
+
+    static var arbitrary : Gen<ArbitraryID> { return idGen.fmap(ArbitraryID.init) }
+    
+    init(id : String) { self.getID = id }
+}
+
 class SwiftParseTests: XCTestCase {
     
     override func setUp() {
@@ -23,16 +37,11 @@ class SwiftParseTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testAll() {
+        
+        property("IDs are correctly parsed") <- forAll { (arbId: ArbitraryID) in
+            return parse(id, input: arbId.getID).0 == Optional.Some(arbId.getID)
+        }        
+
     }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
 }
