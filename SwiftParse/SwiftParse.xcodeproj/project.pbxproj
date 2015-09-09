@@ -10,6 +10,7 @@
 		6507226A1B9F6A9900214138 /* SwiftParse.h in Headers */ = {isa = PBXBuildFile; fileRef = 650722691B9F6A9900214138 /* SwiftParse.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		650722711B9F6A9900214138 /* SwiftParse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650722661B9F6A9800214138 /* SwiftParse.framework */; settings = {ASSET_TAGS = (); }; };
 		650722761B9F6A9900214138 /* SwiftParseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650722751B9F6A9900214138 /* SwiftParseTests.swift */; };
+		656BBF961B9F7B74008C2CDF /* SwiftParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656BBF951B9F7B74008C2CDF /* SwiftParse.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,6 +31,7 @@
 		650722751B9F6A9900214138 /* SwiftParseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftParseTests.swift; sourceTree = "<group>"; };
 		650722771B9F6A9900214138 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		650722811B9F726D00214138 /* Parsing.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = Parsing.playground; path = Playgrounds/Parsing.playground; sourceTree = "<group>"; };
+		656BBF951B9F7B74008C2CDF /* SwiftParse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftParse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 		650722681B9F6A9900214138 /* SwiftParse */ = {
 			isa = PBXGroup;
 			children = (
+				656BBF951B9F7B74008C2CDF /* SwiftParse.swift */,
 				650722691B9F6A9900214138 /* SwiftParse.h */,
 				6507226B1B9F6A9900214138 /* Info.plist */,
 			);
@@ -203,6 +206,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				656BBF961B9F7B74008C2CDF /* SwiftParse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,6 +389,7 @@
 				6507227C1B9F6A9900214138 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6507227D1B9F6A9900214138 /* Build configuration list for PBXNativeTarget "SwiftParseTests" */ = {
 			isa = XCConfigurationList;
@@ -393,6 +398,7 @@
 				6507227F1B9F6A9900214138 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
