@@ -26,12 +26,21 @@ class SwiftParseTests: XCTestCase {
     func testAll() {
         
         property("IDs are correctly parsed") <- forAll { (arbId: ArbitraryID) in
-            return parse(id, input: arbId.getID).0 == Optional.Some(arbId.getID)
+            return parse(P.id, input: arbId.getID).0 == Optional.Some(arbId.getID)
         }   
         
-        property("a_list : ID '=' ID [ (';' | ',') ] [ a_list ]") <- forAll { (ids: [ArbitraryID]) in
+        property("a_list : ID '=' ID [ (';' | ',') ] [ a_list ]") <- forAll { (attrList: ArbitraryAttributeList) in
         
-            return false
+            let (result, _) = parse(P.attr_list , input: attrList.getAttributesString)
+            switch(result) {
+                case let .Some(attrs):
+                    let isEqual = zip(attrList.idPairs, attrs).reduce(true) { (acc, ids) in
+                        let ((idLhs, idRhs), attr) = ids
+                        return acc && idLhs == attr.name && idRhs == attr.value
+                    }
+                    return isEqual
+                case .None: return false
+            }   
         }
 
     }
