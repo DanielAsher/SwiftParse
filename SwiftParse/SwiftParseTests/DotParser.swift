@@ -5,8 +5,6 @@
 //  Created by Daniel Asher on 09/09/2015.
 //  Copyright © 2015 StoryShare. All rights reserved.
 //
-
-import Foundation
 import SwiftParse
 import Swiftx
 
@@ -40,8 +38,7 @@ let comma        = £","
 let quote        = £"\""    
 
 let separator   = (%";" | %",") |> token
-let sep1        = separator|? |> map { $0 ?? "" }
-let sep         = separator|? |> ignore
+let sep         = ≠separator|?
 let lower       = %("a"..."z")
 let upper       = %("A"..."Z")
 let digit       = %("0"..."9")

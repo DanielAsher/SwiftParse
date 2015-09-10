@@ -11,22 +11,6 @@ import XCTest
 
 import SwiftCheck
 
-struct ArbitraryID : Arbitrary 
-{
-    static let lowerCase : Gen<Character> = Gen<Character>.fromElementsIn("a"..."z")
-    static let upperCase : Gen<Character> = Gen<Character>.fromElementsIn("A"..."Z")
-    static let numeric   : Gen<Character> = Gen<Character>.fromElementsIn("0"..."9")
-    static let idGen     : Gen<String>    = Gen<Character>
-        .oneOf([upperCase, lowerCase, numeric, Gen.pure("_")])
-        .proliferateNonEmpty().fmap(String.init)    
-
-    static var arbitrary : Gen<ArbitraryID> { return idGen.fmap(ArbitraryID.init) }
-    
-    let getID : String
-
-    init(id : String) { self.getID = id }
-}
-
 class SwiftParseTests: XCTestCase {
     
     override func setUp() {
@@ -43,7 +27,12 @@ class SwiftParseTests: XCTestCase {
         
         property("IDs are correctly parsed") <- forAll { (arbId: ArbitraryID) in
             return parse(id, input: arbId.getID).0 == Optional.Some(arbId.getID)
-        }        
+        }   
+        
+        property("a_list : ID '=' ID [ (';' | ',') ] [ a_list ]") <- forAll { (ids: [ArbitraryID]) in
+        
+            return false
+        }
 
     }
 }

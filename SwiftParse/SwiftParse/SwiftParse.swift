@@ -396,10 +396,8 @@ public func ignore(string: String) -> 𝐏<String, Ignore>.𝒇 {
     return ignore(%string)
 }
 //: `parse` function. takes a `parser` and `input` and produces a `Tree?`
-public func parse <Input: CollectionType, Tree> (
-    parser: 𝐏 <Input, Tree>.𝒇, 
-    input:  Input) 
-    -> (Tree?, String)
+public func parse <Input: CollectionType, Tree> 
+    (parser: 𝐏 <Input, Tree>.𝒇, input:  Input) -> (Tree?, String)
 {
     do {
         let (result, idx) = try trace() (parser)(input, input.startIndex)

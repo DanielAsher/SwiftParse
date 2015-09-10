@@ -19,29 +19,9 @@ enum Parser<C: CollectionType, T> : ParserType {
     typealias Error = ParserError
 }
 
-//prefix func % <Input: CollectionType where Input.Generator.Element: Equatable>
-//    (literal: Input) 
-//        -> Parser<Input, Input>.Function 
-//{
-//    literal.count
-//    return { inp, index in
-//        return (literal, literal.startIndex) 
-//        }
-//}
-//
-//extension String : CollectionType {
-//}
 
-//extension String.Index {
-//    func a() {
-//        self.
-//    }
-//}
-
-//let helloParser = %"Hello"
-//let str = "Hello again"
-//let result = try! helloParser(str, str.startIndex)
-//
-//print("> Complete :) ")
+let c = Character("A")
+let s = String("B")
+//let x = s + c // error: binary operator '+' cannot be applied to operands of type 'String' and 'Character'
 
 //: [Next](@next)
