@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import SwiftParse_OSX
+@testable import SwiftParse
 
 class SwiftParse_OSXTests: XCTestCase {
     

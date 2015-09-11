@@ -21,6 +21,11 @@
 		6513C7B91BA28C9500912A7C /* Swiftx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6529F2061BA06B97009D79BC /* Swiftx.framework */; };
 		6513C7BA1BA28CAE00912A7C /* SwiftCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6529F20E1BA06C3D009D79BC /* SwiftCheck.framework */; };
 		6513C7BB1BA28CE800912A7C /* Global+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6529F2101BA06CB6009D79BC /* Global+Ext.swift */; settings = {ASSET_TAGS = (); }; };
+		6513C7BC1BA291B000912A7C /* SwiftParseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650722751B9F6A9900214138 /* SwiftParseTests.swift */; settings = {ASSET_TAGS = (); }; };
+		6513C7BD1BA2921600912A7C /* DotParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650D7EAB1BA0928500F62B40 /* DotParser.swift */; settings = {ASSET_TAGS = (); }; };
+		6513C7BE1BA2921900912A7C /* ArbitraryTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6513C7951BA17B0F00912A7C /* ArbitraryTypes.swift */; settings = {ASSET_TAGS = (); }; };
+		6513C7BF1BA2922200912A7C /* DotAST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6513C78F1BA0DEBE00912A7C /* DotAST.swift */; settings = {ASSET_TAGS = (); }; };
+		6513C7C01BA2922E00912A7C /* Test+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6513C7971BA1D1CC00912A7C /* Test+Extensions.swift */; settings = {ASSET_TAGS = (); }; };
 		6529F20D1BA06C24009D79BC /* Swiftx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6529F2061BA06B97009D79BC /* Swiftx.framework */; };
 		6529F20F1BA06C3D009D79BC /* SwiftCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6529F20E1BA06C3D009D79BC /* SwiftCheck.framework */; };
 		6529F2111BA06CB6009D79BC /* Global+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6529F2101BA06CB6009D79BC /* Global+Ext.swift */; settings = {ASSET_TAGS = (); }; };
@@ -472,7 +477,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6513C7BE1BA2921900912A7C /* ArbitraryTypes.swift in Sources */,
+				6513C7C01BA2922E00912A7C /* Test+Extensions.swift in Sources */,
+				6513C7BD1BA2921600912A7C /* DotParser.swift in Sources */,
 				6513C7B01BA28BBA00912A7C /* SwiftParse_OSXTests.swift in Sources */,
+				6513C7BF1BA2922200912A7C /* DotAST.swift in Sources */,
+				6513C7BC1BA291B000912A7C /* SwiftParseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
