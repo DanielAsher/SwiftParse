@@ -97,6 +97,7 @@
 		6513C7AA1BA28BBA00912A7C /* SwiftParse-OSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SwiftParse-OSXTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6513C7AF1BA28BBA00912A7C /* SwiftParse_OSXTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftParse_OSXTests.swift; sourceTree = "<group>"; };
 		6513C7B11BA28BBA00912A7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6513C7C11BA2A0FA00912A7C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		6529F1FD1BA06B97009D79BC /* Swiftx.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Swiftx.xcodeproj; path = ../Modules/Swiftx/Swiftx.xcodeproj; sourceTree = "<group>"; };
 		6529F20E1BA06C3D009D79BC /* SwiftCheck.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftCheck.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/SwiftParse-dzaanzbagqhpmrgzhhywvcujoden/Build/Products/Debug/SwiftCheck.framework"; sourceTree = "<group>"; };
 		6529F2101BA06CB6009D79BC /* Global+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Global+Ext.swift"; sourceTree = "<group>"; };
@@ -144,6 +145,7 @@
 		6507225C1B9F6A9800214138 = {
 			isa = PBXGroup;
 			children = (
+				6513C7C11BA2A0FA00912A7C /* README.md */,
 				6513C79A1BA289CE00912A7C /* .travis.yml */,
 				6529F1FC1BA06B80009D79BC /* Dependencies */,
 				650722801B9F725A00214138 /* Playgrounds */,
