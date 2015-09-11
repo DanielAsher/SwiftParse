@@ -8,12 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		6507226A1B9F6A9900214138 /* SwiftParse.h in Headers */ = {isa = PBXBuildFile; fileRef = 650722691B9F6A9900214138 /* SwiftParse.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		650722711B9F6A9900214138 /* SwiftParse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650722661B9F6A9800214138 /* SwiftParse.framework */; settings = {ASSET_TAGS = (); }; };
+		650722711B9F6A9900214138 /* SwiftParse-iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650722661B9F6A9800214138 /* SwiftParse-iOS.framework */; settings = {ASSET_TAGS = (); }; };
 		650722761B9F6A9900214138 /* SwiftParseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650722751B9F6A9900214138 /* SwiftParseTests.swift */; };
 		650D7EAC1BA0928500F62B40 /* DotParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650D7EAB1BA0928500F62B40 /* DotParser.swift */; settings = {ASSET_TAGS = (); }; };
 		6513C7901BA0DEBE00912A7C /* DotAST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6513C78F1BA0DEBE00912A7C /* DotAST.swift */; settings = {ASSET_TAGS = (); }; };
 		6513C7961BA17B0F00912A7C /* ArbitraryTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6513C7951BA17B0F00912A7C /* ArbitraryTypes.swift */; settings = {ASSET_TAGS = (); }; };
 		6513C7981BA1D1CC00912A7C /* Test+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6513C7971BA1D1CC00912A7C /* Test+Extensions.swift */; settings = {ASSET_TAGS = (); }; };
+		6513C79B1BA289CE00912A7C /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 6513C79A1BA289CE00912A7C /* .travis.yml */; settings = {ASSET_TAGS = (); }; };
+		6513C7A41BA28BBA00912A7C /* SwiftParse-OSX.h in Headers */ = {isa = PBXBuildFile; fileRef = 6513C7A31BA28BBA00912A7C /* SwiftParse-OSX.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6513C7AB1BA28BBA00912A7C /* SwiftParse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6513C7A11BA28BBA00912A7C /* SwiftParse.framework */; settings = {ASSET_TAGS = (); }; };
+		6513C7B01BA28BBA00912A7C /* SwiftParse_OSXTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6513C7AF1BA28BBA00912A7C /* SwiftParse_OSXTests.swift */; };
+		6513C7B81BA28C7000912A7C /* SwiftParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656BBF951B9F7B74008C2CDF /* SwiftParse.swift */; settings = {ASSET_TAGS = (); }; };
+		6513C7B91BA28C9500912A7C /* Swiftx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6529F2061BA06B97009D79BC /* Swiftx.framework */; };
+		6513C7BA1BA28CAE00912A7C /* SwiftCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6529F20E1BA06C3D009D79BC /* SwiftCheck.framework */; };
+		6513C7BB1BA28CE800912A7C /* Global+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6529F2101BA06CB6009D79BC /* Global+Ext.swift */; settings = {ASSET_TAGS = (); }; };
 		6529F20D1BA06C24009D79BC /* Swiftx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6529F2061BA06B97009D79BC /* Swiftx.framework */; };
 		6529F20F1BA06C3D009D79BC /* SwiftCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6529F20E1BA06C3D009D79BC /* SwiftCheck.framework */; };
 		6529F2111BA06CB6009D79BC /* Global+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6529F2101BA06CB6009D79BC /* Global+Ext.swift */; settings = {ASSET_TAGS = (); }; };
@@ -27,6 +35,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 650722651B9F6A9800214138;
 			remoteInfo = SwiftParse;
+		};
+		6513C7AC1BA28BBA00912A7C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6507225D1B9F6A9800214138 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6513C7A01BA28BBA00912A7C;
+			remoteInfo = "SwiftParse-OSX";
 		};
 		6529F2051BA06B97009D79BC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -59,10 +74,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		650722661B9F6A9800214138 /* SwiftParse.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftParse.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		650722661B9F6A9800214138 /* SwiftParse-iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "SwiftParse-iOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		650722691B9F6A9900214138 /* SwiftParse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftParse.h; sourceTree = "<group>"; };
 		6507226B1B9F6A9900214138 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		650722701B9F6A9900214138 /* SwiftParseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftParseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		650722701B9F6A9900214138 /* SwiftParse-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SwiftParse-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		650722751B9F6A9900214138 /* SwiftParseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftParseTests.swift; sourceTree = "<group>"; };
 		650722771B9F6A9900214138 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		650722811B9F726D00214138 /* Parsing.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = Parsing.playground; path = Playgrounds/Parsing.playground; sourceTree = "<group>"; };
@@ -71,6 +86,13 @@
 		6513C7951BA17B0F00912A7C /* ArbitraryTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArbitraryTypes.swift; sourceTree = "<group>"; };
 		6513C7971BA1D1CC00912A7C /* Test+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Test+Extensions.swift"; sourceTree = "<group>"; };
 		6513C7991BA1F83300912A7C /* SwiftParseTests.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = SwiftParseTests.playground; path = Playgrounds/SwiftParseTests.playground; sourceTree = "<group>"; };
+		6513C79A1BA289CE00912A7C /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = .travis.yml; path = ../.travis.yml; sourceTree = "<group>"; };
+		6513C7A11BA28BBA00912A7C /* SwiftParse.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftParse.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6513C7A31BA28BBA00912A7C /* SwiftParse-OSX.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftParse-OSX.h"; sourceTree = "<group>"; };
+		6513C7A51BA28BBA00912A7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6513C7AA1BA28BBA00912A7C /* SwiftParse-OSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SwiftParse-OSXTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6513C7AF1BA28BBA00912A7C /* SwiftParse_OSXTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftParse_OSXTests.swift; sourceTree = "<group>"; };
+		6513C7B11BA28BBA00912A7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6529F1FD1BA06B97009D79BC /* Swiftx.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Swiftx.xcodeproj; path = ../Modules/Swiftx/Swiftx.xcodeproj; sourceTree = "<group>"; };
 		6529F20E1BA06C3D009D79BC /* SwiftCheck.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftCheck.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/SwiftParse-dzaanzbagqhpmrgzhhywvcujoden/Build/Products/Debug/SwiftCheck.framework"; sourceTree = "<group>"; };
 		6529F2101BA06CB6009D79BC /* Global+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Global+Ext.swift"; sourceTree = "<group>"; };
@@ -91,7 +113,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				6529F20F1BA06C3D009D79BC /* SwiftCheck.framework in Frameworks */,
-				650722711B9F6A9900214138 /* SwiftParse.framework in Frameworks */,
+				650722711B9F6A9900214138 /* SwiftParse-iOS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6513C79D1BA28BBA00912A7C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6513C7B91BA28C9500912A7C /* Swiftx.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6513C7A71BA28BBA00912A7C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6513C7BA1BA28CAE00912A7C /* SwiftCheck.framework in Frameworks */,
+				6513C7AB1BA28BBA00912A7C /* SwiftParse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,11 +140,13 @@
 		6507225C1B9F6A9800214138 = {
 			isa = PBXGroup;
 			children = (
-				6529F20E1BA06C3D009D79BC /* SwiftCheck.framework */,
+				6513C79A1BA289CE00912A7C /* .travis.yml */,
 				6529F1FC1BA06B80009D79BC /* Dependencies */,
 				650722801B9F725A00214138 /* Playgrounds */,
 				650722681B9F6A9900214138 /* SwiftParse */,
 				650722741B9F6A9900214138 /* SwiftParseTests */,
+				6513C7A21BA28BBA00912A7C /* SwiftParse-OSX */,
+				6513C7AE1BA28BBA00912A7C /* SwiftParse-OSXTests */,
 				650722671B9F6A9800214138 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -113,8 +154,10 @@
 		650722671B9F6A9800214138 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				650722661B9F6A9800214138 /* SwiftParse.framework */,
-				650722701B9F6A9900214138 /* SwiftParseTests.xctest */,
+				650722661B9F6A9800214138 /* SwiftParse-iOS.framework */,
+				650722701B9F6A9900214138 /* SwiftParse-iOSTests.xctest */,
+				6513C7A11BA28BBA00912A7C /* SwiftParse.framework */,
+				6513C7AA1BA28BBA00912A7C /* SwiftParse-OSXTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -152,9 +195,28 @@
 			name = Playgrounds;
 			sourceTree = "<group>";
 		};
+		6513C7A21BA28BBA00912A7C /* SwiftParse-OSX */ = {
+			isa = PBXGroup;
+			children = (
+				6513C7A31BA28BBA00912A7C /* SwiftParse-OSX.h */,
+				6513C7A51BA28BBA00912A7C /* Info.plist */,
+			);
+			path = "SwiftParse-OSX";
+			sourceTree = "<group>";
+		};
+		6513C7AE1BA28BBA00912A7C /* SwiftParse-OSXTests */ = {
+			isa = PBXGroup;
+			children = (
+				6513C7AF1BA28BBA00912A7C /* SwiftParse_OSXTests.swift */,
+				6513C7B11BA28BBA00912A7C /* Info.plist */,
+			);
+			path = "SwiftParse-OSXTests";
+			sourceTree = "<group>";
+		};
 		6529F1FC1BA06B80009D79BC /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
+				6529F20E1BA06C3D009D79BC /* SwiftCheck.framework */,
 				6529F1FD1BA06B97009D79BC /* Swiftx.xcodeproj */,
 			);
 			name = Dependencies;
@@ -182,12 +244,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6513C79E1BA28BBA00912A7C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6513C7A41BA28BBA00912A7C /* SwiftParse-OSX.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		650722651B9F6A9800214138 /* SwiftParse */ = {
+		650722651B9F6A9800214138 /* SwiftParse-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6507227A1B9F6A9900214138 /* Build configuration list for PBXNativeTarget "SwiftParse" */;
+			buildConfigurationList = 6507227A1B9F6A9900214138 /* Build configuration list for PBXNativeTarget "SwiftParse-iOS" */;
 			buildPhases = (
 				650722611B9F6A9800214138 /* Sources */,
 				650722621B9F6A9800214138 /* Frameworks */,
@@ -198,14 +268,14 @@
 			);
 			dependencies = (
 			);
-			name = SwiftParse;
+			name = "SwiftParse-iOS";
 			productName = SwiftParse;
-			productReference = 650722661B9F6A9800214138 /* SwiftParse.framework */;
+			productReference = 650722661B9F6A9800214138 /* SwiftParse-iOS.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		6507226F1B9F6A9900214138 /* SwiftParseTests */ = {
+		6507226F1B9F6A9900214138 /* SwiftParse-iOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6507227D1B9F6A9900214138 /* Build configuration list for PBXNativeTarget "SwiftParseTests" */;
+			buildConfigurationList = 6507227D1B9F6A9900214138 /* Build configuration list for PBXNativeTarget "SwiftParse-iOSTests" */;
 			buildPhases = (
 				6507226C1B9F6A9900214138 /* Sources */,
 				6507226D1B9F6A9900214138 /* Frameworks */,
@@ -216,9 +286,45 @@
 			dependencies = (
 				650722731B9F6A9900214138 /* PBXTargetDependency */,
 			);
-			name = SwiftParseTests;
+			name = "SwiftParse-iOSTests";
 			productName = SwiftParseTests;
-			productReference = 650722701B9F6A9900214138 /* SwiftParseTests.xctest */;
+			productReference = 650722701B9F6A9900214138 /* SwiftParse-iOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		6513C7A01BA28BBA00912A7C /* SwiftParse-OSX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6513C7B21BA28BBA00912A7C /* Build configuration list for PBXNativeTarget "SwiftParse-OSX" */;
+			buildPhases = (
+				6513C79C1BA28BBA00912A7C /* Sources */,
+				6513C79D1BA28BBA00912A7C /* Frameworks */,
+				6513C79E1BA28BBA00912A7C /* Headers */,
+				6513C79F1BA28BBA00912A7C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SwiftParse-OSX";
+			productName = "SwiftParse-OSX";
+			productReference = 6513C7A11BA28BBA00912A7C /* SwiftParse.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		6513C7A91BA28BBA00912A7C /* SwiftParse-OSXTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6513C7B51BA28BBA00912A7C /* Build configuration list for PBXNativeTarget "SwiftParse-OSXTests" */;
+			buildPhases = (
+				6513C7A61BA28BBA00912A7C /* Sources */,
+				6513C7A71BA28BBA00912A7C /* Frameworks */,
+				6513C7A81BA28BBA00912A7C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6513C7AD1BA28BBA00912A7C /* PBXTargetDependency */,
+			);
+			name = "SwiftParse-OSXTests";
+			productName = "SwiftParse-OSXTests";
+			productReference = 6513C7AA1BA28BBA00912A7C /* SwiftParse-OSXTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -234,6 +340,12 @@
 						CreatedOnToolsVersion = 7.0;
 					};
 					6507226F1B9F6A9900214138 = {
+						CreatedOnToolsVersion = 7.0;
+					};
+					6513C7A01BA28BBA00912A7C = {
+						CreatedOnToolsVersion = 7.0;
+					};
+					6513C7A91BA28BBA00912A7C = {
 						CreatedOnToolsVersion = 7.0;
 					};
 				};
@@ -256,8 +368,10 @@
 			);
 			projectRoot = "";
 			targets = (
-				650722651B9F6A9800214138 /* SwiftParse */,
-				6507226F1B9F6A9900214138 /* SwiftParseTests */,
+				650722651B9F6A9800214138 /* SwiftParse-iOS */,
+				6507226F1B9F6A9900214138 /* SwiftParse-iOSTests */,
+				6513C7A01BA28BBA00912A7C /* SwiftParse-OSX */,
+				6513C7A91BA28BBA00912A7C /* SwiftParse-OSXTests */,
 			);
 		};
 /* End PBXProject section */
@@ -305,6 +419,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6513C79B1BA289CE00912A7C /* .travis.yml in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6513C79F1BA28BBA00912A7C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6513C7A81BA28BBA00912A7C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,13 +461,35 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6513C79C1BA28BBA00912A7C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6513C7BB1BA28CE800912A7C /* Global+Ext.swift in Sources */,
+				6513C7B81BA28C7000912A7C /* SwiftParse.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6513C7A61BA28BBA00912A7C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6513C7B01BA28BBA00912A7C /* SwiftParse_OSXTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
 		650722731B9F6A9900214138 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 650722651B9F6A9800214138 /* SwiftParse */;
+			target = 650722651B9F6A9800214138 /* SwiftParse-iOS */;
 			targetProxy = 650722721B9F6A9900214138 /* PBXContainerItemProxy */;
+		};
+		6513C7AD1BA28BBA00912A7C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6513C7A01BA28BBA00912A7C /* SwiftParse-OSX */;
+			targetProxy = 6513C7AC1BA28BBA00912A7C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -484,6 +635,72 @@
 			};
 			name = Release;
 		};
+		6513C7B31BA28BBA00912A7C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "SwiftParse-OSX/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = "StoryShare.SwiftParse-OSX";
+				PRODUCT_NAME = SwiftParse;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		6513C7B41BA28BBA00912A7C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "SwiftParse-OSX/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = "StoryShare.SwiftParse-OSX";
+				PRODUCT_NAME = SwiftParse;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		6513C7B61BA28BBA00912A7C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "SwiftParse-OSXTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = "StoryShare.SwiftParse-OSXTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		6513C7B71BA28BBA00912A7C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "SwiftParse-OSXTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = "StoryShare.SwiftParse-OSXTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -496,7 +713,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6507227A1B9F6A9900214138 /* Build configuration list for PBXNativeTarget "SwiftParse" */ = {
+		6507227A1B9F6A9900214138 /* Build configuration list for PBXNativeTarget "SwiftParse-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6507227B1B9F6A9900214138 /* Debug */,
@@ -505,7 +722,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6507227D1B9F6A9900214138 /* Build configuration list for PBXNativeTarget "SwiftParseTests" */ = {
+		6507227D1B9F6A9900214138 /* Build configuration list for PBXNativeTarget "SwiftParse-iOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6507227E1B9F6A9900214138 /* Debug */,
@@ -513,6 +730,22 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		6513C7B21BA28BBA00912A7C /* Build configuration list for PBXNativeTarget "SwiftParse-OSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6513C7B31BA28BBA00912A7C /* Debug */,
+				6513C7B41BA28BBA00912A7C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		6513C7B51BA28BBA00912A7C /* Build configuration list for PBXNativeTarget "SwiftParse-OSXTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6513C7B61BA28BBA00912A7C /* Debug */,
+				6513C7B71BA28BBA00912A7C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
