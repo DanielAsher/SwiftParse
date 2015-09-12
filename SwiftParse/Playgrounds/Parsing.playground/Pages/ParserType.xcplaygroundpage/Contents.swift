@@ -18,10 +18,4 @@ enum Parser<C: CollectionType, T> : ParserType {
     typealias Tree = T
     typealias Error = ParserError
 }
-
-
-let c = Character("A")
-let s = String("B")
-//let x = s + c // error: binary operator '+' cannot be applied to operands of type 'String' and 'Character'
-
 //: [Next](@next)

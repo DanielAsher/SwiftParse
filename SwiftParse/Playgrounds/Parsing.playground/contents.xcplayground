@@ -4,5 +4,6 @@
         <page name='Parser Combinators from Scratch'/>
         <page name='DotParser'/>
         <page name='ParserType'/>
+        <page name='Misc'/>
     </pages>
 </playground>
