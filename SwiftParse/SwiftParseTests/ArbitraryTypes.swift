@@ -72,7 +72,7 @@ struct ArbitraryAttributeList : Arbitrary
     static let sep   : Gen<String> = glue3 <^> A.ws <*> separator <*> A.ws
     static let equal : Gen<String> = glue3 <^> A.ws <*> Gen.pure("=") <*> A.ws
     
-    static let idStatement = (tuple4 <^> A.id <*> equal <*> A.id <*> sep)//.fmap { ($0.0, $0.2) }
+    static let idStatement = tuple4 <^> A.id <*> equal <*> A.id <*> sep
         
     static let attributeList = idStatement.proliferateNonEmpty()
     

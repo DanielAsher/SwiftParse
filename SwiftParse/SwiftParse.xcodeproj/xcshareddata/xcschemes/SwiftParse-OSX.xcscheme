@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6513C7A01BA28BBA00912A7C"
-               BuildableName = "SwiftParse-OSX.framework"
+               BuildableName = "SwiftParse.framework"
                BlueprintName = "SwiftParse-OSX"
                ReferencedContainer = "container:SwiftParse.xcodeproj">
             </BuildableReference>
@@ -57,7 +57,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6513C7A01BA28BBA00912A7C"
-            BuildableName = "SwiftParse-OSX.framework"
+            BuildableName = "SwiftParse.framework"
             BlueprintName = "SwiftParse-OSX"
             ReferencedContainer = "container:SwiftParse.xcodeproj">
          </BuildableReference>
@@ -79,7 +79,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6513C7A01BA28BBA00912A7C"
-            BuildableName = "SwiftParse-OSX.framework"
+            BuildableName = "SwiftParse.framework"
             BlueprintName = "SwiftParse-OSX"
             ReferencedContainer = "container:SwiftParse.xcodeproj">
          </BuildableReference>
@@ -97,7 +97,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6513C7A01BA28BBA00912A7C"
-            BuildableName = "SwiftParse-OSX.framework"
+            BuildableName = "SwiftParse.framework"
             BlueprintName = "SwiftParse-OSX"
             ReferencedContainer = "container:SwiftParse.xcodeproj">
          </BuildableReference>

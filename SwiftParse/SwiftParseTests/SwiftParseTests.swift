@@ -42,6 +42,11 @@ class SwiftParseTests: XCTestCase {
                 case .None: return false
             }   
         }
-
     }
+    
+    func testMisc() {
+        let setOfArrays = Set([[1,2,3,4],[6,7,8,9]])
+        print(setOfArrays)
+    } 
+    
 }

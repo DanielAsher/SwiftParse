@@ -183,11 +183,11 @@
 			isa = PBXGroup;
 			children = (
 				650722751B9F6A9900214138 /* SwiftParseTests.swift */,
-				650D7EAB1BA0928500F62B40 /* DotParser.swift */,
 				6513C7951BA17B0F00912A7C /* ArbitraryTypes.swift */,
+				650D7EAB1BA0928500F62B40 /* DotParser.swift */,
 				6513C78F1BA0DEBE00912A7C /* DotAST.swift */,
-				650722771B9F6A9900214138 /* Info.plist */,
 				6513C7971BA1D1CC00912A7C /* Test+Extensions.swift */,
+				650722771B9F6A9900214138 /* Info.plist */,
 			);
 			path = SwiftParseTests;
 			sourceTree = "<group>";
@@ -748,6 +748,7 @@
 				6513C7B41BA28BBA00912A7C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6513C7B51BA28BBA00912A7C /* Build configuration list for PBXNativeTarget "SwiftParse-OSXTests" */ = {
 			isa = XCConfigurationList;
@@ -756,6 +757,7 @@
 				6513C7B71BA28BBA00912A7C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
