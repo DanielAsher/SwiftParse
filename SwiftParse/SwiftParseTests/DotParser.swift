@@ -30,16 +30,16 @@ struct P {
         return parser ++ spaces 
     }
     //: Literal Characters and Strings
-    static let equal        = £"="     
-    static let leftBracket  = £"["      
-    static let rightBracket = £"]"     
-    static let leftBrace    = £"{"     
-    static let rightBrace   = £"}"     
-    static let arrow        = £"->"    
-    static let link         = £"--"    
-    static let semicolon    = £";"     
-    static let comma        = £","     
-    static let quote        = £"\""    
+//    static let equal        = £"="     
+//    static let leftBracket  = £"["      
+//    static let rightBracket = £"]"     
+//    static let leftBrace    = £"{"     
+//    static let rightBrace   = £"}"     
+//    static let arrow        = £"->"    
+//    static let link         = £"--"    
+//    static let semicolon    = £";"     
+//    static let comma        = £","     
+//    static let quote        = £"\""    
 
     static let separator   = (%";" | %",") |> P.token
     static let sep         = ≠separator|?
@@ -47,13 +47,24 @@ struct P {
     static let upper       = %("A"..."Z")
     static let digit       = %("0"..."9")
 
-    static let id = (lower | upper | digit | %"_")+
-        |> map { $0.joinWithSeparator("") }
-        |> P.token
-        
-    static let id_equality = id ++ ≠equal ++ ≠quote|? ++ id ++ ≠quote|?
-        |> map { Attribute(name: $0, value: $1) }
+    // simpleId cannot start with a digit.
+    static let simpleId = (lower | upper | %"_") & (lower | upper | digit | %"_")*^
+
+    static let number = %"." & digit+^ | (digit+^ & (%"." & digit*^)|?)
+    static let decimal = (%"-")|? & number
+    
+    static let quotedChar = %"\\\"" | not("\"") 
+    static let quotedId = %"\"" & quotedChar+^ & %"\""
+    static let ID = (simpleId | decimal | quotedId) |> P.token
+    static let id_equality = ID *> £"=" ++ ID
+                |> map { Attribute(name: $0, value: $1) }
     
     static let attr_list = id_equality+
 
 }
+
+
+
+
+
+

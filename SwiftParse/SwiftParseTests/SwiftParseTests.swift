@@ -10,6 +10,8 @@ import XCTest
 @testable import SwiftParse
 
 import SwiftCheck
+import Quick
+import Nimble
 
 class SwiftParseTests: XCTestCase {
     
@@ -26,7 +28,7 @@ class SwiftParseTests: XCTestCase {
     func testAll() {
         
         property("IDs are correctly parsed") <- forAll { (arbId: ArbitraryID) in
-            return parse(P.id, input: arbId.getID).0 == Optional.Some(arbId.getID)
+            return parse(P.ID, input: arbId.getID).0 == .Some(arbId.getID)
         }   
         
         property("a_list : ID '=' ID [ (';' | ',') ] [ a_list ]") <- forAll { (attrList: ArbitraryAttributeList) in

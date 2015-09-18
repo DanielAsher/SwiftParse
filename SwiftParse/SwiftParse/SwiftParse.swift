@@ -22,10 +22,10 @@ var indentCount = 0
 let indent :  () -> String = { String(count: indentCount, repeatedValue: Character("\t")) }
 let padCount : () -> Int = { 50 - indentCount * 3 }
 
-var traceOn = false
+public var SwiftxTrace = false
 
 public func tracePrint(message: String, caller: String = __FUNCTION__, line: Int = __LINE__) {
-    if traceOn {
+    if SwiftxTrace {
         let line = "\(line)".padding(6)
         let str = (line + caller + indent()).padding(padCount()) + message
         print(str)
@@ -39,13 +39,13 @@ public func trace<I: CollectionType, T>
     let line = "\(line)".padding(6)
     
     return { xs, xi in
-        if traceOn {
+        if SwiftxTrace {
             print((line + ": \"\(xs)\" ; \(xi)".padding(40) + indent() + "🔜  " + caller))
         }
         indentCount++
         let (ys, yi) = try parser(xs, xi) 
         indentCount--
-        if traceOn {
+        if SwiftxTrace {
             print((line + ": \"\(xs)\" -> \"\(ys)\"; \(xi) ->  \(yi)".padding(40) + indent() + "🔚  " + caller))
         }
         return (ys, yi) 
@@ -104,6 +104,33 @@ public func map<I: CollectionType, T, U>
 {
     return transform <^> parser |> trace() 
 }
+
+infix operator <*> { associativity left precedence 130 }
+public func <*> <I: CollectionType, T, U>(
+    fp: 𝐏<I, T->U>.𝒇,
+    p:  𝐏<I, T>.𝒇) 
+     -> 𝐏<I, U>.𝒇 
+{
+    return fp >>- { $0 <^> p }
+}
+infix operator <* { associativity left precedence 130 }
+public func <* <I: CollectionType, T, U> 
+    (p1: 𝐏<I, T>.𝒇, 
+     p2: 𝐏<I, U>.𝒇) 
+      -> 𝐏<I, T>.𝒇 
+{
+    return p1 ++ p2 |> map { $0.0 }
+}
+
+infix operator *> { associativity left precedence 130 }
+public func *> <I: CollectionType, T, U> 
+    (p1: 𝐏<I, T>.𝒇, 
+     p2: 𝐏<I, U>.𝒇) 
+      -> 𝐏<I, U>.𝒇 
+{
+    return p1 ++ p2 |> map { $0.1 }
+}
+
 //: `ParserError`
 public enum ParserError<Input: CollectionType> : ErrorType {
     case Error(message: String, index: Input.Index)
@@ -130,7 +157,46 @@ public postfix func |? <I: CollectionType>
 {
     return ignore(parser * (0...1))
 }
+////: Parses any single character
+//public func satisfy<I: CollectionType, T>(predicate: (T) -> Bool) -> 𝐏<I, T>.𝒇 
+//{
+//    return { (input, index) in 
+//        
+//        (input, index) }
+////        guard index < input.endIndex else {
+////            throw ParserError<I>.Error(message: "Expecting `any` character at \(index)", index: index)
+////        }
+////        return (input[index..<index.advancedBy(1, limit: input.endIndex)], index.successor())
+////        }
+//}
 
+//: Parses any single character
+public func any(input: String, index: String.Index) throws ->  𝐏<String, String>.Result {
+    guard index < input.endIndex else {
+        throw ParserError<String>.Error(message: "Expecting `any` character at \(index)", index: index)
+    }
+    return (input[index..<index.advancedBy(1, limit: input.endIndex)], index.successor())
+}
+
+//: Parses any single character
+public func not(literal: String) ->  𝐏<String, String>.𝒇 {
+    return { input, index in
+        guard index < input.endIndex else {
+            throw ParserError<String>.Error(message: "Expecting `not` character at \(index)", index: index)
+        }
+
+        let literalRange = literal.startIndex ..< literal.endIndex
+        
+        let matchEnd = index.advancedBy(literalRange.count, limit: input.endIndex)
+        
+        if input[index ..< matchEnd].elementsEqual(literal[literalRange]) {
+            tracePrint("\t\t❗️ \"\(literal)\" \(matchEnd)")
+            throw ParserError<String>.Error(message: "did not expected \"\(literal)\" at offset:\(index)", index: index)
+        } else {
+            return (input[index..<index.advancedBy(1, limit: input.endIndex)], index.successor())        
+        }
+    }
+}
 
 //: Parser algebras need `OR` and `AND` operators to map over their domain.
 //: ## Alternation:
@@ -219,13 +285,36 @@ public func +- <I: CollectionType, T, U> (
 
 public protocol Addable { func +(lhs: Self, rhs: Self) -> Self }
 extension String : Addable {}
+public protocol DefaultConstructible { init() }
+extension String : DefaultConstructible {}
 infix operator +=+ { associativity right precedence 160}
 public func +=+ <I: CollectionType, T where T: Addable> (
     lhs: 𝐏<I, T >.𝒇,
     rhs: 𝐏<I, T >.𝒇)
-    -> 𝐏<I, T >.𝒇 
+      -> 𝐏<I, T >.𝒇 
 {
     return lhs >>- { x in { y in x + y } <^> rhs }
+}
+public func & <I: CollectionType, T where T: Addable> (
+    lhs: 𝐏<I, T>.𝒇,
+    rhs: 𝐏<I, T>.𝒇)
+      -> 𝐏<I, T>.𝒇 
+{
+    return lhs >>- { x in { y in x + y } <^> rhs }
+}
+public func & <I: CollectionType, T where T: Addable> (
+    lhs: 𝐏<I, T?>.𝒇,
+    rhs: 𝐏<I, T>.𝒇)
+      -> 𝐏<I, T>.𝒇 
+{
+    return lhs >>- { x in { y in x == nil ? y : x! + y } <^> rhs }
+}
+public func & <I: CollectionType, T where T: Addable> (
+    lhs: 𝐏<I, T>.𝒇,
+    rhs: 𝐏<I, T?>.𝒇)
+      -> 𝐏<I, T>.𝒇 
+{
+    return lhs >>- { x in { y in y == nil ? x : x + y! } <^> rhs }
 }
 //: Helpers decrements `x` iff it is not equal to `Int.max`.
 private func decrement(x: Int) -> Int {
@@ -244,9 +333,9 @@ An interval specifying the number of repetitions to perform
 * and `m...n` means between `m` and `n` repetitions (inclusive).
 */
 public func * <I: CollectionType, T>
-    (parser:    𝐏<I, T >.𝒇, 
-    interval:  ClosedInterval<Int>) 
-    -> 𝐏<I,[T]>.𝒇 
+    (parser:    𝐏<I, T>.𝒇, 
+    interval:   ClosedInterval<Int>) 
+             -> 𝐏<I,[T]>.𝒇 
 {
     if interval.end <= 0 { 
         return { input, index in 
@@ -327,6 +416,22 @@ public postfix func + (string: String) -> 𝐏<String, [String]>.𝒇 {
 public postfix func + <C: CollectionType> (parser: 𝐏<C, Ignore>.𝒇) -> 𝐏<C, Ignore>.𝒇 {
     return ignore(parser * (1..<Int.max))
 }
+//: Parses `parser` 0 or more times.
+postfix operator *^ { }
+public postfix func *^ <I: CollectionType, T where T: Addable, T: DefaultConstructible> 
+    (parser: 𝐏<I, T >.𝒇) 
+    -> 𝐏<I,T>.𝒇 
+{
+    return parser * (0...Int.max) |> map { $0.reduce(T(), combine: (+)) }
+}
+//: Parses `parser` 0 or more times.
+postfix operator +^ { }
+public postfix func +^ <I: CollectionType, T where T: Addable, T: DefaultConstructible> 
+    (parser: 𝐏<I, T >.𝒇) 
+    -> 𝐏<I,T>.𝒇 
+{
+    return parser * (1...Int.max) |> map { $0.reduce(T(), combine: (+)) }
+}
 //: Creates a parser from `string`, and parses it 0 or more times.
 prefix operator % { }
 public prefix func %
@@ -368,6 +473,7 @@ public prefix func % <I: IntervalType where I.Bound == Character>
         }
     } |> trace("% \(interval):")
 }
+
 //: Map operator. Lower precedence than |.
 infix operator --> { associativity left precedence 100 }
 //: Returns a parser which maps parse trees into another type.

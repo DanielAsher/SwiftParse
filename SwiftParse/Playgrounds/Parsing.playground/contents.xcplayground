@@ -5,5 +5,6 @@
         <page name='DotParser'/>
         <page name='ParserType'/>
         <page name='Misc'/>
+        <page name='SwiftCheck'/>
     </pages>
 </playground>

@@ -8,14 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		6507226A1B9F6A9900214138 /* SwiftParse.h in Headers */ = {isa = PBXBuildFile; fileRef = 650722691B9F6A9900214138 /* SwiftParse.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		650722711B9F6A9900214138 /* SwiftParse-iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650722661B9F6A9800214138 /* SwiftParse-iOS.framework */; settings = {ASSET_TAGS = (); }; };
 		650722761B9F6A9900214138 /* SwiftParseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650722751B9F6A9900214138 /* SwiftParseTests.swift */; };
 		650D7EAC1BA0928500F62B40 /* DotParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650D7EAB1BA0928500F62B40 /* DotParser.swift */; settings = {ASSET_TAGS = (); }; };
 		6513C7901BA0DEBE00912A7C /* DotAST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6513C78F1BA0DEBE00912A7C /* DotAST.swift */; settings = {ASSET_TAGS = (); }; };
 		6513C7961BA17B0F00912A7C /* ArbitraryTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6513C7951BA17B0F00912A7C /* ArbitraryTypes.swift */; settings = {ASSET_TAGS = (); }; };
 		6513C7981BA1D1CC00912A7C /* Test+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6513C7971BA1D1CC00912A7C /* Test+Extensions.swift */; settings = {ASSET_TAGS = (); }; };
 		6513C7A41BA28BBA00912A7C /* SwiftParse-OSX.h in Headers */ = {isa = PBXBuildFile; fileRef = 6513C7A31BA28BBA00912A7C /* SwiftParse-OSX.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6513C7AB1BA28BBA00912A7C /* SwiftParse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6513C7A11BA28BBA00912A7C /* SwiftParse.framework */; settings = {ASSET_TAGS = (); }; };
 		6513C7B01BA28BBA00912A7C /* SwiftParse_OSXTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6513C7AF1BA28BBA00912A7C /* SwiftParse_OSXTests.swift */; };
 		6513C7B81BA28C7000912A7C /* SwiftParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656BBF951B9F7B74008C2CDF /* SwiftParse.swift */; settings = {ASSET_TAGS = (); }; };
 		6513C7B91BA28C9500912A7C /* Swiftx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6529F2061BA06B97009D79BC /* Swiftx.framework */; };
@@ -30,6 +28,11 @@
 		6529F20F1BA06C3D009D79BC /* SwiftCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6529F20E1BA06C3D009D79BC /* SwiftCheck.framework */; };
 		6529F2111BA06CB6009D79BC /* Global+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6529F2101BA06CB6009D79BC /* Global+Ext.swift */; settings = {ASSET_TAGS = (); }; };
 		656BBF961B9F7B74008C2CDF /* SwiftParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656BBF951B9F7B74008C2CDF /* SwiftParse.swift */; settings = {ASSET_TAGS = (); }; };
+		65830C5A1BA56C03004433B5 /* SwiftParse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6513C7A11BA28BBA00912A7C /* SwiftParse.framework */; };
+		65830C5B1BA56C1E004433B5 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65830C3C1BA56AF9004433B5 /* Quick.framework */; };
+		65830C5C1BA56C24004433B5 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65830C571BA56BA7004433B5 /* Nimble.framework */; };
+		65830C5D1BA56C2D004433B5 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65830C3C1BA56AF9004433B5 /* Quick.framework */; };
+		65830C5E1BA56C34004433B5 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65830C531BA56BA7004433B5 /* Nimble.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,10 +78,80 @@
 			remoteGlobalIDString = 84DF76721B0BDE0A00C912B0;
 			remoteInfo = "Swiftx-iOSTests";
 		};
+		65830C3B1BA56AF9004433B5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 65830C321BA56AF9004433B5 /* Quick.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DAEB6B8E1943873100289F44;
+			remoteInfo = "Quick-OSX";
+		};
+		65830C3D1BA56AF9004433B5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 65830C321BA56AF9004433B5 /* Quick.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DAEB6B991943873100289F44;
+			remoteInfo = "Quick-OSXTests";
+		};
+		65830C3F1BA56AF9004433B5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 65830C321BA56AF9004433B5 /* Quick.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DA5663E81A4C8D8500193C88;
+			remoteInfo = "QuickFocused-OSXTests";
+		};
+		65830C411BA56AF9004433B5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 65830C321BA56AF9004433B5 /* Quick.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5A5D117C19473F2100F6D13D;
+			remoteInfo = "Quick-iOS";
+		};
+		65830C431BA56AF9004433B5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 65830C321BA56AF9004433B5 /* Quick.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5A5D118619473F2100F6D13D;
+			remoteInfo = "Quick-iOSTests";
+		};
+		65830C451BA56AF9004433B5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 65830C321BA56AF9004433B5 /* Quick.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DA9876B21A4C70EB0004AA17;
+			remoteInfo = "QuickFocused-iOSTests";
+		};
+		65830C521BA56BA7004433B5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 65830C4B1BA56BA7004433B5 /* Nimble.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1F1A74291940169200FFFC47;
+			remoteInfo = "Nimble-iOS";
+		};
+		65830C541BA56BA7004433B5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 65830C4B1BA56BA7004433B5 /* Nimble.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1F1A74341940169200FFFC47;
+			remoteInfo = "Nimble-iOSTests";
+		};
+		65830C561BA56BA7004433B5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 65830C4B1BA56BA7004433B5 /* Nimble.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1F925EAD195C0D6300ED456B;
+			remoteInfo = "Nimble-OSX";
+		};
+		65830C581BA56BA7004433B5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 65830C4B1BA56BA7004433B5 /* Nimble.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1F925EB7195C0D6300ED456B;
+			remoteInfo = "Nimble-OSXTests";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		650722661B9F6A9800214138 /* SwiftParse-iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "SwiftParse-iOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		650722661B9F6A9800214138 /* SwiftParse.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftParse.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		650722691B9F6A9900214138 /* SwiftParse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftParse.h; sourceTree = "<group>"; };
 		6507226B1B9F6A9900214138 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		650722701B9F6A9900214138 /* SwiftParse-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SwiftParse-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,6 +175,8 @@
 		6529F20E1BA06C3D009D79BC /* SwiftCheck.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftCheck.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/SwiftParse-dzaanzbagqhpmrgzhhywvcujoden/Build/Products/Debug/SwiftCheck.framework"; sourceTree = "<group>"; };
 		6529F2101BA06CB6009D79BC /* Global+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Global+Ext.swift"; sourceTree = "<group>"; };
 		656BBF951B9F7B74008C2CDF /* SwiftParse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftParse.swift; sourceTree = "<group>"; };
+		65830C321BA56AF9004433B5 /* Quick.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Quick.xcodeproj; path = ../Modules/Quick/Quick.xcodeproj; sourceTree = "<group>"; };
+		65830C4B1BA56BA7004433B5 /* Nimble.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Nimble.xcodeproj; path = ../Modules/Quick/Externals/Nimble/Nimble.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,8 +192,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65830C5E1BA56C34004433B5 /* Nimble.framework in Frameworks */,
+				65830C5D1BA56C2D004433B5 /* Quick.framework in Frameworks */,
 				6529F20F1BA06C3D009D79BC /* SwiftCheck.framework in Frameworks */,
-				650722711B9F6A9900214138 /* SwiftParse-iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,8 +210,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65830C5C1BA56C24004433B5 /* Nimble.framework in Frameworks */,
+				65830C5B1BA56C1E004433B5 /* Quick.framework in Frameworks */,
+				65830C5A1BA56C03004433B5 /* SwiftParse.framework in Frameworks */,
 				6513C7BA1BA28CAE00912A7C /* SwiftCheck.framework in Frameworks */,
-				6513C7AB1BA28BBA00912A7C /* SwiftParse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,7 +238,7 @@
 		650722671B9F6A9800214138 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				650722661B9F6A9800214138 /* SwiftParse-iOS.framework */,
+				650722661B9F6A9800214138 /* SwiftParse.framework */,
 				650722701B9F6A9900214138 /* SwiftParse-iOSTests.xctest */,
 				6513C7A11BA28BBA00912A7C /* SwiftParse.framework */,
 				6513C7AA1BA28BBA00912A7C /* SwiftParse-OSXTests.xctest */,
@@ -222,6 +300,8 @@
 		6529F1FC1BA06B80009D79BC /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
+				65830C4B1BA56BA7004433B5 /* Nimble.xcodeproj */,
+				65830C321BA56AF9004433B5 /* Quick.xcodeproj */,
 				6529F20E1BA06C3D009D79BC /* SwiftCheck.framework */,
 				6529F1FD1BA06B97009D79BC /* Swiftx.xcodeproj */,
 			);
@@ -235,6 +315,30 @@
 				6529F2081BA06B97009D79BC /* SwiftxTests.xctest */,
 				6529F20A1BA06B97009D79BC /* Swiftx.framework */,
 				6529F20C1BA06B97009D79BC /* Swiftx-iOSTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		65830C331BA56AF9004433B5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				65830C3C1BA56AF9004433B5 /* Quick.framework */,
+				65830C3E1BA56AF9004433B5 /* Quick-OSXTests.xctest */,
+				65830C401BA56AF9004433B5 /* QuickFocused-OSXTests.xctest */,
+				65830C421BA56AF9004433B5 /* Quick.framework */,
+				65830C441BA56AF9004433B5 /* Quick-iOSTests.xctest */,
+				65830C461BA56AF9004433B5 /* QuickFocused-iOSTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		65830C4C1BA56BA7004433B5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				65830C531BA56BA7004433B5 /* Nimble.framework */,
+				65830C551BA56BA7004433B5 /* NimbleTests.xctest */,
+				65830C571BA56BA7004433B5 /* Nimble.framework */,
+				65830C591BA56BA7004433B5 /* NimbleTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -276,7 +380,7 @@
 			);
 			name = "SwiftParse-iOS";
 			productName = SwiftParse;
-			productReference = 650722661B9F6A9800214138 /* SwiftParse-iOS.framework */;
+			productReference = 650722661B9F6A9800214138 /* SwiftParse.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		6507226F1B9F6A9900214138 /* SwiftParse-iOSTests */ = {
@@ -368,6 +472,14 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = 65830C4C1BA56BA7004433B5 /* Products */;
+					ProjectRef = 65830C4B1BA56BA7004433B5 /* Nimble.xcodeproj */;
+				},
+				{
+					ProductGroup = 65830C331BA56AF9004433B5 /* Products */;
+					ProjectRef = 65830C321BA56AF9004433B5 /* Quick.xcodeproj */;
+				},
+				{
 					ProductGroup = 6529F1FE1BA06B97009D79BC /* Products */;
 					ProjectRef = 6529F1FD1BA06B97009D79BC /* Swiftx.xcodeproj */;
 				},
@@ -409,6 +521,76 @@
 			fileType = wrapper.cfbundle;
 			path = "Swiftx-iOSTests.xctest";
 			remoteRef = 6529F20B1BA06B97009D79BC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		65830C3C1BA56AF9004433B5 /* Quick.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Quick.framework;
+			remoteRef = 65830C3B1BA56AF9004433B5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		65830C3E1BA56AF9004433B5 /* Quick-OSXTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Quick-OSXTests.xctest";
+			remoteRef = 65830C3D1BA56AF9004433B5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		65830C401BA56AF9004433B5 /* QuickFocused-OSXTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "QuickFocused-OSXTests.xctest";
+			remoteRef = 65830C3F1BA56AF9004433B5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		65830C421BA56AF9004433B5 /* Quick.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Quick.framework;
+			remoteRef = 65830C411BA56AF9004433B5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		65830C441BA56AF9004433B5 /* Quick-iOSTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Quick-iOSTests.xctest";
+			remoteRef = 65830C431BA56AF9004433B5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		65830C461BA56AF9004433B5 /* QuickFocused-iOSTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "QuickFocused-iOSTests.xctest";
+			remoteRef = 65830C451BA56AF9004433B5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		65830C531BA56BA7004433B5 /* Nimble.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Nimble.framework;
+			remoteRef = 65830C521BA56BA7004433B5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		65830C551BA56BA7004433B5 /* NimbleTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = NimbleTests.xctest;
+			remoteRef = 65830C541BA56BA7004433B5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		65830C571BA56BA7004433B5 /* Nimble.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Nimble.framework;
+			remoteRef = 65830C561BA56BA7004433B5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		65830C591BA56BA7004433B5 /* NimbleTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = NimbleTests.xctest;
+			remoteRef = 65830C581BA56BA7004433B5 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -604,7 +786,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = StoryShare.SwiftParse;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SwiftParse;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -620,7 +802,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = StoryShare.SwiftParse;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SwiftParse;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
