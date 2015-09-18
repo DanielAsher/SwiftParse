@@ -29,10 +29,10 @@
 		6529F2111BA06CB6009D79BC /* Global+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6529F2101BA06CB6009D79BC /* Global+Ext.swift */; settings = {ASSET_TAGS = (); }; };
 		656BBF961B9F7B74008C2CDF /* SwiftParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656BBF951B9F7B74008C2CDF /* SwiftParse.swift */; settings = {ASSET_TAGS = (); }; };
 		65830C5A1BA56C03004433B5 /* SwiftParse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6513C7A11BA28BBA00912A7C /* SwiftParse.framework */; };
-		65830C5B1BA56C1E004433B5 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65830C3C1BA56AF9004433B5 /* Quick.framework */; };
-		65830C5C1BA56C24004433B5 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65830C571BA56BA7004433B5 /* Nimble.framework */; };
 		65E97E2F1BAC4259007E2B6D /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65830C531BA56BA7004433B5 /* Nimble.framework */; };
 		65E97E301BAC4301007E2B6D /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65830C3C1BA56AF9004433B5 /* Quick.framework */; };
+		65E97E311BAC44E1007E2B6D /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65830C571BA56BA7004433B5 /* Nimble.framework */; };
+		65E97E321BAC44E8007E2B6D /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65830C3C1BA56AF9004433B5 /* Quick.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -210,8 +210,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65830C5C1BA56C24004433B5 /* Nimble.framework in Frameworks */,
-				65830C5B1BA56C1E004433B5 /* Quick.framework in Frameworks */,
+				65E97E321BAC44E8007E2B6D /* Quick.framework in Frameworks */,
+				65E97E311BAC44E1007E2B6D /* Nimble.framework in Frameworks */,
 				65830C5A1BA56C03004433B5 /* SwiftParse.framework in Frameworks */,
 				6513C7BA1BA28CAE00912A7C /* SwiftCheck.framework in Frameworks */,
 			);
