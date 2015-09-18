@@ -2,3 +2,7 @@
 	path = Modules/Swiftx
 	url = https://github.com/typelift/Swiftx
 	ignore = dirty
+[submodule "Modules/Quick"]
+	path = Modules/Quick
+	url = https://github.com/Quick/Quick
+	branch = swift-2.0
