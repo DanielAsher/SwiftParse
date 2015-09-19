@@ -60,29 +60,38 @@ infix operator & { associativity left }
 private func & (lhs: Gen<String>, rhs: Gen<String>) -> Gen<String> {
     return glue2 <^> lhs <*> rhs
 }
-
+infix operator ++ { associativity left }
+private func ++ <T,U>(lhs: Gen<T>, rhs: Gen<U>) -> Gen<(T, U)> {
+    return tuple2 <^> lhs <*> rhs
+}
+private func + <T,U>(lhs: Gen<T>, rhs: Gen<U>) -> Gen<(T,U)> {
+    return lhs >>- { t in rhs >>- { u in return Gen.pure((t,u)) } }
+}
+private func + <T,U,V>(lhs: Gen<(T, U)>, rhs: Gen<V>) -> Gen<(T,U,V)> {
+    return lhs >>- { (t, u) in rhs >>- { v in return Gen.pure((t,u,v)) } }
+}
+private func + <T,U,V,W>(lhs: Gen<(T,U,V)>, rhs: Gen<W>) -> Gen<(T,U,V,W)> {
+    return lhs >>- { (t,u,v) in rhs >>- { w in return Gen.pure((t,u,v,w)) } }
+}
 struct ArbitraryID : Arbitrary 
 {
     static let lowerCase : Gen<Character> = Gen<Character>.fromElementsIn("a"..."z")
     static let upperCase : Gen<Character> = Gen<Character>.fromElementsIn("A"..."Z")
     static let numeric   : Gen<Character> = Gen<Character>.fromElementsIn("0"..."9")
     static let underscore =  Gen.pure(Character("_"))
-    // static let a : 	Gen<Character> =  Gen<UInt32>.choose((32, 255)) >>- (Gen<Character>.pure • Character.init • UnicodeScalar.init)
 
-    static let numeral = numeric+
-    static let decimal : Gen<String> = (%"-")|? & ( (%"." & numeral) | (numeral & (%"." & numeric*)|?) )
+    static let decimal : Gen<String> = (%"-")|? & ( (%"." & numeric+) | (numeric+ & (%"." & numeric*)|?) )
     
     static let letter   = (lowerCase | upperCase | underscore)
     static let simpleID = %letter & (letter | numeric)*
 
-    static let quotedId : Gen<String> = 
+    static let quotedId = 
         String.arbitrary.suchThat { $0.count >= 1 }.fmap { 
             "\"" + 
             $0.stringByReplacingOccurrencesOfString("\"", withString: "\\\"") 
             + "\"" }
     
-    static let ID : Gen<String> = simpleID | decimal | quotedId
-    //static let idToken   : Gen<String> = glue2 <^> ID <*> A.ws
+    static let ID = (simpleID | decimal | quotedId)
     
     static var arbitrary : Gen<ArbitraryID> { return ID.fmap(ArbitraryID.init) }
     
@@ -92,23 +101,6 @@ struct ArbitraryID : Arbitrary
 }
 
 extension A { static let ID = ArbitraryID.ID }
-
-struct ArbitrarySeparator : Arbitrary
-{
-    static let separator : Gen<String> = Gen<Character>
-        .fromElementsOf([";", ",", " "])
-        .fmap { (c: Character) in String(c) }
-
-    static let separatorToken   : Gen<String> = glue2 <^> separator <*> A.ws
-
-    static var arbitrary : Gen<ArbitrarySeparator> { return separatorToken.fmap(ArbitrarySeparator.init) }
-    
-    let getSeparator : String
-    
-    init(separator : String) { self.getSeparator = separator }
-}
-
-extension A { static let sep = ArbitrarySeparator.separator }
 
 struct ArbitraryAttributeList : Arbitrary 
 {  
@@ -120,7 +112,9 @@ struct ArbitraryAttributeList : Arbitrary
     static let equal : Gen<String> = glue3 <^> A.ws <*> Gen.pure("=") <*> A.ws
     
     static let idStatement = tuple4 <^> A.ID <*> equal <*> A.ID <*> sep
-        
+    
+    static let id_stmt = A.ID + %"=" + A.ID + separator|?
+                
     static let attributeList = idStatement.proliferateNonEmpty()
     
     static var arbitrary : Gen<ArbitraryAttributeList> { return attributeList.fmap(ArbitraryAttributeList.init) }

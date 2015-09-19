@@ -69,8 +69,9 @@ infix operator >>- {  associativity left precedence 130 }
 */
 public func >>- <I: CollectionType, T, U> 
     (
-    parser:          𝐏<I, T>.𝒇, 
-    transform:  T -> 𝐏<I, U>.𝒇) -> 𝐏<I, U>.𝒇 
+    parser:     𝐏<I, T>.𝒇, 
+    transform:  T -> 𝐏<I, U>.𝒇) 
+                -> 𝐏<I, U>.𝒇 
 {
     return { input, index in
         let (result, newIndex) = try trace(">>- p(\"\(input)\", \(index)) ")(parser)(input, index) 

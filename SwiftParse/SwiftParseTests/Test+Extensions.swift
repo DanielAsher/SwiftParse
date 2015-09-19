@@ -32,7 +32,7 @@ func glue7(s1: String) (s2: String) (s3: String) (s4: String) (s5: String) (s6: 
     return s1 + s2 + s3 + s4 + s5 + s6 + s7
 }
 
-func tuple2(s1: String) (s2: String) -> (String, String) {
+func tuple2<T, U>(s1: T) (s2: U) -> (T, U) {
     return (s1, s2) 
 }
 

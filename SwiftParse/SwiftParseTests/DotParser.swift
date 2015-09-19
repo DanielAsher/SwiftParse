@@ -21,13 +21,12 @@ public prefix func £ (literal: String) -> 𝐏<String, String>.𝒇 {
     return %literal |> P.token
 }
 
-struct P {
+public struct P {
 
     static let whitespace  = %" " | %"\t" | %"\n"
-    static let spaces      = ignore(whitespace*)
     //: Our `token` defines whitespace handling.
     static func token(parser: 𝐏<String, String>.𝒇 ) -> 𝐏<String, String>.𝒇 {
-        return parser ++ spaces 
+        return parser ++ ignore(whitespace*) 
     }
     //: Literal Characters and Strings
 //    static let equal        = £"="     
@@ -55,7 +54,7 @@ struct P {
     
     static let quotedChar = %"\\\"" | not("\"") 
     static let quotedId = %"\"" & quotedChar+^ & %"\""
-    static let ID = (simpleId | decimal | quotedId) |> P.token
+    static let ID = P.token(simpleId | decimal | quotedId) 
     static let id_equality = ID *> £"=" ++ ID
                 |> map { Attribute(name: $0, value: $1) }
     

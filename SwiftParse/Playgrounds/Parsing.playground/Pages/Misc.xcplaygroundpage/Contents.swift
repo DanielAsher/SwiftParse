@@ -12,7 +12,7 @@ public prefix func £ (literal: String) -> 𝐏<String, String>.𝒇 {
     return %literal |> P.token
 }
 
-struct P {
+public struct P {
     
     static let whitespace  = %" " | %"\t" | %"\n"
     static let spaces      = ignore(whitespace*)
@@ -20,24 +20,13 @@ struct P {
     static func token(parser: 𝐏<String, String>.𝒇 ) -> 𝐏<String, String>.𝒇 {
         return parser ++ spaces 
     }
-    //: Literal Characters and Strings
-    //    static let equal        = £"="     
-    //    static let leftBracket  = £"["      
-    //    static let rightBracket = £"]"     
-    //    static let leftBrace    = £"{"     
-    //    static let rightBrace   = £"}"     
-    //    static let arrow        = £"->"    
-    //    static let link         = £"--"    
-    //    static let semicolon    = £";"     
-    //    static let comma        = £","     
-    //    static let quote        = £"\""    
     
     static let separator   = (%";" | %",") |> P.token
-//    static let sep         = ≠separator|?
     static let lower       = %("a"..."z")
     static let upper       = %("A"..."Z")
     static let digit       = %("0"..."9")
     
+    // simpleId cannot start with a digit.
     static let simpleId = (lower | upper | %"_") & (lower | upper | digit | %"_")*^
     
     static let number = %"." & digit+^ | (digit+^ & (%"." & digit*^)|?)
@@ -53,7 +42,7 @@ struct P {
     
 }
 
-let r1 = parse(P.ID, input: "78385021.45472470")
+let r1 = parse(P.ID, input: "\"í\"\t")
 r1.0!.characters.count
 
 
