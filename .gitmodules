@@ -1,6 +1,6 @@
 [submodule "Modules/Swiftx"]
 	path = Modules/Swiftx
-	url = https://github.com/typelift/Swiftx
+	url=https://github.com/DanielAsher/Swiftx
 	ignore = dirty
 [submodule "Modules/Quick"]
 	path = Modules/Quick
