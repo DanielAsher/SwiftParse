@@ -6,7 +6,7 @@
 //  Copyright © 2015 StoryShare. All rights reserved.
 //
 import SwiftParse
-import Swiftx
+import func Swiftx.|>
 
 prefix operator ≠ {}
 public prefix func ≠ <I: CollectionType, T>
@@ -52,11 +52,11 @@ public struct P {
     static let number = %"." & digit+^ | (digit+^ & (%"." & digit*^)|?)
     static let decimal = (%"-")|? & number
     
-    static let quotedChar = %"\\\"" | not("\"") 
-    static let quotedId = %"\"" & quotedChar+^ & %"\""
-    static let ID = P.token(simpleId | decimal | quotedId) 
-    static let id_equality = ID *> £"=" ++ ID
-                |> map { Attribute(name: $0, value: $1) }
+    static let quotedChar   = %"\\\"" | not("\"") 
+    static let quotedId     = %"\"" & quotedChar+^ & %"\""
+    static let ID           = (simpleId | decimal | quotedId) |> P.token
+    static let id_equality  = ID ++ £"=" ++ ID
+                |> map { Attribute(name: $0, value: $1.1) }
     
     static let attr_list = id_equality+
 

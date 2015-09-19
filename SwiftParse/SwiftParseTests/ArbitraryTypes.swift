@@ -5,7 +5,7 @@
 //  Created by Daniel Asher on 10/09/2015.
 //  Copyright © 2015 StoryShare. All rights reserved.
 //
-import Swiftx
+//import Swiftx
 import SwiftCheck
 
 // `struct A` holds extention properties of type Arbitrary to allow some syntax sugar.
