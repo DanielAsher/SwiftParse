@@ -79,22 +79,34 @@ class SwiftParseTests: XCTestCase {
         
         property("IDs are correctly parsed") <- forAll { (arbId: ArbitraryID) in
             return parse(P.ID, input: arbId.getID).0 == .Some(arbId.getID)
-        }       
+        }  
+        
+        property("Cannot invoke forAll with an argument list of type (Gen<[String]>, ([String]) -> Bool") 
+        <- forAllNoShrink(Gen.pure("0").proliferate()) { (zs: [String]) in
+            return false
+        }
+        
+        let pairGen  = Gen<(String, String)>.zip(Gen.pure("0"), Gen.pure("1")).proliferate()
+        
+        property("`0` and `1` are distinct") <- forAllNoShrink(pairGen) { (pairs: Array<(String, String)>) in
+            let areDistinct = pairs.reduce(true) { (acc, t) in
+                let (lhs, rhs) = t
+                return acc && lhs != rhs
+            }
+            return areDistinct
+        }
         
         let sep : Gen<String> = Gen<Character>
             .fromElementsOf([";", ",", " "])
             .fmap { (c: Character) in String(c) }
 
-        let idStmtsGen = (A.ID + %"=" + A.ID + sep)
-            .fmap { TupleOf4($0) }.proliferate()
-            .fmap { ArrayOf($0) }
+        let idStmtsGen = (A.ID + %"=" + A.ID + sep).proliferate()
         
         property("a_list : ID '=' ID [ (';' | ',') ] [ a_list ]") 
-            <- forAll(idStmtsGen) { (idStmts: ArrayOf<TupleOf4<String, String, String, String>>) in
+            <- forAllNoShrink(idStmtsGen) { (idStmts: Array<(String, String, String, String)>) in
             
-            let attrList = idStmts.getArray
-            let attrStr = attrList.reduce("") { str, id_stmt in
-                let (lhs, eq, rhs, s) = id_stmt.getTuple
+            let attrStr = idStmts.reduce("") { str, id_stmt in
+                let (lhs, eq, rhs, s) = id_stmt
                 return str + lhs + eq + rhs + s
             }
             
@@ -102,10 +114,11 @@ class SwiftParseTests: XCTestCase {
             
             switch(result) {
                 case let .Some(parsedAttrList):
-                    let isEqual = zip(attrList, parsedAttrList).reduce(true) { (acc, zipped) in
-                        let (id_stmt, attr) = zipped
-                        let (lhs, _, rhs, _) = id_stmt.getTuple
-                        return acc && lhs == attr.name && rhs == attr.value
+                    let isEqual = zip(idStmts, parsedAttrList).reduce(true) {
+                        switch ($0, $1) {
+                        case (let acc, let ((lhs, _, rhs, _), parsedAttr) ):
+                            return acc && lhs == parsedAttr.name && rhs == parsedAttr.value
+                        }
                     }
                     return isEqual
                 

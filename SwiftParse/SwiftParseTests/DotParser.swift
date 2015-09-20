@@ -55,7 +55,7 @@ public struct P {
     static let quotedChar   = %"\\\"" | not("\"") 
     static let quotedId     = %"\"" & quotedChar+^ & %"\""
     static let ID           = (simpleId | decimal | quotedId) |> P.token
-    static let id_equality  = ID ++ £"=" ++ ID
+    static let id_equality  = ID ++ £"=" ++ ID ++ sep
                 |> map { Attribute(name: $0, value: $1.1) }
     
     static let attr_list = id_equality+
