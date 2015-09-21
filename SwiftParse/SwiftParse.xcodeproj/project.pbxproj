@@ -29,6 +29,8 @@
 		653AC57E1BB02F6C00250A7C /* DotParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650D7EAB1BA0928500F62B40 /* DotParser.swift */; settings = {ASSET_TAGS = (); }; };
 		653AC57F1BB02F7100250A7C /* DotAST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6513C78F1BA0DEBE00912A7C /* DotAST.swift */; settings = {ASSET_TAGS = (); }; };
 		653AC5801BB02F7300250A7C /* DotAST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6513C78F1BA0DEBE00912A7C /* DotAST.swift */; settings = {ASSET_TAGS = (); }; };
+		653AC5821BB0331900250A7C /* SwiftParseSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653AC5811BB0331900250A7C /* SwiftParseSpecs.swift */; settings = {ASSET_TAGS = (); }; };
+		653AC5831BB0331900250A7C /* SwiftParseSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653AC5811BB0331900250A7C /* SwiftParseSpecs.swift */; settings = {ASSET_TAGS = (); }; };
 		656BBF961B9F7B74008C2CDF /* SwiftParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656BBF951B9F7B74008C2CDF /* SwiftParse.swift */; settings = {ASSET_TAGS = (); }; };
 		65830C5A1BA56C03004433B5 /* SwiftParse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6513C7A11BA28BBA00912A7C /* SwiftParse.framework */; };
 		65E97E2F1BAC4259007E2B6D /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65830C531BA56BA7004433B5 /* Nimble.framework */; };
@@ -177,6 +179,7 @@
 		6529F20E1BA06C3D009D79BC /* SwiftCheck.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftCheck.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/SwiftParse-dzaanzbagqhpmrgzhhywvcujoden/Build/Products/Debug/SwiftCheck.framework"; sourceTree = "<group>"; };
 		6529F2101BA06CB6009D79BC /* Global+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Global+Ext.swift"; sourceTree = "<group>"; };
 		653AC5681BB00BB700250A7C /* Test+Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Test+Operators.swift"; sourceTree = "<group>"; };
+		653AC5811BB0331900250A7C /* SwiftParseSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftParseSpecs.swift; sourceTree = "<group>"; };
 		656BBF951B9F7B74008C2CDF /* SwiftParse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftParse.swift; sourceTree = "<group>"; };
 		65830C321BA56AF9004433B5 /* Quick.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Quick.xcodeproj; path = ../Modules/Quick/Quick.xcodeproj; sourceTree = "<group>"; };
 		65830C4B1BA56BA7004433B5 /* Nimble.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Nimble.xcodeproj; path = ../Modules/Quick/Externals/Nimble/Nimble.xcodeproj; sourceTree = "<group>"; };
@@ -263,6 +266,7 @@
 			isa = PBXGroup;
 			children = (
 				650722751B9F6A9900214138 /* SwiftParseTests.swift */,
+				653AC5811BB0331900250A7C /* SwiftParseSpecs.swift */,
 				6513C7951BA17B0F00912A7C /* ArbitraryTypes.swift */,
 				6513C7971BA1D1CC00912A7C /* Test+Extensions.swift */,
 				653AC5681BB00BB700250A7C /* Test+Operators.swift */,
@@ -662,6 +666,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				653AC5821BB0331900250A7C /* SwiftParseSpecs.swift in Sources */,
 				6513C7961BA17B0F00912A7C /* ArbitraryTypes.swift in Sources */,
 				6513C7981BA1D1CC00912A7C /* Test+Extensions.swift in Sources */,
 				650722761B9F6A9900214138 /* SwiftParseTests.swift in Sources */,
@@ -685,6 +690,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6513C7BE1BA2921900912A7C /* ArbitraryTypes.swift in Sources */,
+				653AC5831BB0331900250A7C /* SwiftParseSpecs.swift in Sources */,
 				6513C7C01BA2922E00912A7C /* Test+Extensions.swift in Sources */,
 				653AC57A1BB00D0200250A7C /* Test+Operators.swift in Sources */,
 				6513C7B01BA28BBA00912A7C /* SwiftParse_OSXTests.swift in Sources */,
