@@ -5,10 +5,7 @@
 //  Created by Daniel Asher on 21/09/2015.
 //  Copyright © 2015 StoryShare. All rights reserved.
 //
-
-import Foundation
 import SwiftCheck
-
 
 prefix operator % {}
 prefix func % (c: Character) -> Gen<String> {
@@ -45,21 +42,23 @@ infix operator & { associativity left }
 func & (lhs: Gen<String>, rhs: Gen<String>) -> Gen<String> {
     return rhs.ap( glue2 <^> lhs )
 }
-//infix operator ++ { associativity left }
-//private func ++ <T,U>(lhs: Gen<T>, rhs: Gen<U>) -> Gen<(T, U)> {
-//    return tuple2 <^> lhs <*> rhs
-//}
 
-private func + <T,U>(lhs: Gen<T>, rhs: Gen<U>) -> Gen<(T,U)> {
+func + <T,U>(lhs: Gen<T>, rhs: Gen<U>) -> Gen<(T,U)> {
     return lhs.bind { t in rhs.bind { u in return Gen.pure((t,u)) } }
 }
-private func + <T,U,V>(lhs: Gen<(T, U)>, rhs: Gen<V>) -> Gen<(T,U,V)> {
-    return lhs.bind { (t, u) in rhs.bind { v in return Gen.pure((t,u,v)) } }
-}
-private func + <T,U,V,W>(lhs: Gen<(T,U,V)>, rhs: Gen<W>) -> Gen<(T,U,V,W)> {
-    return lhs.bind { (t,u,v) in rhs.bind { w in return Gen.pure((t,u,v,w)) } }
+
+func + <T,U,V>(lhs: Gen<(T, U)>, rhs: Gen<V>) -> Gen<(T,U,V)> {
+    return lhs.bind { t, u in rhs.bind { v in return Gen.pure((t,u,v)) } }
 }
 
+func + <T,U,V,W>(lhs: Gen<(T,U,V)>, rhs: Gen<W>) -> Gen<(T,U,V,W)> {
+    return lhs.bind { t,u,v in rhs.bind { w in return Gen.pure((t,u,v,w)) } }
+}
+
+infix operator ++ { associativity left }
+func ++ <T,U>(lhs: Gen<T>, rhs: Gen<U>) -> Gen<(T, U)> {
+    return tuple2 <^> lhs <*> rhs
+}
 
 func glue2(s1: String) (s2: String) -> String {
     return s1 + s2 

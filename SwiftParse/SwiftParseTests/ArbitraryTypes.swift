@@ -27,52 +27,6 @@ struct ArbitraryWhiteSpace : Arbitrary
 
 extension A { static let ws = ArbitraryWhiteSpace.whitespace }
 
-prefix operator % {}
-private prefix func % (c: Character) -> Gen<String> {
-    return Gen.pure(String(c))
-}
-private prefix func % (c: Gen<Character>) -> Gen<String> {
-    return c.fmap { String($0) }
-}
-postfix operator |? { }
-private postfix func |? (s: Gen<String>) -> Gen<String> {
-    return Gen<String>.oneOf([s, Gen.pure("")])
-}
-
-private postfix func * (g: Gen<String>) -> Gen<String> {
-    return g.proliferate().fmap { $0.joinWithSeparator("") }
-}
-private postfix func * (g: Gen<Character>) -> Gen<String> {
-    return g.proliferate().fmap(String.init)
-}
-private postfix func + (g: Gen<String>) -> Gen<String> {
-    return g.proliferateNonEmpty().fmap { $0.joinWithSeparator("") }
-}
-private postfix func + (g: Gen<Character>) -> Gen<String> {
-    return g.proliferateNonEmpty().fmap(String.init)
-}
-
-infix operator | {associativity left}
-private func | <T> (lhs: Gen<T>, rhs: Gen<T>) -> Gen<T> {
-    return Gen<T>.oneOf([lhs, rhs])
-}
-infix operator & { associativity left }
-private func & (lhs: Gen<String>, rhs: Gen<String>) -> Gen<String> {
-    return glue2 <^> lhs <*> rhs
-}
-infix operator ++ { associativity left }
-private func ++ <T,U>(lhs: Gen<T>, rhs: Gen<U>) -> Gen<(T, U)> {
-    return tuple2 <^> lhs <*> rhs
-}
-private func + <T,U>(lhs: Gen<T>, rhs: Gen<U>) -> Gen<(T,U)> {
-    return lhs >>- { t in rhs >>- { u in return Gen.pure((t,u)) } }
-}
-private func + <T,U,V>(lhs: Gen<(T, U)>, rhs: Gen<V>) -> Gen<(T,U,V)> {
-    return lhs >>- { (t, u) in rhs >>- { v in return Gen.pure((t,u,v)) } }
-}
-private func + <T,U,V,W>(lhs: Gen<(T,U,V)>, rhs: Gen<W>) -> Gen<(T,U,V,W)> {
-    return lhs >>- { (t,u,v) in rhs >>- { w in return Gen.pure((t,u,v,w)) } }
-}
 struct ArbitraryID : Arbitrary 
 {
     static let lowerCase : Gen<Character> = Gen<Character>.fromElementsIn("a"..."z")

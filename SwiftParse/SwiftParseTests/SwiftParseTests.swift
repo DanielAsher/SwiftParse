@@ -8,6 +8,7 @@
 
 import XCTest
 @testable import func SwiftParse.parse
+@testable import struct SwiftParse.P
 
 import SwiftCheck
 import Quick

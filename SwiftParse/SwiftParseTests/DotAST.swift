@@ -5,10 +5,6 @@
 //  Created by Daniel Asher on 09/09/2015.
 //  Copyright © 2015 StoryShare. All rights reserved.
 //
-
-import Foundation
-import SwiftParse
-
 //: Syntax Tree Types
 typealias ID = String
 
