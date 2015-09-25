@@ -36,13 +36,21 @@ class SwiftParseTests: XCTestCase {
             .fromElementsOf([";", ",", " "])
             .fmap { (c: Character) in String(c) }
 
-        let idStmtsGen = (A.ID + %"=" + A.ID + sep).proliferateNonEmpty()
+        let idStmtsGen = (A.ID + %"=" + A.ID + sep)
+            .fmap { TupleOf4($0) }.proliferateNonEmpty()
+            .fmap { ArrayOf($0) }
+            .suchThat { let n = $0.getArray.count; return 1 < n && n < 5 }
+        
+        let withoutBackslashGuardThisFails = 
+            [("_44KrP___A090_12_9r12_U6_3Vu484z9R7__M0R34_3413R390807_89___hm0", "=", 
+              "\"ub3}Ú}fîÝÎvÄÕÀºb¡B?âÂPÄ\\\"¬¢T`×3lî&Ü ÿ.ÎyÆ¸)·«Ã¦ÒÁ#kKÓX-Î+ÛcÀø»eN*Q¡^iñ5´ ÙWÖ½BÚø×6¦b>ÔÛ\\\\\"", ";")]            
                 
         property("a_list : ID '=' ID [ (';' | ',') ] [ a_list ]") 
-            <- forAllNoShrink(idStmtsGen) { (idStmts: Array<(String, String, String, String)>) in
-            
-            let attrStr = idStmts.reduce("") { str, id_stmt in
-                let (lhs, eq, rhs, s) = id_stmt
+            <- forAll(idStmtsGen) { (idStmts: ArrayOf<TupleOf4<String, String, String, String>>) in
+            let idStmtArray = idStmts.getArray
+            guard idStmtArray.count > 0 else {return true}
+            let attrStr = idStmtArray.reduce("") { str, id_stmt in
+                let (lhs, eq, rhs, s) = id_stmt.getTuple
                 return str + lhs + eq + rhs + s
             }
             
@@ -50,18 +58,10 @@ class SwiftParseTests: XCTestCase {
             
             switch(result) {
                 case let .Some(parsedAttrList):
-                    let allEqual = zip(idStmts, parsedAttrList).reduce(true) {
-                        switch ($0, $1) {
-                        case (let allEqual, let ((lhs, _, rhs, _), parsedAttr) ):
-                            let isEqualLhs = lhs == parsedAttr.name
-                            if isEqualLhs == false {
-                                print("Failed: ID:", lhs, "!=", parsedAttr.name)
-                            } 
-                            let isEqualRhs = rhs == parsedAttr.value
-                            if isEqualRhs == false {
-                                print("Failed: ID:", rhs, "!=", parsedAttr.value)
-                            } 
-                            return allEqual && isEqualLhs && isEqualRhs
+                    let allEqual = zip(idStmtArray, parsedAttrList).reduce(true) {
+                        switch ($0, $1.0.getTuple, $1.1) {
+                        case (let allEqual, let (nameID, _, valueID, _), let parsedAttr):                           
+                            return allEqual && nameID == parsedAttr.name && valueID == parsedAttr.value
                         }
                     }
                     return allEqual
@@ -70,20 +70,6 @@ class SwiftParseTests: XCTestCase {
                     return false
             }             
         }
-        
-//        property("a_list : ID '=' ID [ (';' | ',') ] [ a_list ]") <- forAll { (attrList: ArbitraryAttributeList) in
-//        
-//            let (result, _) = parse(P.attr_list, input: attrList.getAttributesString)
-//            switch(result) {
-//                case let .Some(attrs):
-//                    let isEqual = zip(attrList.idPairs, attrs).reduce(true) { (acc, ids) in
-//                        let ((idLhs, idRhs), attr) = ids
-//                        return acc && idLhs == attr.name && idRhs == attr.value
-//                    }
-//                    return isEqual
-//                case .None: return false
-//            }   
-//        }
     }
 }
 
