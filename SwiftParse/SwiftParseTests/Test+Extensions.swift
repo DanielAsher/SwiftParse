@@ -7,6 +7,16 @@
 //
 
 import Foundation
+import SwiftCheck
+/// Modifies a Generator such that it produces arrays with a length determined by the receiver's
+/// size parameter.
+extension Gen {
+    func proliferate(min min: Int, max: Int) -> Gen<[A]> {
+        return Gen<[A]>.sized({ n in
+            return Gen.choose((min, max)) >>- self.proliferateSized
+        })
+    }
+}
 
 func tuple2<T, U>(s1: T) (s2: U) -> (T, U) {
     return (s1, s2) 

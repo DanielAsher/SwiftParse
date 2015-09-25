@@ -37,16 +37,13 @@ class SwiftParseTests: XCTestCase {
             .fmap { (c: Character) in String(c) }
 
         let idStmtsGen = (A.ID + %"=" + A.ID + sep)
-            .fmap { TupleOf4($0) }.proliferateNonEmpty()
+            .fmap { TupleOf4($0) }.proliferate(min:2, max: 10)
             .fmap { ArrayOf($0) }
-            .suchThat { let n = $0.getArray.count; return 1 < n && n < 5 }
+                        
+        property("a_list : ID '=' ID [ (';' | ',') ] [ a_list ]") <- forAll(idStmtsGen) { 
+            
+            (idStmts: ArrayOf<TupleOf4<String, String, String, String>>) in
         
-        let withoutBackslashGuardThisFails = 
-            [("_44KrP___A090_12_9r12_U6_3Vu484z9R7__M0R34_3413R390807_89___hm0", "=", 
-              "\"ub3}Ú}fîÝÎvÄÕÀºb¡B?âÂPÄ\\\"¬¢T`×3lî&Ü ÿ.ÎyÆ¸)·«Ã¦ÒÁ#kKÓX-Î+ÛcÀø»eN*Q¡^iñ5´ ÙWÖ½BÚø×6¦b>ÔÛ\\\\\"", ";")]            
-                
-        property("a_list : ID '=' ID [ (';' | ',') ] [ a_list ]") 
-            <- forAll(idStmtsGen) { (idStmts: ArrayOf<TupleOf4<String, String, String, String>>) in
             let idStmtArray = idStmts.getArray
             guard idStmtArray.count > 0 else {return true}
             let attrStr = idStmtArray.reduce("") { str, id_stmt in
@@ -69,7 +66,6 @@ class SwiftParseTests: XCTestCase {
                 case .None: 
                     return false
             }             
-        }
     }
 }
 
