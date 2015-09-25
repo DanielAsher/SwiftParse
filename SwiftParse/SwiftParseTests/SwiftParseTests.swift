@@ -32,29 +32,12 @@ class SwiftParseTests: XCTestCase {
             return parse(P.ID, input: arbId.getID).0 == .Some(arbId.getID)
         }  
         
-        property("Can invoke forAllNoShrink with an argument list of type (Gen<[String]>, ([String]) -> Bool") 
-        <- forAllNoShrink(Gen.pure("0").proliferate()) { (zs: [String]) in
-            return true
-        }
-        
-        let pairGen  = Gen<(String, String)>.zip(Gen.pure("0"), Gen.pure("1")).proliferate()
-        
-        property("`0` and `1` are distinct") <- forAllNoShrink(pairGen) { (pairs: Array<(String, String)>) in
-            let areDistinct = pairs.reduce(true) { (acc, t) in
-                let (lhs, rhs) = t
-                return acc && lhs != rhs
-            }
-            return areDistinct
-        }
-        
         let sep : Gen<String> = Gen<Character>
             .fromElementsOf([";", ",", " "])
             .fmap { (c: Character) in String(c) }
 
         let idStmtsGen = (A.ID + %"=" + A.ID + sep).proliferateNonEmpty()
-        
-//        property("test repeated quotation"
-        
+                
         property("a_list : ID '=' ID [ (';' | ',') ] [ a_list ]") 
             <- forAllNoShrink(idStmtsGen) { (idStmts: Array<(String, String, String, String)>) in
             
@@ -72,11 +55,11 @@ class SwiftParseTests: XCTestCase {
                         case (let allEqual, let ((lhs, _, rhs, _), parsedAttr) ):
                             let isEqualLhs = lhs == parsedAttr.name
                             if isEqualLhs == false {
-                                print(lhs, parsedAttr.name)
+                                print("Failed: ID:", lhs, "!=", parsedAttr.name)
                             } 
                             let isEqualRhs = rhs == parsedAttr.value
                             if isEqualRhs == false {
-                                print(rhs, parsedAttr.value)
+                                print("Failed: ID:", rhs, "!=", parsedAttr.value)
                             } 
                             return allEqual && isEqualLhs && isEqualRhs
                         }

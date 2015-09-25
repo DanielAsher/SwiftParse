@@ -7,15 +7,22 @@
 //
 import Nimble
 import Quick
-@testable import func SwiftParse.parse
-@testable import struct SwiftParse.P
+@testable import SwiftParse
+//@testable import func SwiftParse.parse
+//@testable import struct SwiftParse.P
+
+
 
 class SwiftParseSpecs : QuickSpec {
     
     override func spec() {
         describe("Dot parser quoted string behaviour") {
-            it("Þ|K£Y0Î:äC%<Ü9Qè!D¦¨rÉMÔÎ}g×avÔ/Ð9XBg>­Aqöæ³ ÕÀëR#þ\";") {
-                expect(false)
+            it("handles multiple consecutive backslash and quotation marks") {
+                let quotedId = "\"\\\\\""
+                let (result, message) = parse(P.quotedId, input: quotedId, traceToConsole: true)
+                print(result, message)
+
+                expect(result).to(equal(quotedId))
             }
         }
     }

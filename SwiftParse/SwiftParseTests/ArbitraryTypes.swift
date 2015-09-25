@@ -42,7 +42,9 @@ struct ArbitraryID : Arbitrary
     static let quotedId = 
         String.arbitrary.suchThat { $0.count >= 1 }.fmap { 
             "\"" + 
-            $0.stringByReplacingOccurrencesOfString("\"", withString: "\\\"") 
+            $0
+            .stringByReplacingOccurrencesOfString("\\", withString: "\\\\") 
+            .stringByReplacingOccurrencesOfString("\"", withString: "\\\"")
             + "\"" }
     
     static let ID = (simpleID | decimal | quotedId)

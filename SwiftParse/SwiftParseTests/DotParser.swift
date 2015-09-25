@@ -51,7 +51,7 @@ public struct P {
     static let number = %"." & digit+^ | (digit+^ & (%"." & digit*^)|?)
     static let decimal = (%"-")|? & number
     
-    static let quotedChar   = %"\\\"" | not("\"") 
+    static let quotedChar   = %"\\\"" | %"\\\\" | not("\"") 
     static let quotedId     = %"\"" & quotedChar+^ & %"\""
     static let ID           = (simpleId | decimal | quotedId) |> P.token
     static let id_equality  = ID ++ £"=" ++ ID ++ sep

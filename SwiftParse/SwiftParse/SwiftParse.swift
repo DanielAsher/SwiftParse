@@ -22,35 +22,34 @@ var indentCount = 0
 let indent :  () -> String = { String(count: indentCount, repeatedValue: Character("\t")) }
 let padCount : () -> Int = { 50 - indentCount * 3 }
 
-public var SwiftxTrace = false
+public var SwiftParseTrace = false
 
 public func tracePrint(message: String, caller: String = __FUNCTION__, line: Int = __LINE__) {
-    if SwiftxTrace {
+    if SwiftParseTrace {
         let line = "\(line)".padding(6)
         let str = (line + caller + indent()).padding(padCount()) + message
         print(str)
     }
 }
+
 public func trace<I: CollectionType, T>
     (caller: String = __FUNCTION__, line: Int = __LINE__)
     (_ parser: 𝐏<I, T>.𝒇)
     -> 𝐏<I, T>.𝒇
 {
+    guard SwiftParseTrace == true else { return parser }
     let line = "\(line)".padding(6)
     
     return { xs, xi in
-        if SwiftxTrace {
-            print((line + ": \"\(xs)\" ; \(xi)".padding(40) + indent() + "🔜  " + caller))
-        }
+        print((line + ": \"\(xs)\" ; \(xi)".padding(40) + indent() + "🔜  " + caller))
         indentCount++
         let (ys, yi) = try parser(xs, xi) 
         indentCount--
-        if SwiftxTrace {
-            print((line + ": \"\(xs)\" -> \"\(ys)\"; \(xi) ->  \(yi)".padding(40) + indent() + "🔚  " + caller))
-        }
+        print((line + ": \"\(xs)\" -> \"\(ys)\"; \(xi) ->  \(yi)".padding(40) + indent() + "🔚  " + caller))
         return (ys, yi) 
     }
 }
+
 /*: 
 `pure` returns a parser which always ignores its input and produces a constant value.
 */
@@ -87,11 +86,13 @@ public func <^> <I: CollectionType, T, U>
 {
     return { input, index in 
         
-        let dbg1  = { (p: 𝐏<I, T>.𝒇) in trace("<^> p(\"\(input)\", \(index)) ")(p) }
+        //let dbg1  = { (p: 𝐏<I, T>.𝒇) in trace("<^> p(\"\(input)\", \(index)) ")(p) } // Expensive call to string interpolation
+        let dbg1  = { (p: 𝐏<I, T>.𝒇) in trace()(p) }
         
         let (result, newIndex) = try dbg1(parser)(input, index)
         
-        let dbg2 =  { (p: 𝐏<I, U>.𝒇) in trace("<^> pure(f(\"\(result)\"))(\"\(input)\", \(newIndex))")(p) }
+        //let dbg2 =  { (p: 𝐏<I, U>.𝒇) in trace("<^> pure(f(\"\(result)\"))(\"\(input)\", \(newIndex))")(p) } // Expensive call to string interpolation
+        let dbg2 =  { (p: 𝐏<I, U>.𝒇) in trace()(p) }
         
         return try dbg2 (pure(transform(result))) (input, newIndex)
     }
@@ -191,9 +192,10 @@ public func not(literal: String) ->  𝐏<String, String>.𝒇 {
         let matchEnd = index.advancedBy(literalRange.count, limit: input.endIndex)
         
         if input[index ..< matchEnd].elementsEqual(literal[literalRange]) {
-            tracePrint("\t\t❗️ \"\(literal)\" \(matchEnd)")
+            tracePrint("\t\tnot \"\(literal)\" \(matchEnd)")
             throw ParserError<String>.Error(message: "did not expected \"\(literal)\" at offset:\(index)", index: index)
         } else {
+            tracePrint("\t\tnot \"\(literal)\" \(matchEnd)")
             return (input[index..<index.advancedBy(1, limit: input.endIndex)], index.successor())        
         }
     }
@@ -288,34 +290,26 @@ public protocol Addable { func +(lhs: Self, rhs: Self) -> Self }
 extension String : Addable {}
 public protocol DefaultConstructible { init() }
 extension String : DefaultConstructible {}
-infix operator +=+ { associativity right precedence 160}
-public func +=+ <I: CollectionType, T where T: Addable> (
-    lhs: 𝐏<I, T >.𝒇,
-    rhs: 𝐏<I, T >.𝒇)
-      -> 𝐏<I, T >.𝒇 
-{
-    return lhs >>- { x in { y in x + y } <^> rhs }
-}
 public func & <I: CollectionType, T where T: Addable> (
     lhs: 𝐏<I, T>.𝒇,
     rhs: 𝐏<I, T>.𝒇)
       -> 𝐏<I, T>.𝒇 
 {
-    return lhs >>- { x in { y in x + y } <^> rhs }
+    return lhs >>- { x in { y in x + y } <^> rhs } |> trace("T & T")
 }
 public func & <I: CollectionType, T where T: Addable> (
     lhs: 𝐏<I, T?>.𝒇,
     rhs: 𝐏<I, T>.𝒇)
       -> 𝐏<I, T>.𝒇 
 {
-    return lhs >>- { x in { y in x == nil ? y : x! + y } <^> rhs }
+    return lhs >>- { x in { y in x == nil ? y : x! + y } <^> rhs } |> trace("T? & T")
 }
 public func & <I: CollectionType, T where T: Addable> (
     lhs: 𝐏<I, T>.𝒇,
     rhs: 𝐏<I, T?>.𝒇)
       -> 𝐏<I, T>.𝒇 
 {
-    return lhs >>- { x in { y in y == nil ? x : x + y! } <^> rhs }
+    return lhs >>- { x in { y in y == nil ? x : x + y! } <^> rhs } |> trace("T & T?")
 }
 //: Helpers decrements `x` iff it is not equal to `Int.max`.
 private func decrement(x: Int) -> Int {
@@ -443,7 +437,7 @@ public prefix func %
     (collection: I, index: I.Index) throws -> (match: I, forwardIndex: I.Index)
 {
     let literalRange = literal.startIndex ..< literal.endIndex
-    
+    tracePrint("input: \(collection), literal = \(literal), literal.count = \(literalRange.count)")
     let matchEnd = index.advancedBy(literalRange.count, limit: collection.endIndex)
     
     if collection[index ..< matchEnd].elementsEqual(literal[literalRange]) {
@@ -504,8 +498,10 @@ public func ignore(string: String) -> 𝐏<String, Ignore>.𝒇 {
 }
 //: `parse` function. takes a `parser` and `input` and produces a `Tree?`
 public func parse <Input: CollectionType, Tree> 
-    (parser: 𝐏 <Input, Tree>.𝒇, input:  Input) -> (Tree?, String)
+    (parser: 𝐏 <Input, Tree>.𝒇, input:  Input, traceToConsole: Bool = false) -> (Tree?, String)
 {
+    let lastState = SwiftParseTrace; defer { SwiftParseTrace = lastState }
+    if traceToConsole { SwiftParseTrace = true }
     do {
         let (result, idx) = try trace() (parser)(input, input.startIndex)
         return (result, "result: \(result); lastIndex: \(idx); input.endIndex: \(input.endIndex)")
