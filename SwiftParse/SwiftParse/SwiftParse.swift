@@ -117,20 +117,21 @@ public func <*> <I: CollectionType, T, U>(
 }
 infix operator <* { associativity left precedence 130 }
 public func <* <I: CollectionType, T, U> 
-    (p1: 𝐏<I, T>.𝒇, 
-     p2: 𝐏<I, U>.𝒇) 
-      -> 𝐏<I, T>.𝒇 
+    (lhs: 𝐏<I, T>.𝒇, 
+     rhs: 𝐏<I, U>.𝒇) 
+      -> 𝐏<I, U>.𝒇 
 {
-    return p1 ++ p2 |> map { $0.0 }
+    return lhs >>- { x in { y in y } <^> rhs }
+//    return p1 ++ p2 |> map { $0.0 }
 }
 
 infix operator *> { associativity left precedence 130 }
 public func *> <I: CollectionType, T, U> 
-    (p1: 𝐏<I, T>.𝒇, 
-     p2: 𝐏<I, U>.𝒇) 
-      -> 𝐏<I, U>.𝒇 
+    (lhs: 𝐏<I, T>.𝒇, 
+     rhs: 𝐏<I, U>.𝒇) 
+      -> 𝐏<I, T>.𝒇 
 {
-    return p1 ++ p2 |> map { $0.1 }
+    return lhs >>- { x in { y in x } <^> rhs }
 }
 
 //: `ParserError`
@@ -277,15 +278,6 @@ public func ++ <I: CollectionType, T> (
         |> trace("++ (Ignore, T)\t:")
 }
 
-infix operator +- { associativity right precedence 160 }
-public func +- <I: CollectionType, T, U> (
-    lhs: 𝐏<I, T>.𝒇,
-    rhs: 𝐏<I, U>.𝒇)
-      -> 𝐏<I, T>.𝒇
-{
-    return lhs >>- { x in { y in x } <^> rhs }
-}
-
 public protocol Addable { func +(lhs: Self, rhs: Self) -> Self }
 extension String : Addable {}
 public protocol DefaultConstructible { init() }
@@ -427,6 +419,12 @@ public postfix func +^ <I: CollectionType, T where T: Addable, T: DefaultConstru
 {
     return parser * (1...Int.max) |> map { $0.reduce(T(), combine: (+)) }
 }
+//public postfix func +^ <I: CollectionType, T where T: CollectionType, T: DefaultConstructible> 
+//    (parser: 𝐏<I, T >.𝒇) 
+//    -> 𝐏<I,T>.𝒇 
+//{
+//    return parser * (1...Int.max) |> map { $0.flatMap { $0 } }
+//}
 //: Creates a parser from `string`, and parses it 0 or more times.
 prefix operator % { }
 public prefix func %

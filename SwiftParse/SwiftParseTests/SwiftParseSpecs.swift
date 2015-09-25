@@ -19,7 +19,7 @@ class SwiftParseSpecs : QuickSpec {
         describe("Dot parser quoted string behaviour") {
             it("handles multiple consecutive backslash and quotation marks") {
                 let quotedId = "\"\\\\\""
-                let (result, message) = parse(P.quotedId, input: quotedId, traceToConsole: true)
+                let (result, message) = parse(P.quotedId, input: quotedId)
                 print(result, message)
 
                 expect(result).to(equal(quotedId))
