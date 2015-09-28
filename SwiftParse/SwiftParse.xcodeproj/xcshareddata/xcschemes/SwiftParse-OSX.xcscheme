@@ -51,6 +51,14 @@
                BlueprintName = "SwiftParse-OSXTests"
                ReferencedContainer = "container:SwiftParse.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "SwiftParseSpecs/Dot_parser_quoted_string_behaviour__handles_multiple_consecutive_backslash_and_quotation_marks_UsersDanielDocumentsDevLatestSwiftReferenceAppModulesSwiftParseSwiftParseSwiftParseTestsSwiftParseSpecsswift_20()">
+               </Test>
+               <Test
+                  Identifier = "SwiftParseTests/testAll()">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>

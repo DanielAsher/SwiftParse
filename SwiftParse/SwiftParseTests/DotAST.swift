@@ -6,30 +6,30 @@
 //  Copyright © 2015 StoryShare. All rights reserved.
 //
 //: Syntax Tree Types
-typealias ID = String
+public typealias ID = String
 
-struct Attribute {
+public struct Attribute {
     let name: String
     let value: String
 }
 
-enum TargetType : String {
+public enum TargetType : String {
     case Graph  = "graph"
     case Node   = "node"
     case Edge   = "edge"
 }
 
-enum EdgeOp : String {
+public enum EdgeOp : String {
     case Directed   = "->"
     case Undirected = "--"   
 }
 
-struct EdgeRHS {
+public struct EdgeRHS {
     let edgeOp : EdgeOp
     let target : ID
 }
 
-enum Statement {
+public enum Statement {
     case Node(id: ID, attributes: [Attribute])
     case Edge(source: ID, edgeRHS: [EdgeRHS], attributes: [Attribute])
     case Attr(target: TargetType, attributes: [Attribute])
@@ -37,19 +37,19 @@ enum Statement {
     case Subgraph(id: ID?, stmts: [Statement])
 }
 //: ## Root `Graph`
-enum GraphType : String {
+public enum GraphType : String {
     case Directed       = "digraph"
     case Undirected     = "graph"
 }
 
-struct Graph {
+public struct Graph {
     let type        : GraphType
     let id          : String?
     let stmt_list   : [Statement]
 }
 //: Printable `extensions`
 
-extension Statement {
+public extension Statement {
     var toString : String {
         switch self {
         case let Node(id, attrs): 
@@ -67,7 +67,7 @@ extension Statement {
 }
 
 extension Graph {
-    var toString : String {
+    public var toString : String {
         let id = self.id ?? ""
         let stmts_render = self.stmt_list.reduce("") 
             { str, stmt -> String in
@@ -78,31 +78,31 @@ extension Graph {
 }
 
 extension Attribute : CustomStringConvertible {
-    var description : String {
+    public var description : String {
         return "\(name) = \(value)"
     }
 }
 
 extension TargetType : CustomStringConvertible {
-    var description: String {
+    public var description: String {
         return self.rawValue
     }
 }
 
 extension EdgeOp : CustomStringConvertible {
-    var description : String {
+    public var description : String {
         return self.rawValue
     }
 }
 
 extension EdgeRHS : CustomStringConvertible {
-    var description: String {
+    public var description: String {
         return "\(edgeOp.rawValue) \(target)"
     }
 }
 
 extension Statement : CustomStringConvertible {
-    var description : String {
+    public var description : String {
         switch self {
         case Node(let id, let xs): return "Node ( \(id), \(xs) )\n"
         case Edge(let src, let es, let xs): return "Edge ( \(src), \(es), \(xs) )\n"
@@ -114,16 +114,16 @@ extension Statement : CustomStringConvertible {
     }
 }
 
-typealias StatementsParser = 𝐏<String, [Statement]>.𝒇
+public typealias StatementsParser = 𝐏<String, [Statement]>.𝒇
 
 extension GraphType : CustomStringConvertible {
-    var description : String {
+    public var description : String {
         return self.rawValue
     }
 }
 
 extension Graph : CustomStringConvertible {
-    var description : String {
+    public var description : String {
         let idstr = self.id ?? ""
         return "Graph ( type: \"\(self.type)\", id: \"\(idstr)\", stmt_list: \n\t\(self.stmt_list) )"
     }

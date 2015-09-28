@@ -11,7 +11,11 @@
 ## `𝒇 : (Input, Input.Index) throws -> (Tree, Input.Index)`
 */
 
-import Swiftx
+import func Swiftx.identity
+import func Swiftx.const
+import func Swiftx.|>
+import enum Swiftx.Either
+
 
 public enum 𝐏 < Input: CollectionType, Tree> {
     public typealias 𝒇 = (Input, Input.Index) throws -> Result
@@ -35,7 +39,7 @@ public func tracePrint(message: String, caller: String = __FUNCTION__, line: Int
 public func trace<I: CollectionType, T>
     (caller: String = __FUNCTION__, line: Int = __LINE__)
     (_ parser: 𝐏<I, T>.𝒇)
-    -> 𝐏<I, T>.𝒇
+            -> 𝐏<I, T>.𝒇
 {
     guard SwiftParseTrace == true else { return parser }
     let line = "\(line)".padding(6)
@@ -62,6 +66,22 @@ public func pure<I: CollectionType, T>
 ## `>>-` : The fundamental operator `bind`
 */
 infix operator >>- {  associativity left precedence 130 }
+infix operator <*> { associativity left precedence 130 }
+infix operator <* { associativity left precedence 130 }
+infix operator *> { associativity left precedence 130 }
+//: `++` associates to the right, linked-list style. Higher precedence than `|.`
+infix operator ++ { associativity right precedence 160 }
+//: Map operator. Lower precedence than |.
+infix operator --> { associativity left precedence 100 }
+
+prefix operator % {}
+postfix operator |? {}  //: `|?` is the optionality operator.
+postfix operator *^ {}
+postfix operator +^ {}
+
+
+
+
 /*: 
 ## Bind: 
 `>>-` defines `𝐏<I, *>.𝒇` as monadic
@@ -69,8 +89,7 @@ infix operator >>- {  associativity left precedence 130 }
 public func >>- <I: CollectionType, T, U> 
     (
     parser:     𝐏<I, T>.𝒇, 
-    transform:  T -> 𝐏<I, U>.𝒇) 
-                -> 𝐏<I, U>.𝒇 
+    transform:  T -> 𝐏<I, U>.𝒇) -> 𝐏<I, U>.𝒇 
 {
     return { input, index in
         let (result, newIndex) = try trace(">>- p(\"\(input)\", \(index)) ")(parser)(input, index) 
@@ -107,7 +126,6 @@ public func map<I: CollectionType, T, U>
     return transform <^> parser |> trace() 
 }
 
-infix operator <*> { associativity left precedence 130 }
 public func <*> <I: CollectionType, T, U>(
     fp: 𝐏<I, T->U>.𝒇,
     p:  𝐏<I, T>.𝒇) 
@@ -115,21 +133,18 @@ public func <*> <I: CollectionType, T, U>(
 {
     return fp >>- { $0 <^> p }
 }
-infix operator <* { associativity left precedence 130 }
 public func <* <I: CollectionType, T, U> 
     (lhs: 𝐏<I, T>.𝒇, 
      rhs: 𝐏<I, U>.𝒇) 
-      -> 𝐏<I, U>.𝒇 
+       -> 𝐏<I, U>.𝒇 
 {
     return lhs >>- { x in { y in y } <^> rhs }
-//    return p1 ++ p2 |> map { $0.0 }
 }
 
-infix operator *> { associativity left precedence 130 }
 public func *> <I: CollectionType, T, U> 
     (lhs: 𝐏<I, T>.𝒇, 
      rhs: 𝐏<I, U>.𝒇) 
-      -> 𝐏<I, T>.𝒇 
+       -> 𝐏<I, T>.𝒇 
 {
     return lhs >>- { x in { y in x } <^> rhs }
 }
@@ -144,8 +159,6 @@ public enum ParserError<Input: CollectionType> : ErrorType {
 public struct Ignore {
     public init() {}
 }
-//: `|?` is the optionality operator.
-postfix operator |? {}
 //: `|?` parses T zero or one time to return T?
 public postfix func |? <I: CollectionType, T> 
     (parser: 𝐏<I, T>.𝒇) 
@@ -248,8 +261,6 @@ func first<I: CollectionType>(input: I) -> I.Generator.Element? {
 }
 //: ## Concatenation:
 //: Concatenation operator. 
-//: `++` associates to the right, linked-list style. Higher precedence than `|.`
-infix operator ++ { associativity right precedence 160 }
 //: `++` parses the concatenation of `lhs` and `rhs`, pairing their parse trees in tuples of `(T, U)`
 public func ++ <I: CollectionType, T, U> (
     lhs: 𝐏<I, T>.𝒇, 
@@ -365,35 +376,27 @@ public func * <I: CollectionType, T>
     interval:   HalfOpenInterval<Int>) 
     -> 𝐏<I,[T]>.𝒇 
 {
-    guard interval.isEmpty == false else 
-    { 
-        return 
-            { throw ParserError<I>.Error(
-                message: "cannot parse an empty interval of repetitions", 
-                index: $1) 
-        } 
+    guard interval.isEmpty == false else { 
+        return { throw ParserError<I>.Error(
+                message: "cannot parse an empty interval of repetitions", index: $1) } 
     }
     
     return parser * (interval.start...decrement(interval.end))
 }
 //: Parses `parser` 0 or more times.
-public postfix func * <I: CollectionType, T> 
-    (parser: 𝐏<I, T >.𝒇) 
-    -> 𝐏<I,[T]>.𝒇 
+public postfix func * <I: CollectionType, T> (parser: 𝐏<I, T >.𝒇) -> 𝐏<I,[T]>.𝒇 
 {
-    return parser * (0..<Int.max)
+    return parser * (0..<Int.max) |> trace()
 }
 // `*` parses a `literal: String` zero or more times
 public postfix func * (literal: String) -> 𝐏<String, [String]>.𝒇 
 {
-    return %(literal) * (0..<Int.max)
+    return %(literal) * (0..<Int.max) |> trace()
 }
 //: Parses `parser` 1 or more times.
-public postfix func + <C: CollectionType, T> 
-    (parser: 𝐏<C, T>.𝒇) 
-    -> 𝐏<C,[T]>.𝒇 
+public postfix func + <C: CollectionType, T> (parser: 𝐏<C, T>.𝒇) -> 𝐏<C,[T]>.𝒇 
 {
-    return parser * (1..<Int.max)
+    return trace() (parser * (1..<Int.max))
 }
 //: Creates a parser from `string`, and parses it 1 or more times.
 public postfix func + (string: String) -> 𝐏<String, [String]>.𝒇 {
@@ -404,7 +407,6 @@ public postfix func + <C: CollectionType> (parser: 𝐏<C, Ignore>.𝒇) -> 𝐏
     return ignore(parser * (1..<Int.max))
 }
 //: Parses `parser` 0 or more times.
-postfix operator *^ { }
 public postfix func *^ <I: CollectionType, T where T: Addable, T: DefaultConstructible> 
     (parser: 𝐏<I, T >.𝒇) 
     -> 𝐏<I,T>.𝒇 
@@ -412,7 +414,6 @@ public postfix func *^ <I: CollectionType, T where T: Addable, T: DefaultConstru
     return parser * (0...Int.max) |> map { $0.reduce(T(), combine: (+)) }
 }
 //: Parses `parser` 0 or more times.
-postfix operator +^ { }
 public postfix func +^ <I: CollectionType, T where T: Addable, T: DefaultConstructible> 
     (parser: 𝐏<I, T >.𝒇) 
     -> 𝐏<I,T>.𝒇 
@@ -426,7 +427,6 @@ public postfix func +^ <I: CollectionType, T where T: Addable, T: DefaultConstru
 //    return parser * (1...Int.max) |> map { $0.flatMap { $0 } }
 //}
 //: Creates a parser from `string`, and parses it 0 or more times.
-prefix operator % { }
 public prefix func %
     <I: CollectionType where 
     I.Generator.Element : Equatable,
@@ -467,8 +467,6 @@ public prefix func % <I: IntervalType where I.Bound == Character>
     } |> trace("% \(interval):")
 }
 
-//: Map operator. Lower precedence than |.
-infix operator --> { associativity left precedence 100 }
 //: Returns a parser which maps parse trees into another type.
 public func --> <I: CollectionType, T, U>(
     parser:    𝐏<I, T>.𝒇, 
@@ -502,6 +500,7 @@ public func parse <Input: CollectionType, Tree>
     if traceToConsole { SwiftParseTrace = true }
     do {
         let (result, idx) = try trace() (parser)(input, input.startIndex)
+        guard idx == input.endIndex else { throw ParserError<Input>.Error(message: "Finished parsing before end of input", index: idx) }
         return (result, "result: \(result); lastIndex: \(idx); input.endIndex: \(input.endIndex)")
     } catch ParserError<Input>.Error(let msg, let idx) {
         return (nil, "\(idx): \(msg) ")

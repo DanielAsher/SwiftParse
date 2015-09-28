@@ -1,0 +1,3 @@
+digraph SimpleGraph {
+    Hello -> World
+}
