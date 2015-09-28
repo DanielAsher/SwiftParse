@@ -20,7 +20,6 @@
 		6513C7BE1BA2921900912A7C /* ArbitraryTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6513C7951BA17B0F00912A7C /* ArbitraryTypes.swift */; settings = {ASSET_TAGS = (); }; };
 		6513C7C01BA2922E00912A7C /* Test+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6513C7971BA1D1CC00912A7C /* Test+Extensions.swift */; settings = {ASSET_TAGS = (); }; };
 		6529F20D1BA06C24009D79BC /* Swiftx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6529F2061BA06B97009D79BC /* Swiftx.framework */; };
-		6529F20F1BA06C3D009D79BC /* SwiftCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6529F20E1BA06C3D009D79BC /* SwiftCheck.framework */; };
 		6529F2111BA06CB6009D79BC /* Global+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6529F2101BA06CB6009D79BC /* Global+Ext.swift */; settings = {ASSET_TAGS = (); }; };
 		653AC5791BB00D0000250A7C /* Test+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653AC5681BB00BB700250A7C /* Test+Operators.swift */; settings = {ASSET_TAGS = (); }; };
 		653AC57A1BB00D0200250A7C /* Test+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653AC5681BB00BB700250A7C /* Test+Operators.swift */; settings = {ASSET_TAGS = (); }; };
@@ -182,7 +181,6 @@
 		6513C7B11BA28BBA00912A7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6513C7C11BA2A0FA00912A7C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		6529F1FD1BA06B97009D79BC /* Swiftx.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Swiftx.xcodeproj; path = ../Modules/Swiftx/Swiftx.xcodeproj; sourceTree = "<group>"; };
-		6529F20E1BA06C3D009D79BC /* SwiftCheck.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftCheck.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/SwiftParse-dzaanzbagqhpmrgzhhywvcujoden/Build/Products/Debug/SwiftCheck.framework"; sourceTree = "<group>"; };
 		6529F2101BA06CB6009D79BC /* Global+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Global+Ext.swift"; sourceTree = "<group>"; };
 		653AC5681BB00BB700250A7C /* Test+Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Test+Operators.swift"; sourceTree = "<group>"; };
 		653AC5811BB0331900250A7C /* SwiftParseSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftParseSpecs.swift; sourceTree = "<group>"; };
@@ -207,7 +205,6 @@
 			files = (
 				65E97E301BAC4301007E2B6D /* Quick.framework in Frameworks */,
 				65E97E2F1BAC4259007E2B6D /* Nimble.framework in Frameworks */,
-				6529F20F1BA06C3D009D79BC /* SwiftCheck.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,7 +232,6 @@
 		6507225C1B9F6A9800214138 = {
 			isa = PBXGroup;
 			children = (
-				65FD85AE1BB551DB008089E4 /* SwiftCheck.framework */,
 				6513C7C11BA2A0FA00912A7C /* README.md */,
 				6513C79A1BA289CE00912A7C /* .travis.yml */,
 				6529F1FC1BA06B80009D79BC /* Dependencies */,
@@ -314,8 +310,8 @@
 			children = (
 				65830C4B1BA56BA7004433B5 /* Nimble.xcodeproj */,
 				65830C321BA56AF9004433B5 /* Quick.xcodeproj */,
-				6529F20E1BA06C3D009D79BC /* SwiftCheck.framework */,
 				6529F1FD1BA06B97009D79BC /* Swiftx.xcodeproj */,
+				65FD85AE1BB551DB008089E4 /* SwiftCheck.framework */,
 			);
 			name = Dependencies;
 			sourceTree = "<group>";
