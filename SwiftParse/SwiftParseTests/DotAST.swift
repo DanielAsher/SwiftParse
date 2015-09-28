@@ -13,7 +13,7 @@ public struct Attribute {
     let value: String
 }
 
-public enum TargetType : String {
+public enum AttributeType : String {
     case Graph  = "graph"
     case Node   = "node"
     case Edge   = "edge"
@@ -32,9 +32,23 @@ public struct EdgeRHS {
 public enum Statement {
     case Node(id: ID, attributes: [Attribute])
     case Edge(source: ID, edgeRHS: [EdgeRHS], attributes: [Attribute])
-    case Attr(target: TargetType, attributes: [Attribute])
+    case Attr(target: AttributeType, attributes: [Attribute])
     case Property(Attribute)
     case Subgraph(id: ID?, stmts: [Statement])
+}
+
+// Evaluate `Term`, which allows for edge's to support subgraphs, e.g. (node_id | subgraph) EdgeRHS
+public enum Term {
+    case NodeId(id: ID)
+    case NodeStmt(id: ID, attributes: [Attribute])
+    case AttrStmt(target: AttributeType, attributes: [Attribute])
+    case IdEquality(Attribute)
+    case Subgraph(id: ID?, stmts: [Term])
+    // edgeRHS	:	edgeop (node_id | subgraph) [ edgeRHS ]
+    indirect case EdgeRHS(edgeOp: EdgeOp, target: Term)
+    // edge_stmt	:	(node_id | subgraph) edgeRHS [ attr_list ]
+    indirect case Edge(source: Term, edgeRHS: [Term], attributes: [Attribute])
+
 }
 //: ## Root `Graph`
 public enum GraphType : String {
@@ -83,7 +97,7 @@ extension Attribute : CustomStringConvertible {
     }
 }
 
-extension TargetType : CustomStringConvertible {
+extension AttributeType : CustomStringConvertible {
     public var description: String {
         return self.rawValue
     }

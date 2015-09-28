@@ -40,7 +40,8 @@ class SwiftParseTests: XCTestCase {
             .fmap { TupleOf4($0) }.proliferate(min:2, max: 10)
             .fmap { ArrayOf($0) }
                         
-        property("a_list : ID '=' ID [ (';' | ',') ] [ a_list ]") <- forAll(idStmtsGen) { 
+        // "a_list : ID '=' ID [ (';' | ',') ] [ a_list ]"
+        property("attr_list: '[' [ a_list ] ']' [ attr_list ]") <- forAll(idStmtsGen) { 
             
             (idStmts: ArrayOf<TupleOf4<String, String, String, String>>) in
         
@@ -77,6 +78,16 @@ class SwiftParseTests: XCTestCase {
                 case .None: 
                     return false
             }
+        }
+    
+    property("edge_stmt: (node_id | subgraph) edgeRHS [ attr_list ]") <- forAll { (str: String) in
+        
+            return false
+        }
+    
+    property("graph") <- forAll { (str: String) in
+    
+            return false 
         }
     }
 }

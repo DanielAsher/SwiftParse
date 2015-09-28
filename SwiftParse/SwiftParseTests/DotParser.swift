@@ -46,15 +46,16 @@ public struct Dot {
     
     static let quotedChar   = %"\\\"" | %"\\\\" | not("\"") 
     static let quotedId     = %"\"" & quotedChar+^ & %"\""
-    public static let ID           = (simpleId | decimal | quotedId) |> Dot.token
-    public static let id_equality  = ID ++ ¡"="§ ++ ID ++ ¡sep|? |> map { Attribute(name: $0, value: $1) }
+    public static let ID            = (simpleId | decimal | quotedId) |> Dot.token
+    public static let id_equality   = ID ++ ¡"="§ ++ ID ++ ¡sep|? |> map { Attribute(name: $0, value: $1) }
+    public static let id_stmt       = id_equality |> map { Statement.Property($0) }
     
-    public static let attr_list    = (§"[" <* id_equality+ *> "]"§)+ |> map { $0.flatMap { $0 } }
-    public static let node_id      = ID
-    public static let edgeop       = §"->" | "--"§ |> map { EdgeOp(rawValue: $0)! }
+    public static let attr_list     = (§"[" <* id_equality+ *> "]"§)+ |> map { $0.flatMap { $0 } }
+    public static let node_id       = ID // FIXME: Add port
+    public static let edgeop        = §"->" | "--"§ |> map { EdgeOp(rawValue: $0)! }
     
     public static let attr_target = §"graph" | §"node" | §"edge"
-        |> map { TargetType(rawValue: $0)! }
+        |> map { AttributeType(rawValue: $0)! }
         
     public static let attr_stmt = attr_target ++ attr_list
         |> map { t, xs in Statement.Attr(target: t, attributes: xs) }
@@ -73,8 +74,6 @@ public struct Dot {
         |> map { (s, es) in Statement.Edge(source: s, edgeRHS: es.0, attributes: es.1) }
         
     public static let stmt_list : StatementsParser = fixt { stmt_list in
-        
-        let id_stmt = id_equality |> map { Statement.Property($0) }
         
         let subgraph_id =  §"subgraph" ++ ID|? |> map { $1 }
         
