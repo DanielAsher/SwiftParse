@@ -1,6 +1,7 @@
 //: Playground - noun: a place where people can play
 import Cocoa
 import SwiftParse
+import func Swiftx.fixt
 
 let lower       = %%("a"..."z")
 let upper       = %%("A"..."Z")
@@ -16,12 +17,20 @@ let quotedId    = %%"\"" & quotedChar+^ & %%"\""
 let ID          = simpleId | decimal | quotedId
 let sep         = %%";" | %%"," | %%" "
 
-let id_equality = ID ++ %%"=" +++ ID +++ sep|?
-let attr_list   = %%"[" ++ id_equality+ ++ %%"]"
+let id_equality = ID ++ %%"=" ++ ID ++^ sep|?
+let attr_list   = %%"[" ++ id_equality+ ++^ %%"]"
+let node_id     = ID
+let edgeop      = %%"->" | %%"--"
+let attr_target = %%"graph" | %%"node" | %%"edge"
+let attr_stmt   = attr_target ++ attr_list
+let node_stmt   = node_id ++ attr_list
 
-attr_list.gen.generate
+node_stmt.gen.generate
 
 
+let stmt_list : Int throws -> Int = fixt { stmt_list in
+    return stmt_list
+}
 
 
 

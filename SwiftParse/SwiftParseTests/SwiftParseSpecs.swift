@@ -46,7 +46,7 @@ class SwiftParseSpecs : QuickSpec {
                 let ID          = simpleId | decimal | quotedId
                 let sep         = %%";" | %%"," | %%" "
                 
-                let id_equality = ID ++ %%"=" +++ ID +++ sep|?
+                let id_equality = ID ++ %%"=" ++^ ID ++^ sep|?
                 let attr_list   = %%"[" ++ id_equality+ ++ %%"]"
                 
                 print(attr_list.gen.generate)

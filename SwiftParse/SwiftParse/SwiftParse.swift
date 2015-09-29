@@ -92,8 +92,7 @@ infix operator <* { associativity left precedence 130 }
 infix operator *> { associativity left precedence 130 }
 //: `++` associates to the right, linked-list style. Higher precedence than `|.`
 infix operator ++ { associativity right precedence 160 }
-infix operator +++ {associativity left precedence 150}
-infix operator ++++ {associativity left precedence 140}
+infix operator ++^ {associativity left precedence 150}
 //: Map operator. Lower precedence than |.
 infix operator --> { associativity left precedence 100 }
 
@@ -363,10 +362,10 @@ public func ++ <I: CollectionType, T> (
 public func ++ <T, U> (lhs: Parser<T>, rhs: Parser<U>) -> Parser<(T, U)>{
     return lhs >>- { x in { y in (x,y) } <^> rhs}
 }
-public func +++ <T,U,V> (lhs: Parser<(T,U)>, rhs: Parser<V>) -> Parser<(T,U,V)>{
+public func ++^ <T,U,V> (lhs: Parser<(T,U)>, rhs: Parser<V>) -> Parser<(T,U,V)>{
     return lhs >>- { (t,u) in { v in (t,u,v) } <^> rhs }
 }
-public func +++ <T,U,V,W> (lhs: Parser<(T,U,V)>, rhs: Parser<W>) -> Parser<(T,U,V,W)>{
+public func ++^ <T,U,V,W> (lhs: Parser<(T,U,V)>, rhs: Parser<W>) -> Parser<(T,U,V,W)>{
     return lhs >>- { (t,u,v) in { w in (t,u,v,w) } <^> rhs }
 }
 //: Parses the concatenation of `lhs` and `rhs`, dropping `lhs`’s parse tree generating `T`
@@ -528,7 +527,10 @@ public postfix func + <C: CollectionType, T> (parser: 𝐏<C, T>.𝒇) -> 𝐏<C
 }
 public postfix func + <T> (parser: Parser<T>) -> Parser<[T]> 
 {
-    return parser * (1..<Int.max)
+    return Parser<[T]>(
+        fun: parser.fun * (1..<Int.max),
+        gen: parser.gen.proliferateNonEmpty()
+        )
 }
 //: Creates a parser from `string`, and parses it 1 or more times.
 public postfix func + (string: String) -> 𝐏<String, [String]>.𝒇 {
