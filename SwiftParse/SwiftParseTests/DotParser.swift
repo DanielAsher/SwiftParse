@@ -44,8 +44,8 @@ public struct Dot {
     static let number   = %"." & digit+^ | (digit+^ & (%"." & digit*^)|?)
     static let decimal  = (%"-")|? & number
     
-    static let quotedChar   = %"\\\"" | %"\\\\" | not("\"") 
-    static let quotedId     = %"\"" & quotedChar+^ & %"\""
+    static let quotedChar           = %"\\\"" | %"\\\\" | not("\"") 
+    static let quotedId             = %"\"" & quotedChar+^ & %"\""
     public static let ID            = (simpleId | decimal | quotedId) |> Dot.token
     public static let id_equality   = ID ++ ¡"="§ ++ ID ++ ¡sep|? |> map { Attribute(name: $0, value: $1) }
     public static let id_stmt       = id_equality |> map { Statement.Property($0) }

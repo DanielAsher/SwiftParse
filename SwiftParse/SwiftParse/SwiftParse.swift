@@ -10,7 +10,7 @@
 ## let `𝒇` be the parser computation:
 ## `𝒇 : (Input, Input.Index) throws -> (Tree, Input.Index)`
 */
-
+import SwiftCheck
 import func Swiftx.identity
 import func Swiftx.const
 import func Swiftx.|>
@@ -22,6 +22,27 @@ public enum 𝐏 < Input: CollectionType, Tree> {
     public typealias Result = (Tree, Input.Index)
 }
 
+
+public struct Parser<T> {
+    public typealias ResultType = T
+    public let fun : 𝐏<String, T>.𝒇
+    public let gen : Gen<T>
+    var _weight = 1
+    public init(fun: 𝐏<String, T>.𝒇, gen: Gen<T>) {
+        self.fun = fun
+        self.gen = gen
+    }
+    public mutating func weight(w: Int) -> Parser<T> {
+        _weight = w
+        return self
+    }
+}
+
+
+public struct ParGen<T,U> {
+    let fun : 𝐏<String, T>.𝒇
+    var gen : Gen<U>
+}
 var indentCount = 0
 let indent :  () -> String = { String(count: indentCount, repeatedValue: Character("\t")) }
 let padCount : () -> Int = { 50 - indentCount * 3 }
@@ -71,8 +92,11 @@ infix operator <* { associativity left precedence 130 }
 infix operator *> { associativity left precedence 130 }
 //: `++` associates to the right, linked-list style. Higher precedence than `|.`
 infix operator ++ { associativity right precedence 160 }
+infix operator +++ {associativity left precedence 150}
+infix operator ++++ {associativity left precedence 140}
 //: Map operator. Lower precedence than |.
 infix operator --> { associativity left precedence 100 }
+
 
 prefix operator % {}
 postfix operator |? {}  //: `|?` is the optionality operator.
@@ -86,8 +110,7 @@ postfix operator +^ {}
 ## Bind: 
 `>>-` defines `𝐏<I, *>.𝒇` as monadic
 */
-public func >>- <I: CollectionType, T, U> 
-    (
+public func >>- <I: CollectionType, T, U> (
     parser:     𝐏<I, T>.𝒇, 
     transform:  T -> 𝐏<I, U>.𝒇) -> 𝐏<I, U>.𝒇 
 {
@@ -96,6 +119,20 @@ public func >>- <I: CollectionType, T, U>
         return try trace(">>- f(\"\(result)\")(\"\(input)\", \(newIndex))") (transform(result)) (input, newIndex)
     }
 }
+public func >>- <T, U> (
+    parser:     Parser<T>, 
+    transform:  T -> Parser<U>) -> Parser<U> 
+{    
+    return Parser<U> (
+        fun: parser.fun >>- { x in transform(x).fun },
+        gen: parser.gen >>- { x in transform(x).gen }
+    )
+}
+//public func >>- <A, B>(p : Parser<A>, transform : A -> Parser<B>) -> Parser<B> {
+//    let f = p.fun >>- transform 
+//    let g = p.gen >>- transform
+//    return Parser<B>(fun: f, gen: g)
+//}
 //: `apply` returns a parser which applies `transform: T -> U` to transform the output, `T`, of `parser`.
 //: notice how `transform` is _injected_ into parser's monadic context.
 public func <^> <I: CollectionType, T, U> 
@@ -125,7 +162,17 @@ public func map<I: CollectionType, T, U>
 {
     return transform <^> parser |> trace() 
 }
-
+public func <^> <A, B>(transform : A -> B, p : Parser<A>) -> Parser<B> {
+    let f = p.fun >>- { a in pure(transform(a)) } 
+    let g = p.gen >>- { a in Gen.pure(transform(a)) }
+    return Parser<B>(fun: f, gen: g)
+}
+extension Parser {
+//    typealias A = Swift.Any
+    public func fmap<A>(f : (ResultType -> A)) -> Parser<A> {
+        return f <^> self
+    }
+}
 public func <*> <I: CollectionType, T, U>(
     fp: 𝐏<I, T->U>.𝒇,
     p:  𝐏<I, T>.𝒇) 
@@ -163,6 +210,11 @@ public struct Ignore {
 public postfix func |? <I: CollectionType, T> 
     (parser: 𝐏<I, T>.𝒇) 
           -> 𝐏<I, T?>.𝒇 
+{
+    return first <^> parser * (0...1)
+}
+public postfix func |? <T> 
+    (parser: Parser<T>) -> Parser<T?> 
 {
     return first <^> parser * (0...1)
 }
@@ -214,7 +266,13 @@ public func not(literal: String) ->  𝐏<String, String>.𝒇 {
         }
     }
 }
-
+public func notg(literal: String) -> Parser<String> {
+    let g = Character.arbitrary
+        .suchThat { literal.characters.contains($0) == false }
+        .fmap { (c:Character) in String(c) }
+    
+    return Parser<String>(fun: not(literal), gen: g)
+}
 //: Parser algebras need `OR` and `AND` operators to map over their domain.
 //: ## Alternation:
 //: `alternate` takes two parsers, `(lhs: T)` and `(rhs: U)` and produces a tuple `(T, U)` 
@@ -255,6 +313,26 @@ public func | <I: CollectionType, T> (
         |> map { $0.either(onLeft: identity, onRight: identity) }
         |> trace("| <T,T> \t:") 
 }
+//: `|` parses either `(lhs: U)` or `(rhs: T)` and creates a parser that returns `Either<T, U>`
+public func | <T> (
+    lhs: Parser<T>, 
+    rhs: Parser<T>) 
+      -> Parser<T>
+{
+    let f = alternate(lhs.fun, rhs.fun) |> map { $0.either(onLeft: identity, onRight: identity) }
+//    let g = Gen<T>.oneOf([lhs.gen, rhs.gen])
+    let g = Gen<T>.frequency([(lhs._weight, lhs.gen), (rhs._weight, rhs.gen)])
+    return Parser<T>( fun: f, gen: g )
+}
+public func | <T,U> (
+    lhs: ParGen<T,U>, 
+    rhs: ParGen<T,U>) 
+      -> ParGen<T,U>
+{
+    let f = alternate(lhs.fun, rhs.fun) |> map { $0.either(onLeft: identity, onRight: identity) }
+    let g = Gen<U>.oneOf([lhs.gen, rhs.gen])
+    return ParGen<T,U>( fun: f, gen: g )
+}
 //: `first` helper function.
 func first<I: CollectionType>(input: I) -> I.Generator.Element? {
     return input.first
@@ -270,14 +348,26 @@ public func ++ <I: CollectionType, T, U> (
     return lhs >>- { x in { y in (x, y) } <^> rhs } 
         |> trace("++ (T,U)")
 }
+
 //: `++` parses the concatenation of `lhs` and `rhs`, dropping `rhs`’s parse tree to generate `T`
 public func ++ <I: CollectionType, T> (
     lhs: 𝐏<I, T>.𝒇, 
     rhs: 𝐏<I, Ignore>.𝒇) 
-      -> 𝐏<I, T>.𝒇 
+    -> 𝐏<I, T>.𝒇 
 {
     return lhs >>- { x in const(x) <^> rhs } 
         |> trace("++ (T, Ignore)\t:")
+}
+//: `++` parses the concatenation of `lhs` and `rhs`, dropping `rhs`’s parse tree to generate `T`
+//infix operator +++ {associativity left}
+public func ++ <T, U> (lhs: Parser<T>, rhs: Parser<U>) -> Parser<(T, U)>{
+    return lhs >>- { x in { y in (x,y) } <^> rhs}
+}
+public func +++ <T,U,V> (lhs: Parser<(T,U)>, rhs: Parser<V>) -> Parser<(T,U,V)>{
+    return lhs >>- { (t,u) in { v in (t,u,v) } <^> rhs }
+}
+public func +++ <T,U,V,W> (lhs: Parser<(T,U,V)>, rhs: Parser<W>) -> Parser<(T,U,V,W)>{
+    return lhs >>- { (t,u,v) in { w in (t,u,v,w) } <^> rhs }
 }
 //: Parses the concatenation of `lhs` and `rhs`, dropping `lhs`’s parse tree generating `T`
 public func ++ <I: CollectionType, T> (
@@ -293,6 +383,7 @@ public protocol Addable { func +(lhs: Self, rhs: Self) -> Self }
 extension String : Addable {}
 public protocol DefaultConstructible { init() }
 extension String : DefaultConstructible {}
+
 public func & <I: CollectionType, T where T: Addable> (
     lhs: 𝐏<I, T>.𝒇,
     rhs: 𝐏<I, T>.𝒇)
@@ -300,12 +391,29 @@ public func & <I: CollectionType, T where T: Addable> (
 {
     return lhs >>- { x in { y in x + y } <^> rhs } |> trace("T & T")
 }
+public func & <T where T: Addable> (lhs: Parser<T>, rhs: Parser<T>) -> Parser<T> {
+    return lhs >>- { x in { y in x + y } <^> rhs }
+}
+public func & (lhs: Parser<Character>, rhs: Parser<Character>) -> Parser<String> {
+    return lhs >>- { x in { y in String([x, y]) } <^> rhs }
+}
+public func & (lhs: Parser<Character>, rhs: Parser<String>) -> Parser<String> {
+    return lhs >>- { x in { y in String(x) + y } <^> rhs }
+}
 public func & <I: CollectionType, T where T: Addable> (
     lhs: 𝐏<I, T?>.𝒇,
     rhs: 𝐏<I, T>.𝒇)
       -> 𝐏<I, T>.𝒇 
 {
     return lhs >>- { x in { y in x == nil ? y : x! + y } <^> rhs } |> trace("T? & T")
+}
+public func & <T where T: Addable> (lhs: Parser<T?>, rhs: Parser<T>) -> Parser<T> 
+{
+    return lhs >>- { x in { y in x == nil ? y : x! + y } <^> rhs } 
+}
+public func & <T where T: Addable> (lhs: Parser<T>, rhs: Parser<T?>) -> Parser<T> 
+{
+    return lhs >>- { x in { y in y == nil ? x : x + y! } <^> rhs } 
 }
 public func & <I: CollectionType, T where T: Addable> (
     lhs: 𝐏<I, T>.𝒇,
@@ -363,6 +471,26 @@ public func * <I: CollectionType, T>
     
     return trace("* : next | error") (next | error)	
 }
+
+public func * <T> 
+    (parser:    Parser<T>, 
+    interval:   ClosedInterval<Int>) -> Parser<[T]> 
+{
+    guard interval.isEmpty == false else { 
+        return Parser<[T]>(fun: { throw ParserError<String>.Error(
+            message: "cannot parse an empty interval of repetitions", index: $1) },
+            gen: parser.gen.proliferate(interval) )
+            
+    }
+    
+    return Parser<[T]>(fun: parser.fun * (interval.start...decrement(interval.end)), gen: parser.gen.proliferate(interval))
+}
+public func * <T> 
+    (parser:    Parser<T>, 
+    interval:   HalfOpenInterval<Int>) -> Parser<[T]> 
+{
+    return parser * (interval.start...decrement(interval.end))
+}
 /*: 
 Parses `parser` the number of times specified in `interval`.
 An `interval` specifys the number of repetitions to perform. 
@@ -398,6 +526,10 @@ public postfix func + <C: CollectionType, T> (parser: 𝐏<C, T>.𝒇) -> 𝐏<C
 {
     return trace() (parser * (1..<Int.max))
 }
+public postfix func + <T> (parser: Parser<T>) -> Parser<[T]> 
+{
+    return parser * (1..<Int.max)
+}
 //: Creates a parser from `string`, and parses it 1 or more times.
 public postfix func + (string: String) -> 𝐏<String, [String]>.𝒇 {
     return %(string) * (1..<Int.max)
@@ -413,12 +545,34 @@ public postfix func *^ <I: CollectionType, T where T: Addable, T: DefaultConstru
 {
     return parser * (0...Int.max) |> map { $0.reduce(T(), combine: (+)) }
 }
+public postfix func *^ <T where T: Addable, T: DefaultConstructible> (parser: Parser<T>) -> Parser<T> {
+    return Parser<T>(
+        fun: parser.fun * (0...Int.max) |> map { $0.reduce(T(), combine: (+)) },
+        gen: parser.gen.proliferate().fmap { $0.reduce(T(), combine: (+)) } )
+}
+public postfix func *^ (parser: Parser<Character>) -> Parser<String> {
+    return Parser<String>(
+        fun: parser.fun * (0...Int.max) |> map { String($0) },
+        gen: parser.gen.proliferate().fmap { String($0) } )
+}
 //: Parses `parser` 0 or more times.
 public postfix func +^ <I: CollectionType, T where T: Addable, T: DefaultConstructible> 
     (parser: 𝐏<I, T >.𝒇) 
     -> 𝐏<I,T>.𝒇 
 {
     return parser * (1...Int.max) |> map { $0.reduce(T(), combine: (+)) }
+}
+public postfix func +^ <T where T: Addable, T: DefaultConstructible> 
+    (parser: Parser<T>) -> Parser<T>
+{
+    return Parser<T>(
+        fun: parser.fun * (1...Int.max) |> map { $0.reduce(T(), combine: (+)) },
+        gen: parser.gen.proliferateNonEmpty().fmap { $0.reduce(T(), combine: (+)) } )
+}
+public postfix func +^ (parser: Parser<Character>) -> Parser<String> {
+    return Parser<String>(
+        fun: parser.fun * (1...Int.max) |> map { String($0) },
+        gen: parser.gen.proliferateNonEmpty().fmap { String($0) } )
 }
 //public postfix func +^ <I: CollectionType, T where T: CollectionType, T: DefaultConstructible> 
 //    (parser: 𝐏<I, T >.𝒇) 
@@ -445,6 +599,70 @@ public prefix func %
         throw ParserError<I>.Error(message: "expected \"\(literal)\" at offset:\(index)", index: index)
     }
 }
+public func char
+    (character: Character) -> Parser<Character>
+{
+    return Parser<Character>(
+        fun: 
+        { input, index in 
+            
+            if index < input.endIndex && input[index] == character {
+                tracePrint("\t\t❗️ \"\(character)\" \(index)")
+                return (character, index.successor()) 
+            } else {
+                throw ParserError<String>.Error(message: "expected \"\(character)\" at offset:\(index)", index: index)
+            }
+        },
+        gen: Gen<Character>.pure(character)
+    )
+}
+
+prefix operator %% {}
+public prefix func %%
+    (literal: String) -> Parser<String>
+{
+    return Parser<String>(
+    fun: 
+    { collection, index in 
+        let literalRange = literal.startIndex ..< literal.endIndex
+        tracePrint("input: \(collection), literal = \(literal), literal.count = \(literalRange.count)")
+        let matchEnd = index.advancedBy(literalRange.count, limit: collection.endIndex)
+        
+        if collection[index ..< matchEnd].elementsEqual(literal[literalRange]) {
+            tracePrint("\t\t❗️ \"\(literal)\" \(matchEnd)")
+            return (literal, matchEnd) 
+        } else {
+            throw ParserError<String>.Error(message: "expected \"\(literal)\" at offset:\(index)", index: index)
+        }
+    },
+    gen: Gen<String>.pure(literal)
+    )
+}
+public prefix func %% <I: IntervalType where I.Bound == Character>
+    (interval: I) -> Parser<Character> 
+{
+    return Parser<Character>(
+        fun: 
+        { input, index in
+            if (index < input.endIndex && interval.contains(input[index])) {
+                return (input[index], index.successor())
+            } else {
+                let message : String = {
+                    if index < input.endIndex {
+                        return "Failed: \"\(input[index])\" not found in interval (\(interval))" } 
+                    else {
+                        return "Failed: index: \(index) beyond end index of \"\(input)\"" } }()
+                
+                throw ParserError<String>.Error(
+                    message: message, 
+                    index: index) 
+            }
+        },
+        gen: Gen<Character>.fromElementsIn(interval) //.fmap { (c:Character) in String(c) }
+    )
+}
+
+
 extension String : CollectionType {}
 //: Returns a parser which parses any character in `interval`.
 public prefix func % <I: IntervalType where I.Bound == Character>
@@ -488,10 +706,16 @@ public func ignore<I: CollectionType, T>
 {
     return parser --> const(Ignore())
 }
-//: Ignores any parse trees produced by a parser which parses `string`.
-public func ignore(string: String) -> 𝐏<String, Ignore>.𝒇 {
-    return ignore(%string)
-}
+//public func ignore<T>(parser: Parser<T>) -> Parser<Ignore>
+//{
+//    let f = (parser.fun) --> const(Ignore())
+//    // Error: Cannot invoke initializer for type 'Parser<Ignore>' with an argument list of type '(fun: (String, Index) throws -> (Ignore, Index), gen: Gen<T>)'
+//    return Parser<Ignore>(fun: f, gen: parser.gen)
+//}
+////: Ignores any parse trees produced by a parser which parses `string`.
+//public func ignore(string: String) -> 𝐏<String, Ignore>.𝒇 {
+//    return ignore(%string)
+//}
 //: `parse` function. takes a `parser` and `input` and produces a `Tree?`
 public func parse <Input: CollectionType, Tree> 
     (parser: 𝐏 <Input, Tree>.𝒇, input:  Input, traceToConsole: Bool = false) -> (Tree?, String)
