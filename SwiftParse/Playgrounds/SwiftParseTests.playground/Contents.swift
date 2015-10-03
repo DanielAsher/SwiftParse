@@ -17,7 +17,7 @@ let quotedId    = %%"\"" & quotedChar+^ & %%"\""
 let ID          = simpleId | decimal | quotedId
 let sep         = %%";" | %%"," | %%" "
 
-let id_equality = ID ++ %%"=" ++ ID ++^ sep|?
+let id_equality = ID ++ %%"=" ++^ ID ++^ sep|?
 let attr_list   = %%"[" ++ id_equality+ ++^ %%"]"
 let node_id     = ID
 let edgeop      = %%"->" | %%"--"
@@ -27,8 +27,25 @@ let node_stmt   = node_id ++ attr_list
 
 node_stmt.gen.generate
 
+func fixo<A>(f : A -> A ) -> A {
+    return f(fixo(f))
+}
 
-let stmt_list : Int throws -> Int = fixt { stmt_list in
+
+let stmt_list1 :  Parser<[Term]> = fixo { stmt_list1 in
+    let subgraph_id =  %%"subgraph" ++ ID|? 
+//    let subgraph = subgraph_id ++ %%"{" ++ stmt_list1 ++ %%"}"
+    let i = id_equality.fmap { Term.IdEquality(Attribute(name: $0.0, value: $0.2)) }
+//    let a = attr_stmt.fmap { Term.AttrStmt(target: $0.0,)
+//    let stmt = id_equality | attr_stmt
+    return i* 
+}
+
+stmt_list1.gen.generate
+
+let stmt_list : 𝐏<String, (String, String?)>.𝒇 = fixt { stmt_list in
+    let subgraph_id =  %"subgraph" ++ Dot.ID|? 
+    let subgraph = subgraph_id ++ %"{" ++ stmt_list ++ %"}" 
     return stmt_list
 }
 
