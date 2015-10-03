@@ -1,13 +1,12 @@
 //: [Previous](@previous)
 
 import Foundation
-import Swiftx
 
 var str = "Hello, playground"
 
 let f : Int -> Int = fix { f in
-    return f
+    return { x in x * x }
 }
 
-
+f(2)
 //: [Next](@next)

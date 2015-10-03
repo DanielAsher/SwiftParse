@@ -7,13 +7,30 @@
 //
 import Nimble
 import Quick
+//import func Swiftx.fix
 @testable import SwiftParse
 //@testable import func SwiftParse.parse
 //@testable import struct SwiftParse.P
 
 
-
 class SwiftParseSpecs : QuickSpec {
+    
+    static func fix<A, B>(f : (A -> B) -> A -> B) -> A -> B {
+        return { x in
+            let fixed = fix(f)
+            return f(fixed)(x) 
+        }
+    }
+    
+    static let fib : Int -> Int = SwiftParseSpecs.fix { fib in
+        return { x in 
+            switch x { 
+            case 0: return 0
+            case 1: return 1
+            case let n: return fib(n) + fib(n+1)
+            }
+        }
+    }
     
     override func spec() {
         describe("Dot parser quoted string behaviour") {
@@ -32,7 +49,7 @@ class SwiftParseSpecs : QuickSpec {
                 expect(result?.first!.name).to(equal(name))
                 expect(result?.first!.value).to(equal(value))
             }
-            fit("generates ids") {
+            it("generates ids") {
                 let lower       = %%("a"..."z")
                 let upper       = %%("A"..."Z")
                 let digit       = %%("0"..."9")
@@ -51,6 +68,14 @@ class SwiftParseSpecs : QuickSpec {
                 
                 print(attr_list.gen.generate)
                 expect(attr_list.gen.generate).toNot(beNil())
+            }
+        
+
+        
+        fit("does not infinitely recurse") {
+            
+            expect(SwiftParseSpecs.fib(2)).to(equal(4))
+            
             }
         }
     }
