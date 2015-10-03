@@ -515,7 +515,13 @@ public postfix func * <I: CollectionType, T> (parser: 𝐏<I, T >.𝒇) -> 𝐏<
 {
     return parser * (0..<Int.max) |> trace()
 }
-// `*` parses a `literal: String` zero or more times
+//: Parses `parser` 0 or more times.
+public postfix func * <T> (parser: Parser<T>) -> Parser<[T]>
+{
+    return Parser<[T]>(
+        fun: parser.fun * (0..<Int.max),
+        gen: parser.gen.proliferate(0...20))
+}// `*` parses a `literal: String` zero or more times
 public postfix func * (literal: String) -> 𝐏<String, [String]>.𝒇 
 {
     return %(literal) * (0..<Int.max) |> trace()

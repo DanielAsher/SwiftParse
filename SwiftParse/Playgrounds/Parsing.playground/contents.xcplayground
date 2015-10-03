@@ -6,5 +6,6 @@
         <page name='ParserType'/>
         <page name='Misc'/>
         <page name='SwiftCheck'/>
+        <page name='FixedPoint'/>
     </pages>
 </playground>

@@ -11,6 +11,7 @@ public typealias ID = String
 public struct Attribute {
     let name: String
     let value: String
+    public init(name: String, value: String) { self.name = name; self.value = value}
 }
 
 public enum AttributeType : String {
