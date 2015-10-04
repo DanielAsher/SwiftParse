@@ -9,19 +9,19 @@
 /* Begin PBXBuildFile section */
 		6507226A1B9F6A9900214138 /* SwiftParse.h in Headers */ = {isa = PBXBuildFile; fileRef = 650722691B9F6A9900214138 /* SwiftParse.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		650722761B9F6A9900214138 /* SwiftParseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650722751B9F6A9900214138 /* SwiftParseTests.swift */; };
+		650C14101BC07F3A00B61F01 /* Swiftz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650C13F91BC07DAB00B61F01 /* Swiftz.framework */; };
+		650C14111BC07F4400B61F01 /* Swiftz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650C13F51BC07DAB00B61F01 /* Swiftz.framework */; };
 		6513C7961BA17B0F00912A7C /* ArbitraryTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6513C7951BA17B0F00912A7C /* ArbitraryTypes.swift */; settings = {ASSET_TAGS = (); }; };
 		6513C7981BA1D1CC00912A7C /* Test+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6513C7971BA1D1CC00912A7C /* Test+Extensions.swift */; settings = {ASSET_TAGS = (); }; };
 		6513C7A41BA28BBA00912A7C /* SwiftParse-OSX.h in Headers */ = {isa = PBXBuildFile; fileRef = 6513C7A31BA28BBA00912A7C /* SwiftParse-OSX.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6513C7B01BA28BBA00912A7C /* SwiftParse_OSXTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6513C7AF1BA28BBA00912A7C /* SwiftParse_OSXTests.swift */; };
 		6513C7B81BA28C7000912A7C /* SwiftParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656BBF951B9F7B74008C2CDF /* SwiftParse.swift */; settings = {ASSET_TAGS = (); }; };
-		6513C7B91BA28C9500912A7C /* Swiftx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6529F2061BA06B97009D79BC /* Swiftx.framework */; };
 		6513C7BB1BA28CE800912A7C /* Global+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6529F2101BA06CB6009D79BC /* Global+Ext.swift */; settings = {ASSET_TAGS = (); }; };
 		6513C7BC1BA291B000912A7C /* SwiftParseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650722751B9F6A9900214138 /* SwiftParseTests.swift */; settings = {ASSET_TAGS = (); }; };
 		6513C7BE1BA2921900912A7C /* ArbitraryTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6513C7951BA17B0F00912A7C /* ArbitraryTypes.swift */; settings = {ASSET_TAGS = (); }; };
 		6513C7C01BA2922E00912A7C /* Test+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6513C7971BA1D1CC00912A7C /* Test+Extensions.swift */; settings = {ASSET_TAGS = (); }; };
 		6513F6111BB9AF030056FCB8 /* SwiftParse+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6513F6101BB9AF030056FCB8 /* SwiftParse+Ext.swift */; settings = {ASSET_TAGS = (); }; };
 		6513F6121BB9AF030056FCB8 /* SwiftParse+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6513F6101BB9AF030056FCB8 /* SwiftParse+Ext.swift */; settings = {ASSET_TAGS = (); }; };
-		6529F20D1BA06C24009D79BC /* Swiftx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6529F2061BA06B97009D79BC /* Swiftx.framework */; };
 		6529F2111BA06CB6009D79BC /* Global+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6529F2101BA06CB6009D79BC /* Global+Ext.swift */; settings = {ASSET_TAGS = (); }; };
 		653AC5791BB00D0000250A7C /* Test+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653AC5681BB00BB700250A7C /* Test+Operators.swift */; settings = {ASSET_TAGS = (); }; };
 		653AC57A1BB00D0200250A7C /* Test+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653AC5681BB00BB700250A7C /* Test+Operators.swift */; settings = {ASSET_TAGS = (); }; };
@@ -32,12 +32,10 @@
 		653AC5821BB0331900250A7C /* SwiftParseSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653AC5811BB0331900250A7C /* SwiftParseSpecs.swift */; settings = {ASSET_TAGS = (); }; };
 		653AC5831BB0331900250A7C /* SwiftParseSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653AC5811BB0331900250A7C /* SwiftParseSpecs.swift */; settings = {ASSET_TAGS = (); }; };
 		656BBF961B9F7B74008C2CDF /* SwiftParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656BBF951B9F7B74008C2CDF /* SwiftParse.swift */; settings = {ASSET_TAGS = (); }; };
-		65A89E921BB91E210030A070 /* SwiftCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65FD85AE1BB551DB008089E4 /* SwiftCheck.framework */; };
 		65E97E2F1BAC4259007E2B6D /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65830C531BA56BA7004433B5 /* Nimble.framework */; };
 		65E97E301BAC4301007E2B6D /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65830C3C1BA56AF9004433B5 /* Quick.framework */; };
 		65E97E321BAC44E8007E2B6D /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65830C3C1BA56AF9004433B5 /* Quick.framework */; };
 		65FD85AD1BB54E53008089E4 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65830C571BA56BA7004433B5 /* Nimble.framework */; };
-		65FD85AF1BB551DB008089E4 /* SwiftCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65FD85AE1BB551DB008089E4 /* SwiftCheck.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,40 +46,75 @@
 			remoteGlobalIDString = 650722651B9F6A9800214138;
 			remoteInfo = SwiftParse;
 		};
+		650C13F41BC07DAB00B61F01 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 650C13E31BC07DAB00B61F01 /* Swiftz.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 84A88F981A71DF7F003D53CF;
+			remoteInfo = Swiftz;
+		};
+		650C13F61BC07DAB00B61F01 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 650C13E31BC07DAB00B61F01 /* Swiftz.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 84A88FA31A71DF7F003D53CF;
+			remoteInfo = SwiftzTests;
+		};
+		650C13F81BC07DAB00B61F01 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 650C13E31BC07DAB00B61F01 /* Swiftz.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 84DF751E1B0BD17700C912B0;
+			remoteInfo = "Swiftz-iOS";
+		};
+		650C13FA1BC07DAB00B61F01 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 650C13E31BC07DAB00B61F01 /* Swiftz.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 84DF75281B0BD17700C912B0;
+			remoteInfo = "Swiftz-iOSTests";
+		};
+		650C13FC1BC07E0C00B61F01 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 650C13E31BC07DAB00B61F01 /* Swiftz.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 84DF751D1B0BD17700C912B0;
+			remoteInfo = "Swiftz-iOS";
+		};
+		650C14071BC07EF400B61F01 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 650C14001BC07EF300B61F01 /* SwiftCheck.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 844FCC8D198B320500EB242A;
+			remoteInfo = SwiftCheck;
+		};
+		650C14091BC07EF400B61F01 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 650C14001BC07EF300B61F01 /* SwiftCheck.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 844FCC98198B320500EB242A;
+			remoteInfo = SwiftCheckTests;
+		};
+		650C140B1BC07EF400B61F01 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 650C14001BC07EF300B61F01 /* SwiftCheck.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 84DF75F81B0BD54600C912B0;
+			remoteInfo = "SwiftCheck-iOS";
+		};
+		650C140D1BC07EF400B61F01 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 650C14001BC07EF300B61F01 /* SwiftCheck.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 84DF76021B0BD54600C912B0;
+			remoteInfo = "SwiftCheck-iOSTests";
+		};
 		6513C7AC1BA28BBA00912A7C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6507225D1B9F6A9800214138 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 6513C7A01BA28BBA00912A7C;
 			remoteInfo = "SwiftParse-OSX";
-		};
-		6529F2051BA06B97009D79BC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6529F1FD1BA06B97009D79BC /* Swiftx.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 84A88C891A70BD71003D53CF;
-			remoteInfo = Swiftx;
-		};
-		6529F2071BA06B97009D79BC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6529F1FD1BA06B97009D79BC /* Swiftx.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 84A88C941A70BD71003D53CF;
-			remoteInfo = SwiftxTests;
-		};
-		6529F2091BA06B97009D79BC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6529F1FD1BA06B97009D79BC /* Swiftx.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 84DF76681B0BDE0A00C912B0;
-			remoteInfo = "Swiftx-iOS";
-		};
-		6529F20B1BA06B97009D79BC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6529F1FD1BA06B97009D79BC /* Swiftx.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 84DF76721B0BDE0A00C912B0;
-			remoteInfo = "Swiftx-iOSTests";
 		};
 		65830C3B1BA56AF9004433B5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -170,6 +203,8 @@
 		650722751B9F6A9900214138 /* SwiftParseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftParseTests.swift; sourceTree = "<group>"; };
 		650722771B9F6A9900214138 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		650722811B9F726D00214138 /* Parsing.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = Parsing.playground; path = Playgrounds/Parsing.playground; sourceTree = "<group>"; };
+		650C13E31BC07DAB00B61F01 /* Swiftz.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Swiftz.xcodeproj; path = ../Modules/Swiftz/Swiftz.xcodeproj; sourceTree = "<group>"; };
+		650C14001BC07EF300B61F01 /* SwiftCheck.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftCheck.xcodeproj; path = ../Modules/Swiftz/Carthage/Checkouts/SwiftCheck/SwiftCheck.xcodeproj; sourceTree = "<group>"; };
 		650D7EAB1BA0928500F62B40 /* DotParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DotParser.swift; path = SwiftParseTests/DotParser.swift; sourceTree = SOURCE_ROOT; };
 		6513C78F1BA0DEBE00912A7C /* DotAST.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DotAST.swift; path = SwiftParseTests/DotAST.swift; sourceTree = SOURCE_ROOT; };
 		6513C7951BA17B0F00912A7C /* ArbitraryTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArbitraryTypes.swift; sourceTree = "<group>"; };
@@ -184,14 +219,12 @@
 		6513C7B11BA28BBA00912A7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6513C7C11BA2A0FA00912A7C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		6513F6101BB9AF030056FCB8 /* SwiftParse+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SwiftParse+Ext.swift"; sourceTree = "<group>"; };
-		6529F1FD1BA06B97009D79BC /* Swiftx.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Swiftx.xcodeproj; path = ../Modules/Swiftx/Swiftx.xcodeproj; sourceTree = "<group>"; };
 		6529F2101BA06CB6009D79BC /* Global+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Global+Ext.swift"; sourceTree = "<group>"; };
 		653AC5681BB00BB700250A7C /* Test+Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Test+Operators.swift"; sourceTree = "<group>"; };
 		653AC5811BB0331900250A7C /* SwiftParseSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftParseSpecs.swift; sourceTree = "<group>"; };
 		656BBF951B9F7B74008C2CDF /* SwiftParse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftParse.swift; sourceTree = "<group>"; };
 		65830C321BA56AF9004433B5 /* Quick.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Quick.xcodeproj; path = ../Modules/Quick/Quick.xcodeproj; sourceTree = "<group>"; };
 		65830C4B1BA56BA7004433B5 /* Nimble.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Nimble.xcodeproj; path = ../Modules/Quick/Externals/Nimble/Nimble.xcodeproj; sourceTree = "<group>"; };
-		65FD85AE1BB551DB008089E4 /* SwiftCheck.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftCheck.framework; path = "../../../../../../../Library/Developer/Xcode/DerivedData/SwiftParse-gdyavxqvcdanpldmrbfwjlxfqxia/Build/Products/Debug/SwiftCheck.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,7 +232,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6529F20D1BA06C24009D79BC /* Swiftx.framework in Frameworks */,
+				650C14101BC07F3A00B61F01 /* Swiftz.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,7 +240,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65A89E921BB91E210030A070 /* SwiftCheck.framework in Frameworks */,
 				65E97E301BAC4301007E2B6D /* Quick.framework in Frameworks */,
 				65E97E2F1BAC4259007E2B6D /* Nimble.framework in Frameworks */,
 			);
@@ -217,7 +249,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6513C7B91BA28C9500912A7C /* Swiftx.framework in Frameworks */,
+				650C14111BC07F4400B61F01 /* Swiftz.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,7 +257,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65FD85AF1BB551DB008089E4 /* SwiftCheck.framework in Frameworks */,
 				65FD85AD1BB54E53008089E4 /* Nimble.framework in Frameworks */,
 				65E97E321BAC44E8007E2B6D /* Quick.framework in Frameworks */,
 			);
@@ -293,6 +324,28 @@
 			name = Playgrounds;
 			sourceTree = "<group>";
 		};
+		650C13E41BC07DAB00B61F01 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				650C13F51BC07DAB00B61F01 /* Swiftz.framework */,
+				650C13F71BC07DAB00B61F01 /* SwiftzTests.xctest */,
+				650C13F91BC07DAB00B61F01 /* Swiftz.framework */,
+				650C13FB1BC07DAB00B61F01 /* Swiftz-iOSTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		650C14011BC07EF300B61F01 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				650C14081BC07EF400B61F01 /* SwiftCheck.framework */,
+				650C140A1BC07EF400B61F01 /* SwiftCheckTests.xctest */,
+				650C140C1BC07EF400B61F01 /* SwiftCheck.framework */,
+				650C140E1BC07EF400B61F01 /* SwiftCheck-iOSTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		6513C7A21BA28BBA00912A7C /* SwiftParse-OSX */ = {
 			isa = PBXGroup;
 			children = (
@@ -314,23 +367,12 @@
 		6529F1FC1BA06B80009D79BC /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
+				650C14001BC07EF300B61F01 /* SwiftCheck.xcodeproj */,
+				650C13E31BC07DAB00B61F01 /* Swiftz.xcodeproj */,
 				65830C4B1BA56BA7004433B5 /* Nimble.xcodeproj */,
 				65830C321BA56AF9004433B5 /* Quick.xcodeproj */,
-				6529F1FD1BA06B97009D79BC /* Swiftx.xcodeproj */,
-				65FD85AE1BB551DB008089E4 /* SwiftCheck.framework */,
 			);
 			name = Dependencies;
-			sourceTree = "<group>";
-		};
-		6529F1FE1BA06B97009D79BC /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				6529F2061BA06B97009D79BC /* Swiftx.framework */,
-				6529F2081BA06B97009D79BC /* SwiftxTests.xctest */,
-				6529F20A1BA06B97009D79BC /* Swiftx.framework */,
-				6529F20C1BA06B97009D79BC /* Swiftx-iOSTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		653AC57B1BB02F3B00250A7C /* Dot */ = {
@@ -410,6 +452,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				650C13FD1BC07E0C00B61F01 /* PBXTargetDependency */,
 			);
 			name = "SwiftParse-iOS";
 			productName = SwiftParse;
@@ -514,8 +557,12 @@
 					ProjectRef = 65830C321BA56AF9004433B5 /* Quick.xcodeproj */;
 				},
 				{
-					ProductGroup = 6529F1FE1BA06B97009D79BC /* Products */;
-					ProjectRef = 6529F1FD1BA06B97009D79BC /* Swiftx.xcodeproj */;
+					ProductGroup = 650C14011BC07EF300B61F01 /* Products */;
+					ProjectRef = 650C14001BC07EF300B61F01 /* SwiftCheck.xcodeproj */;
+				},
+				{
+					ProductGroup = 650C13E41BC07DAB00B61F01 /* Products */;
+					ProjectRef = 650C13E31BC07DAB00B61F01 /* Swiftz.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -529,32 +576,60 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		6529F2061BA06B97009D79BC /* Swiftx.framework */ = {
+		650C13F51BC07DAB00B61F01 /* Swiftz.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			path = Swiftx.framework;
-			remoteRef = 6529F2051BA06B97009D79BC /* PBXContainerItemProxy */;
+			path = Swiftz.framework;
+			remoteRef = 650C13F41BC07DAB00B61F01 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		6529F2081BA06B97009D79BC /* SwiftxTests.xctest */ = {
+		650C13F71BC07DAB00B61F01 /* SwiftzTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = SwiftxTests.xctest;
-			remoteRef = 6529F2071BA06B97009D79BC /* PBXContainerItemProxy */;
+			path = SwiftzTests.xctest;
+			remoteRef = 650C13F61BC07DAB00B61F01 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		6529F20A1BA06B97009D79BC /* Swiftx.framework */ = {
+		650C13F91BC07DAB00B61F01 /* Swiftz.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			path = Swiftx.framework;
-			remoteRef = 6529F2091BA06B97009D79BC /* PBXContainerItemProxy */;
+			path = Swiftz.framework;
+			remoteRef = 650C13F81BC07DAB00B61F01 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		6529F20C1BA06B97009D79BC /* Swiftx-iOSTests.xctest */ = {
+		650C13FB1BC07DAB00B61F01 /* Swiftz-iOSTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = "Swiftx-iOSTests.xctest";
-			remoteRef = 6529F20B1BA06B97009D79BC /* PBXContainerItemProxy */;
+			path = "Swiftz-iOSTests.xctest";
+			remoteRef = 650C13FA1BC07DAB00B61F01 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		650C14081BC07EF400B61F01 /* SwiftCheck.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftCheck.framework;
+			remoteRef = 650C14071BC07EF400B61F01 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		650C140A1BC07EF400B61F01 /* SwiftCheckTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SwiftCheckTests.xctest;
+			remoteRef = 650C14091BC07EF400B61F01 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		650C140C1BC07EF400B61F01 /* SwiftCheck.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftCheck.framework;
+			remoteRef = 650C140B1BC07EF400B61F01 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		650C140E1BC07EF400B61F01 /* SwiftCheck-iOSTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SwiftCheck-iOSTests.xctest";
+			remoteRef = 650C140D1BC07EF400B61F01 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		65830C3C1BA56AF9004433B5 /* Quick.framework */ = {
@@ -717,6 +792,11 @@
 			isa = PBXTargetDependency;
 			target = 650722651B9F6A9800214138 /* SwiftParse-iOS */;
 			targetProxy = 650722721B9F6A9900214138 /* PBXContainerItemProxy */;
+		};
+		650C13FD1BC07E0C00B61F01 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Swiftz-iOS";
+			targetProxy = 650C13FC1BC07E0C00B61F01 /* PBXContainerItemProxy */;
 		};
 		6513C7AD1BA28BBA00912A7C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

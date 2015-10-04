@@ -11,10 +11,10 @@
 ## `𝒇 : (Input, Input.Index) throws -> (Tree, Input.Index)`
 */
 import SwiftCheck
-import func Swiftx.identity
-import func Swiftx.const
-import func Swiftx.|>
-import enum Swiftx.Either
+import func Swiftz.identity
+import func Swiftz.const
+import func Swiftz.|>
+import enum Swiftz.Either
 
 
 public enum 𝐏 < Input: CollectionType, Tree> {

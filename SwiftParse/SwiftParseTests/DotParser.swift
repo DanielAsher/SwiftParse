@@ -5,8 +5,8 @@
 //  Created by Daniel Asher on 09/09/2015.
 //  Copyright © 2015 StoryShare. All rights reserved.
 //
-import func Swiftx.|>
-import func Swiftx.fixt
+import func Swiftz.|>
+import func Swiftz.fixt
 
 prefix operator ¡ {}
 public prefix func ¡ <I: CollectionType, T>
