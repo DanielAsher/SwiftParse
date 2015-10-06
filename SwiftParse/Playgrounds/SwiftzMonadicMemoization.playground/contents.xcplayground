@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<playground version='6.0' target-platform='osx' requires-full-environment='true'>
+    <pages>
+        <page name='Fib1'/>
+        <page name='Fib2'/>
+        <page name='Fib3'/>
+        <page name='Fib4'/>
+        <page name='Fib5'/>
+        <page name='Fib6'/>
+        <page name='GADT'/>
+        <page name='HaskellGADT'/>
+        <page name='HaskellGADT2'/>
+        <page name='HaskellGADT3'/>
+    </pages>
+</playground>

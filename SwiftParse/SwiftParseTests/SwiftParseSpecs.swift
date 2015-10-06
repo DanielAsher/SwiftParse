@@ -27,12 +27,18 @@ class SwiftParseSpecs : QuickSpec {
             switch x { 
             case 0: return 0
             case 1: return 1
-            case let n: return fib(n) + fib(n+1)
+            case let n: return fib(n-2) + fib(n-1)
             }
         }
     }
     
     override func spec() {
+        describe("fixed-point combinator") {
+            fit("does not infinitely recurse") {
+                expect(SwiftParseSpecs.fib(10)).to(equal(55))
+            }            
+        }
+        
         describe("Dot parser quoted string behaviour") {
             it("handles multiple consecutive backslash and quotation marks") {
                 let quotedId = "\"\\\\\""
@@ -68,14 +74,6 @@ class SwiftParseSpecs : QuickSpec {
                 
                 print(attr_list.gen.generate)
                 expect(attr_list.gen.generate).toNot(beNil())
-            }
-        
-
-        
-        fit("does not infinitely recurse") {
-            
-            expect(SwiftParseSpecs.fib(2)).to(equal(4))
-            
             }
         }
     }

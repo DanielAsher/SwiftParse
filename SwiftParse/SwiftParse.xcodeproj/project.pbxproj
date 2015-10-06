@@ -23,6 +23,8 @@
 		6513F6111BB9AF030056FCB8 /* SwiftParse+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6513F6101BB9AF030056FCB8 /* SwiftParse+Ext.swift */; settings = {ASSET_TAGS = (); }; };
 		6513F6121BB9AF030056FCB8 /* SwiftParse+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6513F6101BB9AF030056FCB8 /* SwiftParse+Ext.swift */; settings = {ASSET_TAGS = (); }; };
 		6529F2111BA06CB6009D79BC /* Global+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6529F2101BA06CB6009D79BC /* Global+Ext.swift */; settings = {ASSET_TAGS = (); }; };
+		65305B641BC130BA00A8F307 /* SwiftzSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65305B631BC130BA00A8F307 /* SwiftzSpecs.swift */; settings = {ASSET_TAGS = (); }; };
+		65305B651BC130BA00A8F307 /* SwiftzSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65305B631BC130BA00A8F307 /* SwiftzSpecs.swift */; settings = {ASSET_TAGS = (); }; };
 		653AC5791BB00D0000250A7C /* Test+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653AC5681BB00BB700250A7C /* Test+Operators.swift */; settings = {ASSET_TAGS = (); }; };
 		653AC57A1BB00D0200250A7C /* Test+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653AC5681BB00BB700250A7C /* Test+Operators.swift */; settings = {ASSET_TAGS = (); }; };
 		653AC57D1BB02F6B00250A7C /* DotParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650D7EAB1BA0928500F62B40 /* DotParser.swift */; settings = {ASSET_TAGS = (); }; };
@@ -220,6 +222,8 @@
 		6513C7C11BA2A0FA00912A7C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		6513F6101BB9AF030056FCB8 /* SwiftParse+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SwiftParse+Ext.swift"; sourceTree = "<group>"; };
 		6529F2101BA06CB6009D79BC /* Global+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Global+Ext.swift"; sourceTree = "<group>"; };
+		65305B631BC130BA00A8F307 /* SwiftzSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftzSpecs.swift; sourceTree = "<group>"; };
+		65305B761BC273C200A8F307 /* SwiftzMonadicMemoization.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = SwiftzMonadicMemoization.playground; path = Playgrounds/SwiftzMonadicMemoization.playground; sourceTree = "<group>"; };
 		653AC5681BB00BB700250A7C /* Test+Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Test+Operators.swift"; sourceTree = "<group>"; };
 		653AC5811BB0331900250A7C /* SwiftParseSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftParseSpecs.swift; sourceTree = "<group>"; };
 		656BBF951B9F7B74008C2CDF /* SwiftParse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftParse.swift; sourceTree = "<group>"; };
@@ -311,6 +315,7 @@
 				6513C7971BA1D1CC00912A7C /* Test+Extensions.swift */,
 				653AC5681BB00BB700250A7C /* Test+Operators.swift */,
 				650722771B9F6A9900214138 /* Info.plist */,
+				65305B631BC130BA00A8F307 /* SwiftzSpecs.swift */,
 			);
 			path = SwiftParseTests;
 			sourceTree = "<group>";
@@ -320,6 +325,7 @@
 			children = (
 				650722811B9F726D00214138 /* Parsing.playground */,
 				6513C7991BA1F83300912A7C /* SwiftParseTests.playground */,
+				65305B761BC273C200A8F307 /* SwiftzMonadicMemoization.playground */,
 			);
 			name = Playgrounds;
 			sourceTree = "<group>";
@@ -755,6 +761,7 @@
 				653AC5821BB0331900250A7C /* SwiftParseSpecs.swift in Sources */,
 				6513C7961BA17B0F00912A7C /* ArbitraryTypes.swift in Sources */,
 				6513C7981BA1D1CC00912A7C /* Test+Extensions.swift in Sources */,
+				65305B641BC130BA00A8F307 /* SwiftzSpecs.swift in Sources */,
 				650722761B9F6A9900214138 /* SwiftParseTests.swift in Sources */,
 				653AC5791BB00D0000250A7C /* Test+Operators.swift in Sources */,
 			);
@@ -776,6 +783,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65305B651BC130BA00A8F307 /* SwiftzSpecs.swift in Sources */,
 				6513C7BE1BA2921900912A7C /* ArbitraryTypes.swift in Sources */,
 				653AC5831BB0331900250A7C /* SwiftParseSpecs.swift in Sources */,
 				6513C7C01BA2922E00912A7C /* Test+Extensions.swift in Sources */,

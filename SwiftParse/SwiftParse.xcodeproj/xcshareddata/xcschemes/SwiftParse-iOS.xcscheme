@@ -51,6 +51,11 @@
                BlueprintName = "SwiftParse-iOSTests"
                ReferencedContainer = "container:SwiftParse.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "SwiftParseTests/testAll()">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>
