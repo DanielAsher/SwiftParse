@@ -95,27 +95,64 @@ public func >>- <T, U>(m : Identity2<T,U>, f : T -> Identity2<U,U>) -> Identity2
     return m.bind(f)
 }
 
+//func memo<T: Monad>(var dict: Dictionary<T.A, T.FB>) -> (T.A -> T.FB) -> T.A -> T.FB { 
+//    return { f in
+//        return { a in 
+//            if let b = dict[a] { return b } 
+//            else { let b = f(a); dict[a] = b; return b }
+//        }
+//    }
+//}
 
-struct Fib<T: Monad where T.A == Int, T.B == Int, T.FB == T> {
+func memo<T: Monad where T.FB == T>(var dict: Dictionary<T.A, T.FB>) -> (T.A -> T.FB) -> T.A -> T.FB { 
+    return { f in
+        return { a in 
+            if let b = dict[a] { return b } 
+            else { let b = f(a); dict[a] = b; return b }
+        }
+    }
+}
+
+struct Fib<T: Monad where T.A == Int, T.FB == T> {
+    
     static var mFib : Int -> T { 
-        return fix { mFib in
             return { n in
                 switch n {
                 case 0: return T.pure(0)
                 case 1: return T.pure(1)
                 case let n:
-                    return mFib(n-2).bind { a in 
-                            mFib(n-1).bind { b in 
+                    return self.mFib(n-2).bind { a in 
+                            self.mFib(n-1).bind { b in 
                                 T.pure(a + b) } } 
                 }
             }
+    }
+    
+    static func gmFib(fib: Int -> T) -> Int -> T { 
+        return { n in
+            switch n {
+            case 0: return T.pure(0)
+            case 1: return T.pure(1)
+            case let n:
+                return fib(n-2).bind { a in 
+                    fib(n-1).bind { b in 
+                        T.pure(a + b) } } 
+            }
         }
+    }
+    
+    static func memoFib(a: T.A) -> T.FB {
+        let dict = Dictionary<T.A, T.FB>()
+        return fix ( memo(dict) • Fib<T>.gmFib ) (a)
     }
 }
 //
 //let a = mFib(1, source: Optional<Int>.None)
-let b = Fib<OptionalExt<Int, Int>>.mFib(10)
-let c = Fib<Identity2<Int, Int>>.mFib(10).runIdentity
+//var b = Fib<OptionalExt<Int, Int>>.mFib(10)
+//let c = Fib<Identity2<Int, Int>>.mFib(10).runIdentity
+var d = Fib<Identity2<Int, Int>>.memoFib(10)
+
+
 
 
 
