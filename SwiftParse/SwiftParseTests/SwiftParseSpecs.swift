@@ -33,8 +33,22 @@ class SwiftParseSpecs : QuickSpec {
     }
     
     override func spec() {
+        describe("Nested bind") {
+            fit("works") {
+                let sq : Int -> Int = { $0 * $0 }
+                
+                let mis : Optional<[Int]>= [1,2,3]
+                
+                let m = mis.bind { xs in 
+                    xs.map(sq) 
+                }
+                
+                expect(m).to(equal([1,4,9]))
+            }
+        }
+        
         describe("fixed-point combinator") {
-            fit("does not infinitely recurse") {
+            it("does not infinitely recurse") {
                 expect(SwiftParseSpecs.fib(10)).to(equal(55))
             }            
         }

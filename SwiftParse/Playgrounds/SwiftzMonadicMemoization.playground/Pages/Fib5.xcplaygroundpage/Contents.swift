@@ -148,7 +148,7 @@ struct Fib<T: Monad where T.A == Int, T.FB == T> {
 }
 //
 //let a = mFib(1, source: Optional<Int>.None)
-//var b = Fib<OptionalExt<Int, Int>>.mFib(10)
+var b = Fib<OptionalExt<Int, Int>>.mFib(10)
 //let c = Fib<Identity2<Int, Int>>.mFib(10).runIdentity
 var d = Fib<Identity2<Int, Int>>.memoFib(10)
 

@@ -229,6 +229,7 @@
 		656BBF951B9F7B74008C2CDF /* SwiftParse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftParse.swift; sourceTree = "<group>"; };
 		65830C321BA56AF9004433B5 /* Quick.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Quick.xcodeproj; path = ../Modules/Quick/Quick.xcodeproj; sourceTree = "<group>"; };
 		65830C4B1BA56BA7004433B5 /* Nimble.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Nimble.xcodeproj; path = ../Modules/Quick/Externals/Nimble/Nimble.xcodeproj; sourceTree = "<group>"; };
+		65BDE1921BC7CC3100734A9F /* Isomorphic Syntax Descriptions.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = "Isomorphic Syntax Descriptions.playground"; path = "Playgrounds/Isomorphic Syntax Descriptions.playground"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -326,6 +327,7 @@
 				650722811B9F726D00214138 /* Parsing.playground */,
 				6513C7991BA1F83300912A7C /* SwiftParseTests.playground */,
 				65305B761BC273C200A8F307 /* SwiftzMonadicMemoization.playground */,
+				65BDE1921BC7CC3100734A9F /* Isomorphic Syntax Descriptions.playground */,
 			);
 			name = Playgrounds;
 			sourceTree = "<group>";

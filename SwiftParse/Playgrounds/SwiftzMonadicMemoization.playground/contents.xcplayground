@@ -11,5 +11,10 @@
         <page name='HaskellGADT'/>
         <page name='HaskellGADT2'/>
         <page name='HaskellGADT3'/>
+        <page name='ExpressionProblem'/>
+        <page name='ExpressionProblem2'/>
+        <page name='ArrayEquality'/>
+        <page name='Misc'/>
+        <page name='Rank 2 Types'/>
     </pages>
 </playground>
