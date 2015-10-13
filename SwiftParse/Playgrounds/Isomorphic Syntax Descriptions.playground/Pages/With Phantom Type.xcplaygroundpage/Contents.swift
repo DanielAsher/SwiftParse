@@ -7,6 +7,7 @@ import Swiftz
 class Iso<T,U,V> {
     let to   : T -> Optional<U>
     let from : U -> Optional<T>
+    
     init(to: T -> Optional<U>, from: U -> Optional<T>) {
         self.to = to
         self.from = from
@@ -53,9 +54,10 @@ extension Iso : Category {
 protocol IsoFunctor {
     typealias A
     typealias B
+    typealias C
     typealias FA = K1<A>
     typealias FB = K1<B>
-    func <^> (iso: Iso<A,B,B>, a: FA) -> FB
+    func <^> (iso: Iso<A,B,C>, a: FA) -> FB
 }
 
 func <^> <T,U,V>(iso: Iso<T,U,V>, a: Optional<T>) -> Optional<U> {
@@ -87,9 +89,12 @@ protocol Syntax : IsoFunctor, ProductFunctor, Alternative {
     typealias DLA   = K1<[A]>
     typealias DChar = K1<Character>
     static func pure(a: A) -> DA
+    static func pureB(a: B) -> DB
     static var token : DChar {get}
     func many(p: DA) -> DLA
-    func bind(da: DA, k: A -> DB) -> DB
+    func bind(k: A -> DB) -> DB
+    func map(iso: Iso<A, B, B>, da: DA) -> DB
+    static func aToB(a: A) -> B 
 }
 
 
@@ -117,9 +122,11 @@ extension Syntax where DA : Syntax, DB : Syntax {
 //        return da
 //    }
     
-    func map(iso: Iso<A, B, B>, da: DA) -> DB {
-        return bind(da) { a in iso.to(a) } 
-    }
+//    func map(iso: Iso<A, B, B>, da: DA) -> DB {
+//        let f : DB = da.bind { a in DB.pureB(DA.aToB(a)) }
+//        return f
+////        return bind(da) { a in Self.pureB(iso.to(a)) } 
+//    }
     
     func many(p: DA) -> DLA {
         let _ = nill <^> .None 

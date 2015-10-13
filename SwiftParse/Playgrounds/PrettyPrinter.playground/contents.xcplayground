@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<playground version='6.0' target-platform='osx' requires-full-environment='true' timelineScrubberEnabled='true'>
+    <pages>
+        <page name='Parser'/>
+        <page name='PrettyPrinter'/>
+        <page name='PrettyPrinter2'/>
+        <page name='PrettyPrinter3'/>
+        <page name='PrettyPrinter4'/>
+        <page name='PrettyPrinter5'/>
+        <page name='OperatorAssociativity'/>
+    </pages>
+</playground>

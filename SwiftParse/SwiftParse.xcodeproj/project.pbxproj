@@ -222,6 +222,7 @@
 		6513C7C11BA2A0FA00912A7C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		6513F6101BB9AF030056FCB8 /* SwiftParse+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SwiftParse+Ext.swift"; sourceTree = "<group>"; };
 		6529F2101BA06CB6009D79BC /* Global+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Global+Ext.swift"; sourceTree = "<group>"; };
+		652DEDFA1BCC23E60013F585 /* PrettyPrinter.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = PrettyPrinter.playground; path = Playgrounds/PrettyPrinter.playground; sourceTree = "<group>"; };
 		65305B631BC130BA00A8F307 /* SwiftzSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftzSpecs.swift; sourceTree = "<group>"; };
 		65305B761BC273C200A8F307 /* SwiftzMonadicMemoization.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = SwiftzMonadicMemoization.playground; path = Playgrounds/SwiftzMonadicMemoization.playground; sourceTree = "<group>"; };
 		653AC5681BB00BB700250A7C /* Test+Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Test+Operators.swift"; sourceTree = "<group>"; };
@@ -328,6 +329,7 @@
 				6513C7991BA1F83300912A7C /* SwiftParseTests.playground */,
 				65305B761BC273C200A8F307 /* SwiftzMonadicMemoization.playground */,
 				65BDE1921BC7CC3100734A9F /* Isomorphic Syntax Descriptions.playground */,
+				652DEDFA1BCC23E60013F585 /* PrettyPrinter.playground */,
 			);
 			name = Playgrounds;
 			sourceTree = "<group>";

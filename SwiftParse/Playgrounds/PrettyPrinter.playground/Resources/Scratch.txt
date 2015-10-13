@@ -1,0 +1,20 @@
+Text("hello", 
+    Doc.Union(
+        Doc.Text(" ", 
+            Doc.Text("a", 
+                Doc.Union(
+                    Doc.Text(" ", 
+                        Doc.Text("b", 
+                            Doc.Union(
+                                Doc.Text(" ", Doc.Text("c", Doc.Nil)), 
+                                Doc.Line(0, Doc.Text("c", Doc.Nil))))), 
+                    Doc.Line(0, 
+                        Doc.Text("b", 
+                            Doc.Line(0, 
+                                Doc.Text("c", Doc.Nil))))))), 
+        Doc.Line(0, 
+            Doc.Text("a", 
+                Doc.Line(0, 
+                    Doc.Text("b", 
+                        Doc.Line(0, 
+                            Doc.Text("c", Doc.Nil))))))))

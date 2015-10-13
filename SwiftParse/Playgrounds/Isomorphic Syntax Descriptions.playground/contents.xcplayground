@@ -3,5 +3,7 @@
     <pages>
         <page name='Iso Category'/>
         <page name='With Phantom Type'/>
+        <page name='Applicative Functors'/>
+        <page name='StringInterpolationTest'/>
     </pages>
 </playground>
