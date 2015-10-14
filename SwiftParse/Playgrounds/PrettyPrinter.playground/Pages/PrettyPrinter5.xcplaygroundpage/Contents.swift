@@ -44,9 +44,12 @@ extension Doc {
 
 
 func <§> (lhs: DOC, rhs: DOC) -> DOC {
+    return .Concat(lhs, rhs)
+}
+infix operator <|> { associativity left }
+func <|> (lhs: DOC, rhs: DOC) -> DOC {
     return .Union(lhs, rhs)
 }
-
 func flatten(d: DOC) -> DOC {
     switch d {
         case .Nil: return .Nil
@@ -135,10 +138,32 @@ func folddoc(f: (DOC, DOC) -> DOC)(_ list: [DOC]) -> DOC {
 let spread = folddoc( <+> )
 let stack  = folddoc( </> )
 
+infix operator <+/> { associativity left }
+func <+/> (x: DOC, y: DOC) -> DOC {
+    return x <§> (DOC.text(" ") <|> DOC.line) <§> y
+}
+let words : String -> [DOC] = 
+    { $0.componentsSeparatedByString(" ").map(DOC.text) }
+
+let fillwords = words >>> folddoc( <+/> )
+
+func fill(ds: [DOC]) -> DOC {
+    switch ds.match {
+        case .Nil: return .Nil
+        case let .Cons(x, xs): switch xs.match {
+            case .Nil: return x
+            case let .Cons(y, zs): 
+                return  flatten(x) <+> fill([flatten(y)] + zs )
+                        <|> 
+                        (x </> fill([y] + zs))
+        }
+    }
+}
+
 func bracket(l: String, x: DOC, r: String) -> DOC {
-    return group(DOC.text(l) <§> DOC.nest(2)(DOC.line <§> x) <§> 
-        DOC.line <§> DOC.text(r)
-    )
+    return group(DOC.text(l) <§> 
+            DOC.nest(2)(DOC.line <§> x) <§> 
+            DOC.line <§> DOC.text(r))
 }
 
 

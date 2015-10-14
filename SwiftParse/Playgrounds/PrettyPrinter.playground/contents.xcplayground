@@ -8,5 +8,6 @@
         <page name='PrettyPrinter4'/>
         <page name='PrettyPrinter5'/>
         <page name='OperatorAssociativity'/>
+        <page name='FunctionComposition'/>
     </pages>
 </playground>

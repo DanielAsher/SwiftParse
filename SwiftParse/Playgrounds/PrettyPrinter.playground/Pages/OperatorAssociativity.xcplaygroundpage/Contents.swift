@@ -1,7 +1,5 @@
 //: [Previous](@previous)
 
-import Foundation
-
 infix operator <=> { associativity left }
 
 enum Term { 
@@ -37,6 +35,15 @@ let a = 1 <=> 2 <=> 3 <=> 4
 // right associative
 // Minus(Term.Var(1), Term.Minus(Term.Var(2), Term.Minus(Term.Var(3), Term.Var(4))))
 
-var str = "Hello, playground"
+
+
+var str = "Goodbye, playground"
+
+
+
+
+
+
+
 
 //: [Next](@next)
