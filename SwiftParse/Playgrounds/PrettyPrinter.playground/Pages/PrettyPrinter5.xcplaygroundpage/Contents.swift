@@ -1,6 +1,6 @@
 //: [Previous](@previous)
 
-import Swiftz
+//import func Swiftz.>>>
 
 enum Doc {
     case Nil
@@ -41,7 +41,26 @@ extension Doc {
         }
     }
 }
-
+public enum ArrayMatcher<A> {
+    case Nil
+    case Cons(A, [A])
+}
+extension Array {
+    /// Destructures a list into its constituent parts.
+    ///
+    /// If the given list is empty, this function returns .Nil.  If the list is non-empty, this
+    /// function returns .Cons(head, tail)
+    public var match : ArrayMatcher<Element> {
+        if self.count == 0 {
+            return .Nil
+        } else if self.count == 1 {
+            return .Cons(self[0], [])
+        }
+        let hd = self[0]
+        let tl = Array(self[1..<self.count])
+        return .Cons(hd, tl)
+    }
+}
 
 func <§> (lhs: DOC, rhs: DOC) -> DOC {
     return .Concat(lhs, rhs)
@@ -145,7 +164,7 @@ func <+/> (x: DOC, y: DOC) -> DOC {
 let words : String -> [DOC] = 
     { $0.componentsSeparatedByString(" ").map(DOC.text) }
 
-let fillwords = words >>> folddoc( <+/> )
+//let fillwords = words >>> folddoc( <+/> )
 
 func fill(ds: [DOC]) -> DOC {
     switch ds.match {

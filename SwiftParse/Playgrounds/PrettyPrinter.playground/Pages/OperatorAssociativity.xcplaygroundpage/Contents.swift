@@ -1,34 +1,54 @@
 //: [Previous](@previous)
+infix operator <-> { associativity left }
 
-infix operator <=> { associativity left }
+//enum Term { 
+//    indirect case Subtract(Term, Term)
+//    case Var(Int)
+//}
+//protocol TermType {
+//    var term : Term { get }
+//}
+//extension Term : TermType {
+//    var term : Term { return self }    
+//}
+//extension Int : TermType {
+//    var term : Term { return Term.Var(self) }
+//}
+//
+//func <-> (lhs: TermType, rhs: TermType) -> Term {
+//    return Term.Subtract(lhs.term, rhs.term)
+//}
 
-enum Term { 
-    indirect case Minus(Term, Term)
-    case Var(Int)
-}
+//prefix operator % {}
+//prefix func %(s: String) -> DOC {
+//    return DOC.text(s)
+//}
 
-func <=> (lhs: Int, rhs: Int) -> Term {
-    lhs
-    rhs
-    return Term.Minus(Term.Var(lhs), Term.Var(rhs))
-}
-func <=> (lhs: Term, rhs: Int) -> Term {
-    lhs
-    rhs
-    return Term.Minus(lhs, Term.Var(rhs))
-}
-func <=> (lhs: Int, rhs: Term) -> Term {
-    lhs
-    rhs
-    return Term.Minus(Term.Var(lhs), rhs)
-}
-func <=> (lhs: Term, rhs: Term) -> Term {
-    lhs
-    rhs
-    return Term.Minus(lhs, rhs)
-}
+//func ppr(t: Term) -> DOC {
+//    switch t {
+//    case .Var(let i): return %"\(i)"
+//    case let .Subtract(e1, e2): 
+//        return group(
+//            ppr(e1) <§> DOC.nest(2)(DOC.line <§> %"-" <§> %" " <§> pprP(e2))
+//        )
+//    }
+//}
+//
+//func pprP(t: Term) -> DOC {
+//    switch t {
+//        case .Var(let i): return %"\(i)"
+//        case let .Subtract(e1, e2): 
+//            return %"(" <§> group(ppr(e1) <§> 
+//                DOC.nest(2) (DOC.line <§> %"-" <§> %" " <§> pprP(e2))) <§> %")"
+//    }
+//}
 
-let a = 1 <=> 2 <=> 3 <=> 4
+//let a = 1 <-> 2 //<-> (3 <-> 4)
+//print(a)
+//print(ppr(a))
+//print(best(20, 0, ppr(a)))
+//print(pretty(30, x: ppr(a)))
+
 // left associative
 // Minus(Term.Minus(Term.Minus(Term.Var(1), Term.Var(2)), Term.Var(3)), Term.Var(4))
 

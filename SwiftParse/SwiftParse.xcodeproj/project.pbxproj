@@ -34,6 +34,8 @@
 		653AC5821BB0331900250A7C /* SwiftParseSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653AC5811BB0331900250A7C /* SwiftParseSpecs.swift */; settings = {ASSET_TAGS = (); }; };
 		653AC5831BB0331900250A7C /* SwiftParseSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653AC5811BB0331900250A7C /* SwiftParseSpecs.swift */; settings = {ASSET_TAGS = (); }; };
 		656BBF961B9F7B74008C2CDF /* SwiftParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656BBF951B9F7B74008C2CDF /* SwiftParse.swift */; settings = {ASSET_TAGS = (); }; };
+		658A9D031BCDF672009FCC86 /* PrettyPrinter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658A9D021BCDF672009FCC86 /* PrettyPrinter.swift */; settings = {ASSET_TAGS = (); }; };
+		658A9D041BCDF672009FCC86 /* PrettyPrinter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658A9D021BCDF672009FCC86 /* PrettyPrinter.swift */; settings = {ASSET_TAGS = (); }; };
 		65E97E2F1BAC4259007E2B6D /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65830C531BA56BA7004433B5 /* Nimble.framework */; };
 		65E97E301BAC4301007E2B6D /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65830C3C1BA56AF9004433B5 /* Quick.framework */; };
 		65E97E321BAC44E8007E2B6D /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65830C3C1BA56AF9004433B5 /* Quick.framework */; };
@@ -230,6 +232,8 @@
 		656BBF951B9F7B74008C2CDF /* SwiftParse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftParse.swift; sourceTree = "<group>"; };
 		65830C321BA56AF9004433B5 /* Quick.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Quick.xcodeproj; path = ../Modules/Quick/Quick.xcodeproj; sourceTree = "<group>"; };
 		65830C4B1BA56BA7004433B5 /* Nimble.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Nimble.xcodeproj; path = ../Modules/Quick/Externals/Nimble/Nimble.xcodeproj; sourceTree = "<group>"; };
+		658A9D021BCDF672009FCC86 /* PrettyPrinter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrettyPrinter.swift; path = SwiftParseTests/PrettyPrinter.swift; sourceTree = SOURCE_ROOT; };
+		658A9D161BCFB8E8009FCC86 /* FunctionalPearls.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = FunctionalPearls.playground; path = Playgrounds/FunctionalPearls.playground; sourceTree = "<group>"; };
 		65BDE1921BC7CC3100734A9F /* Isomorphic Syntax Descriptions.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = "Isomorphic Syntax Descriptions.playground"; path = "Playgrounds/Isomorphic Syntax Descriptions.playground"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -300,6 +304,7 @@
 		650722681B9F6A9900214138 /* SwiftParse */ = {
 			isa = PBXGroup;
 			children = (
+				658A9D151BCDF6DB009FCC86 /* PrettyPrinter */,
 				656BBF951B9F7B74008C2CDF /* SwiftParse.swift */,
 				6513F6101BB9AF030056FCB8 /* SwiftParse+Ext.swift */,
 				653AC57B1BB02F3B00250A7C /* Dot */,
@@ -330,6 +335,7 @@
 				65305B761BC273C200A8F307 /* SwiftzMonadicMemoization.playground */,
 				65BDE1921BC7CC3100734A9F /* Isomorphic Syntax Descriptions.playground */,
 				652DEDFA1BCC23E60013F585 /* PrettyPrinter.playground */,
+				658A9D161BCFB8E8009FCC86 /* FunctionalPearls.playground */,
 			);
 			name = Playgrounds;
 			sourceTree = "<group>";
@@ -426,6 +432,14 @@
 				65830C591BA56BA7004433B5 /* NimbleTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		658A9D151BCDF6DB009FCC86 /* PrettyPrinter */ = {
+			isa = PBXGroup;
+			children = (
+				658A9D021BCDF672009FCC86 /* PrettyPrinter.swift */,
+			);
+			name = PrettyPrinter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -750,6 +764,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				658A9D031BCDF672009FCC86 /* PrettyPrinter.swift in Sources */,
 				653AC57D1BB02F6B00250A7C /* DotParser.swift in Sources */,
 				6529F2111BA06CB6009D79BC /* Global+Ext.swift in Sources */,
 				653AC57F1BB02F7100250A7C /* DotAST.swift in Sources */,
@@ -775,6 +790,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				658A9D041BCDF672009FCC86 /* PrettyPrinter.swift in Sources */,
 				653AC57E1BB02F6C00250A7C /* DotParser.swift in Sources */,
 				6513C7BB1BA28CE800912A7C /* Global+Ext.swift in Sources */,
 				653AC5801BB02F7300250A7C /* DotAST.swift in Sources */,
