@@ -36,49 +36,49 @@ class SwiftParseTests: XCTestCase {
             .fromElementsOf([";", ",", " "])
             .fmap { (c: Character) in String(c) }
 
-        let idStmtsGen = (A.ID + %"=" + A.ID + sep)
-            .fmap { TupleOf4($0) }.proliferate(min:2, max: 10)
-            .fmap { ArrayOf($0) }
-                        
-        // "a_list : ID '=' ID [ (';' | ',') ] [ a_list ]"
-        property("attr_list: '[' [ a_list ] ']' [ attr_list ]") <- forAll(idStmtsGen) { 
-            
-            (idStmts: ArrayOf<TupleOf4<String, String, String, String>>) in
-        
-            let idStmtArray = idStmts.getArray
-            guard idStmtArray.count > 0 else {return true}
-            let attrStr = 
-            "[" + idStmtArray.reduce("") { acc, id_stmt in
-                let (lhs, eq, rhs, s) = id_stmt.getTuple
-                return acc + lhs + eq + rhs + s
-            } + "]"
-            
-            let (result, message) = parse(Dot.attr_list, input: attrStr)
-            if case .None = result {
-                print(message)
-            }
-            switch(result) {
-                case let .Some(parsedAttrList):
-                    let allEqual = zip(idStmtArray, parsedAttrList).reduce(true) {
-                        switch ($0, $1.0.getTuple, $1.1) {
-                        case (let allEqual, let (nameID, _, valueID, _), let parsedAttr):                           
-                            let isEqualLhs = nameID == parsedAttr.name
-                            if isEqualLhs == false {
-                                print("Failed: ID:", nameID, "!=", parsedAttr.name)
-                            } 
-                            let isEqualRhs = valueID == parsedAttr.value
-                            if isEqualRhs == false {
-                                print("Failed: ID:", valueID, "!=", parsedAttr.value)
-                            } 
-                            return allEqual && isEqualLhs && isEqualRhs
-                        }
-                    }
-                    return allEqual
-                
-                case .None: 
-                    return false
-            }
-        }
+//        let idStmtsGen = (A.ID + %"=" + A.ID + sep)
+//            .fmap { TupleOf4($0) }.proliferate(min:2, max: 10)
+//            .fmap { ArrayOf($0) }
+//                        
+//        // "a_list : ID '=' ID [ (';' | ',') ] [ a_list ]"
+//        property("attr_list: '[' [ a_list ] ']' [ attr_list ]") <- forAll(idStmtsGen) { 
+//            
+//            (idStmts: ArrayOf<TupleOf4<String, String, String, String>>) in
+//        
+//            let idStmtArray = idStmts.getArray
+//            guard idStmtArray.count > 0 else {return true}
+//            let attrStr = 
+//            "[" + idStmtArray.reduce("") { acc, id_stmt in
+//                let (lhs, eq, rhs, s) = id_stmt.getTuple
+//                return acc + lhs + eq + rhs + s
+//            } + "]"
+//            
+//            let (result, message) = parse(Dot.attr_list, input: attrStr)
+//            if case .None = result {
+//                print(message)
+//            }
+//            switch(result) {
+//                case let .Some(parsedAttrList):
+//                    let allEqual = zip(idStmtArray, parsedAttrList).reduce(true) {
+//                        switch ($0, $1.0.getTuple, $1.1) {
+//                        case (let allEqual, let (nameID, _, valueID, _), let parsedAttr):                           
+//                            let isEqualLhs = nameID == parsedAttr.name
+//                            if isEqualLhs == false {
+//                                print("Failed: ID:", nameID, "!=", parsedAttr.name)
+//                            } 
+//                            let isEqualRhs = valueID == parsedAttr.value
+//                            if isEqualRhs == false {
+//                                print("Failed: ID:", valueID, "!=", parsedAttr.value)
+//                            } 
+//                            return allEqual && isEqualLhs && isEqualRhs
+//                        }
+//                    }
+//                    return allEqual
+//                
+//                case .None: 
+//                    return false
+//            }
+//        }
     
     property("edge_stmt: (node_id | subgraph) edgeRHS [ attr_list ]") <- forAll { (str: String) in
         
