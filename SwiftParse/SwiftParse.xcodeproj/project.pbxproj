@@ -32,13 +32,13 @@
 		653AC5821BB0331900250A7C /* SwiftParseSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653AC5811BB0331900250A7C /* SwiftParseSpecs.swift */; };
 		653AC5831BB0331900250A7C /* SwiftParseSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653AC5811BB0331900250A7C /* SwiftParseSpecs.swift */; };
 		656BBF961B9F7B74008C2CDF /* SwiftParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656BBF951B9F7B74008C2CDF /* SwiftParse.swift */; };
+		65829C4A1C1D98D2009EA6DD /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6584A2A01C1D73B100367DA9 /* Nimble.framework */; };
+		65829C4B1C1D98DC009EA6DD /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6584A2811C1D73A300367DA9 /* Quick.framework */; };
+		65829C4C1C1D98E5009EA6DD /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6584A2811C1D73A300367DA9 /* Quick.framework */; };
+		65829C4D1C1D98F0009EA6DD /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6584A29C1C1D73B100367DA9 /* Nimble.framework */; };
 		6584A2731C1C1E1C00367DA9 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 6584A2721C1C1E1C00367DA9 /* Cartfile */; };
-		6584A2C61C1D740000367DA9 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6584A29C1C1D73B100367DA9 /* Nimble.framework */; };
-		6584A2C71C1D740600367DA9 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6584A2811C1D73A300367DA9 /* Quick.framework */; };
 		6584A2C81C1D741300367DA9 /* Swiftz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6584A2B01C1D73C800367DA9 /* Swiftz.framework */; };
 		6584A2C91C1D741A00367DA9 /* SwiftCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6584A2BF1C1D73E500367DA9 /* SwiftCheck.framework */; };
-		6584A2CA1C1D749900367DA9 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6584A2A01C1D73B100367DA9 /* Nimble.framework */; };
-		6584A2CB1C1D749E00367DA9 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6584A2811C1D73A300367DA9 /* Quick.framework */; };
 		6584A2CC1C1D74A400367DA9 /* SwiftCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6584A2BF1C1D73E500367DA9 /* SwiftCheck.framework */; };
 		6584A2CD1C1D74A900367DA9 /* Swiftz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6584A2B01C1D73C800367DA9 /* Swiftz.framework */; };
 		658A9D031BCDF672009FCC86 /* PrettyPrinter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658A9D021BCDF672009FCC86 /* PrettyPrinter.swift */; };
@@ -269,8 +269,6 @@
 			files = (
 				6584A2C91C1D741A00367DA9 /* SwiftCheck.framework in Frameworks */,
 				6584A2C81C1D741300367DA9 /* Swiftz.framework in Frameworks */,
-				6584A2C71C1D740600367DA9 /* Quick.framework in Frameworks */,
-				6584A2C61C1D740000367DA9 /* Nimble.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +276,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65829C4D1C1D98F0009EA6DD /* Nimble.framework in Frameworks */,
+				65829C4C1C1D98E5009EA6DD /* Quick.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,8 +287,6 @@
 			files = (
 				6584A2CD1C1D74A900367DA9 /* Swiftz.framework in Frameworks */,
 				6584A2CC1C1D74A400367DA9 /* SwiftCheck.framework in Frameworks */,
-				6584A2CB1C1D749E00367DA9 /* Quick.framework in Frameworks */,
-				6584A2CA1C1D749900367DA9 /* Nimble.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,6 +294,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65829C4B1C1D98DC009EA6DD /* Quick.framework in Frameworks */,
+				65829C4A1C1D98D2009EA6DD /* Nimble.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
