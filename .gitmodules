@@ -5,3 +5,9 @@
 [submodule "Modules/Swiftz"]
 	path = Modules/Swiftz
 	url = https://github.com/DanielAsher/Swiftz.git
+[submodule "Carthage/Checkouts/Swiftz"]
+	path = Carthage/Checkouts/Swiftz
+	url = https://github.com/typelift/Swiftz.git
+[submodule "Carthage/Checkouts/Quick"]
+	path = Carthage/Checkouts/Quick
+	url = https://github.com/Quick/Quick.git
